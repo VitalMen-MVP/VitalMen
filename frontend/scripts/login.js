@@ -9,7 +9,7 @@ form.addEventListener('submit', async (event) => {
 
     const dados = {email, senha};
     try {
-        const response = await fetch('https://vitalmen.vercel.app/api/login',{
+        const response = await fetch('/api/login',{
           method: 'POST',
           headers: {'content-type': 'application/json'},
           body: JSON.stringify(dados)
