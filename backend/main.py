@@ -25,6 +25,13 @@ def login():
 def cadastro():
     return send_from_directory(os.path.join(FRONT_DIR, 'cadastro'), 'cadastro.html')
 
+@app.route('/nutri')
+def nutri():
+    return send_from_directory(os.path.join(FRONT_DIR, 'nutri'), 'nutri.html')
+
+@app.route('/saude')
+def saude():
+    return send_from_directory(os.path.join(FRONT_DIR, 'saude'), 'saude.html')
 
 # Rotas de arquivos estáticos (CSS, JS)
 @app.route('/<page>/<path:filename>')
