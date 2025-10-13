@@ -12,6 +12,7 @@ FRONT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'front
 
 # Rotas HTML
 @app.route('/')
+@app.route('/home')
 def index():
     return send_from_directory(os.path.join(FRONT_DIR, 'index'), 'index.html')
 
