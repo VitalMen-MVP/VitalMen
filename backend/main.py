@@ -25,9 +25,13 @@ def login():
 def cadastro():
     return send_from_directory(os.path.join(FRONT_DIR, 'cadastro'), 'cadastro.html')
 
-@app.route('/nutri')
-def nutri():
-    return send_from_directory(os.path.join(FRONT_DIR, 'nutri'), 'nutri.html')
+@app.route('/nutricao')
+def nutricao():
+    return send_from_directory(os.path.join(FRONT_DIR, 'nutricao'), 'nutricao.html')
+
+@app.route('/exercicios')
+def exercicios():
+    return send_from_directory(os.path.join(FRONT_DIR, 'exercicios'), 'exercicios.html')
 
 @app.route('/saude')
 def saude():
