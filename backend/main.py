@@ -16,31 +16,11 @@ FRONT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'front
 def index():
     return send_from_directory(os.path.join(FRONT_DIR, 'index'), 'index.html')
 
-
-@app.route('/login')
-def login():
-    return send_from_directory(os.path.join(FRONT_DIR, 'login'), 'login.html')
-
-
-@app.route('/cadastro')
-def cadastro():
-    return send_from_directory(os.path.join(FRONT_DIR, 'cadastro'), 'cadastro.html')
-
-@app.route('/nutricao')
-def nutricao():
-    return send_from_directory(os.path.join(FRONT_DIR, 'nutricao'), 'nutricao.html')
-
-@app.route('/exercicios')
-def exercicios():
-    return send_from_directory(os.path.join(FRONT_DIR, 'exercicios'), 'exercicios.html')
-
-@app.route('/mentalidade')
-def mentalidade():
-    return send_from_directory(os.path.join(FRONT_DIR, 'mentalidade'), 'mentalidade.html')
-
-@app.route('/saude')
-def saude():
-    return send_from_directory(os.path.join(FRONT_DIR, 'saude'), 'saude.html')
+# Rota genérica
+@app.route('/<page>/')
+def page(page):
+    print(page)
+    return send_from_directory(os.path.join(FRONT_DIR, page), f'{page}.html')
 
 # Rotas de arquivos estáticos (CSS, JS)
 @app.route('/<page>/<path:filename>')
