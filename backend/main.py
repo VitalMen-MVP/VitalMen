@@ -34,6 +34,10 @@ def nutricao():
 def exercicios():
     return send_from_directory(os.path.join(FRONT_DIR, 'exercicios'), 'exercicios.html')
 
+@app.route('/mentalidade')
+def mentalidade():
+    return send_from_directory(os.path.join(FRONT_DIR, 'mentalidade'), 'mentalidade.html')
+
 @app.route('/saude')
 def saude():
     return send_from_directory(os.path.join(FRONT_DIR, 'saude'), 'saude.html')
