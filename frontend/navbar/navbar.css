@@ -1,0 +1,89 @@
+:root {
+    /* Cores atualizadas para o tema escuro */
+    --primary-color: #004d9a; /* Azul escuro principal */
+    --primary-color-dark: #003366; /* Azul ainda mais escuro para hover */
+    --light-color: #ffffff;
+    --dark-color: #000; /* Texto claro para fundo escuro */
+    --background-color: #1a1a1a; /* Fundo geral escuro */
+    --card-background: #2a2a2a; /* Fundo dos cards (artigos, widgets) */
+    --border-color: #444; /* Cor da borda para divisórias */
+    --grey-text: #b0b0b0; /* Texto secundário em cinza claro */
+}
+
+.navbar {
+    background-color: var(--primary-color);
+    color: var(--light-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    height: 100px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    position: sticky; /* EFEITO: Navbar fixa no topo */
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(10px); /* EFEITO: Desfoque sutil no fundo (opcional) */
+    background-color: rgba(0, 77, 154, 0.9); /* EFEITO: Leve transparência */
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding-right: 20px;
+}
+
+.logo img {
+    height: 80px;
+    width: auto;
+    /* EFEITO: Transição suave no logo */
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+/* EFEITO: Logo aumenta e fica mais brilhante ao passar o mouse */
+.logo:hover img {
+    transform: scale(1.05);
+    filter: brightness(1.1);
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+    flex-grow: 1;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100%;
+}
+
+.nav-links a {
+    color: var(--light-color);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.05em;
+    padding: 8px 12px;
+    border-radius: 5px;
+    position: relative; /* Necessário para o pseudo-elemento ::after */
+    transition: color 0.3s ease;
+}
+
+/* EFEITO: Linha que aparece sob o link do menu no hover */
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: var(--light-color);
+    bottom: -5px;
+    left: 0;
+    transform: scaleX(0); /* Começa invisível */
+    transform-origin: bottom right;
+    transition: transform 0.3s ease-out;
+}
+
+.nav-links a:hover::after {
+    transform: scaleX(1); /* Expande a linha */
+    transform-origin: bottom left;
+}
