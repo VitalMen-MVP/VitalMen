@@ -1,0 +1,152 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+.footer {
+    border-top: 2px solid var(--border-color);
+    padding: 30px 20px;
+    margin-top: 40px;
+    text-align: center;
+    color: #888;
+    background-color: #222;
+}
+.hero-content h1{
+  font-size: 2.8em;
+}
+/* 🔵 ANIMAÇÃO DE ENTRADA — FAZ O HERO "SUBIR" AO APARECER */
+@keyframes slideUpFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 🔵 Aplica a animação ao conteúdo principal do banner */
+.hero-content {
+  opacity: 0;
+  transform: translateY(40px);
+  animation: slideUpFadeIn 1s ease-out forwards;
+}
+
+/* 🔵 Efeito fade-in geral (para as outras sections aparecerem suavemente) */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+main section {
+  width: 90%;
+  max-width: 1200px;
+  animation: fadeIn 1s ease-out forwards;
+}
+
+:root {
+  --primary-color: #3ba2ff;
+  --primary-color-dark: #007bff;
+  --background-color: #121212;
+  --card-background: #1e1e1e;
+  --text-primary: #f5f5f5;
+  --text-secondary: #a0a0a0;
+  --border-color: #333;
+}
+
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-primary);
+}
+
+.hero {
+  min-height: 60vh;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  color: white;
+  text-align: center;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+}
+
+.contact-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 40px;
+  width: 90%;
+  max-width: 1200px;
+  margin: 80px auto;
+}
+
+.contact-form, .contact-info {
+  background-color: var(--card-background);
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+
+.contact-form h2, .contact-info h2 {
+  color: var(--primary-color);
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  background-color: #222;
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  border-radius: 5px;
+  font-size: 1em;
+}
+
+input:focus, textarea:focus {
+  border-color: var(--primary-color);
+  outline: none;
+  box-shadow: 0 0 10px rgba(59,162,255,0.5);
+}
+
+.btn {
+  background: var(--primary-color);
+  color: white;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  background: var(--primary-color-dark);
+}
+
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 900px) {
+  .contact-container {
+    grid-template-columns: 1fr;
+  }
+}
