@@ -3,6 +3,12 @@ import os
 from flask import Flask, send_from_directory, render_template_string, request, jsonify
 from flask_cors import CORS
 
+import sqlite3
+from werkzeug.security import generate_password_hash, check_password_hash
+#werkzeug.security: Ferramentas de segurança que vêm com o Flask.
+#generate_password_hash: Transforma uma senha (ex: "1234") em um hash seguro.
+#check_password_hash: Compara uma senha com seu hash para verificar se correspondem.
+
 app = Flask(__name__)
 CORS(app)
 
@@ -33,11 +39,27 @@ def api_login():
     data = request.get_json()
     email = data.get("email")
     senha = data.get("senha")
-    # verificar no banco de dados
-    if email == "admin@com" and senha == "1234":
-        return jsonify({"mensagem": "Você entrou com sucesso!"}), 200
+    
+    if not email or not senha:
+        return jsonify({"erro": "Email e senha são obrigatórios."}), 400
+    conn = None
+    try:
+        conn = sqlite3.connect('data_base.db')
+        conn.row_factory = sqlite3.Row
+        cursor = conn.cursor()
+        cursor.execute("SELECT * FROM users WHERE email = ?", (email,))
+        user = cursor.fetchone()
+
+    except sqlite3.Error as e:
+        return jsonify({"erro": f"Erro no banco de dados: {e}"}), 500
+    finally:
+        if conn:
+            conn.close()
+    
+    if user and check_password_hash(user["password"], senha):
+        return jsonify({"mensagem": "Login bem-sucedido!"}), 200
     else:
-        return jsonify({"erro": "Usuário ou senha inválidos"}), 401
+        return jsonify({"erro": "Email ou senha inválidos."}), 401
 
 
 @app.route('/api/register', methods=["POST"])
@@ -46,8 +68,28 @@ def api_register():
     email = data.get("email")
     username = data.get("username")
     password = data.get("password")
-    # criar user no banco de dados
-    return jsonify({"mensagem": "Você se cadastrou com sucesso!"}), 200
+
+    if not email or not username or not password:
+        return jsonify({"erro": "Todos os campos são obrigatórios."}), 400
+    hashed_password = generate_password_hash(password)
+
+    conn = None
+    try:
+        conn = sqlite3.connect('data_base.db')
+        cursor = conn.cursor()
+        cursor.execute("INSERT INTO users (username, email, password) VALUES (?, ?, ?)",
+                       (username, email, hashed_password))
+        conn.commit() # Salva as alterações
+        return jsonify({"mensagem": "Você se cadastrou com sucesso!"}), 200
+    
+    except sqlite3.IntegrityError:
+        return jsonify({"erro": "Email já cadastrado."}), 409
+    
+    except sqlite3.Error as e:
+        return jsonify({"erro": f"Erro no banco de dados: {e}"}), 500
+    finally :
+        if conn:
+            conn.close()
 
 
 # Página 404

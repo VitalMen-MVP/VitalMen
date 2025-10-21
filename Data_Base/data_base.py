@@ -1,19 +1,18 @@
 import sqlite3
 
-
-nome = "usuario_teste"
+username = "usuario_teste"
 email = "teste@exemplo.com"
-senha = "senha123"
+password = "senha123"
 
 
 banco = sqlite3.connect('data_base.db')
 cursor = banco.cursor()
 
 
-cursor.execute("CREATE TABLE IF NOT EXISTS usuarios (id INTEGER PRIMARY KEY AUTOINCREMENT, nome TEXT NOT NULL, email TEXT UNIQUE NOT NULL, senha TEXT NOT NULL)")
+cursor.execute("CREATE TABLE IF NOT EXISTS users(id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT NOT NULL, email TEXT UNIQUE NOT NULL, password TEXT NOT NULL)")
 
-sql_insert = "INSERT INTO usuarios (nome, email, senha) VALUES (?, ?, ?)"
-dados = (nome, email, senha)
+sql_insert = "INSERT INTO users (username, email, password) VALUES (?, ?, ?)"
+dados = (username, email, password)
 
 
 try:
