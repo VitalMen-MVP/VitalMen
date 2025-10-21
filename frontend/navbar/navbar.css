@@ -108,3 +108,24 @@
     transform: scaleX(1); /* Expande a linha */
     transform-origin: bottom left;
 }
+
+.nav-links a.activate,
+.nav-links a [aria-current="page"]{
+    background: rgba(255, 255, 255, 0.12);
+    color: var(--light-color);
+    border-radius: 6px;
+    padding: 8px 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.menu-toggle {
+    display: none;
+    background: transparent;
+    border: none;
+    color: var(--light-color);
+    font-size: 28px;
+    cursor: pointer;
+    padding: 8px;
+    align-self: center;
+}
+
