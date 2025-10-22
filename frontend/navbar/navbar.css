@@ -129,3 +129,65 @@
     align-self: center;
 }
 
+@media (max-width: 992px) {
+    .logo img { height: 64px; }
+    .navbar { padding: 0 24px; height: auto; gap: 8px; }
+}
+
+/* MOBILE: transforma nav-links em dropdown escondido */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    /* preparar nav para overlay dropdown */
+    .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        margin: 0;
+        padding: 12px 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        background: linear-gradient(180deg, rgba(10,10,10,0.98), rgba(20,20,20,0.98));
+        transform-origin: top;
+        transform: translateY(-6px) scaleY(.99);
+        opacity: 0;
+        visibility: hidden;
+        transition: transform .22s ease, opacity .22s ease, visibility .22s;
+        border-top: 1px solid rgba(255,255,255,0.04);
+        z-index: 1100;
+        pointer-events: none;
+    }
+
+    /* quando .open presente mostramos o menu */
+    .navbar.open .nav-links {
+        transform: translateY(0) scaleY(1);
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+    }
+
+    .nav-links a {
+        padding: 10px 12px;
+        border-radius: 6px;
+        display: block;
+        font-size: 1rem;
+    }
+
+    /* login-button vira full-width visualmente */
+    .login-button {
+        margin-top: 6px;
+    }
+
+    .logo { padding-right: 8px; }
+    .logo img { height: 56px; }
+}
+
+/* muito pequeno */
+@media (max-width: 420px) {
+    .logo img { height: 48px; }
+    .menu-toggle { font-size: 24px; padding: 6px; }
+}

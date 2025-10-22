@@ -1,3 +1,4 @@
+// ...existing code...
 document.addEventListener('DOMContentLoaded', function () {
     const toggle = document.querySelector('.menu-toggle');
     const navbar = document.querySelector('.navbar');
@@ -5,20 +6,18 @@ document.addEventListener('DOMContentLoaded', function () {
     if (!toggle || !navbar) return;
 
     toggle.addEventListener('click', () => {
-        const isOpen = navbar.classList.toggle('open');
-        toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-        // opcional: trocar ícone (☰ -> ✕)
-        toggle.textContent = isOpen ? '✕' : '☰';
+        const open = navbar.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        toggle.textContent = open ? '✕' : '☰';
     });
 
-    // fecha menu ao clicar em link (melhora UX)
+    // fecha ao clicar em link interno
     navbar.addEventListener('click', (e) => {
         if (e.target.tagName === 'A' && navbar.classList.contains('open')) {
             navbar.classList.remove('open');
-            const toggleBtn = document.querySelector('.menu-toggle');
-            if (toggleBtn) {
-                toggleBtn.setAttribute('aria-expanded', 'false');
-                toggleBtn.textContent = '☰';
+            if (toggle) {
+                toggle.setAttribute('aria-expanded', 'false');
+                toggle.textContent = '☰';
             }
         }
     });
@@ -27,11 +26,11 @@ document.addEventListener('DOMContentLoaded', function () {
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && navbar.classList.contains('open')) {
             navbar.classList.remove('open');
-            const toggleBtn = document.querySelector('.menu-toggle');
-            if (toggleBtn) {
-                toggleBtn.setAttribute('aria-expanded', 'false');
-                toggleBtn.textContent = '☰';
+            if (toggle) {
+                toggle.setAttribute('aria-expanded', 'false');
+                toggle.textContent = '☰';
             }
         }
     });
 });
+// ...existing code...

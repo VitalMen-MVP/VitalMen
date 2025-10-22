@@ -224,6 +224,8 @@ a:hover {
     /* EFEITO: Animação de entrada para todo o container */
     animation: fadeIn 0.8s 0.2s ease-out forwards;
     opacity: 0; /* Começa invisível para a animação */
+    animation-fill-mode: both;
+    opacity: 1;
 }
 
 /* --- GRID DE POSTS RECENTES --- */
@@ -382,4 +384,107 @@ a:hover {
     text-align: center;
     color: #888;
     background-color: #222;
+}
+
+
+@media (max-width: 1200px) {
+    .banner-content {
+        max-width: 620px;
+        padding: 18px;
+    }
+    .banner-content h1 { font-size: clamp(1.8rem, 3.2vw, 2.4rem); }
+}
+
+@media (max-width: 992px) {
+    .blog-container {
+        grid-template-columns: 1fr;
+        gap: 28px;
+        margin: 40px 18px;
+        max-width: calc(100% - 36px);
+    }
+
+    /* Banner menos alto e sem parallax fixo (melhora performance mobile) */
+    .banner-destaque {
+        min-height: 360px;
+        background-attachment: scroll;
+        padding: 30px 12px;
+    }
+    .banner-content h1 { font-size: clamp(1.6rem, 4.8vw, 2.2rem); }
+    .banner-content p { font-size: 1rem; }
+
+    /* Posts empilhados em 1 coluna */
+    .posts-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    /* Sidebar vai para baixo do conteúdo principal */
+    .sidebar { order: 2; }
+    .posts-recentes { order: 1; }
+
+    .post-image {
+        height: 260px;
+        max-height: 260px;
+        object-fit: cover;
+    }
+
+    .post-content { padding: 18px; }
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 12px 10px;
+        -webkit-background-size: cover;
+        background-size: cover;
+    }
+
+    .navbar {
+        padding: 12px 14px;
+    }
+
+    .banner-destaque {
+        min-height: 260px;
+        padding: 24px 12px;
+    }
+
+    .banner-content {
+        max-width: 95%;
+        padding: 8px;
+    }
+
+    .banner-content h1 {
+        font-size: clamp(1.4rem, 6.6vw, 1.9rem);
+        line-height: 1.12;
+        margin-bottom: 12px;
+    }
+    .banner-content p { font-size: 0.95rem; margin-bottom: 18px; }
+
+    .blog-container {
+        margin: 20px 12px;
+        gap: 18px;
+        width: calc(100% - 24px);
+    }
+
+    .posts-grid { gap: 16px; }
+    .post-image {
+        height: auto;
+        max-height: 220px;
+        object-fit: cover;
+    }
+
+    .post-content { padding: 14px; }
+    .post-title { font-size: 1.15rem; margin-bottom: 10px; }
+
+    .sidebar .widget { padding: 18px; }
+    .search-input { font-size: 0.95rem; }
+
+    /* se o nav mobile usa overlay, o botão já controla a exibição; não escondemos aqui */
+    .login-button {
+        display: block;
+        width: 100%;
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    .logo img { height: 56px; }
 }
