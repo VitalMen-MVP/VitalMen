@@ -1,13 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
 .footer {
-    border-top: 2px solid var(--border-color);
-    padding: 30px 20px;
-    margin-top: 40px;
-    text-align: center;
-    color: #888;
-    background-color: #222;
+  border-top: 2px solid var(--border-color);
+  padding: 30px 20px;
+  margin-top: 40px;
+  text-align: center;
+  color: #888;
+  background-color: #222;
 }
-.hero-content h1{
+.hero-content h1 {
   font-size: 2.8em;
 }
 /* 🔵 ANIMAÇÃO DE ENTRADA — FAZ O HERO "SUBIR" AO APARECER */
@@ -31,8 +31,12 @@
 
 /* 🔵 Efeito fade-in geral (para as outras sections aparecerem suavemente) */
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 main section {
@@ -53,7 +57,7 @@ main section {
 
 body {
   margin: 0;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   background-color: var(--background-color);
   color: var(--text-primary);
 }
@@ -71,7 +75,7 @@ body {
 }
 
 .hero::before {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
   background: rgba(0, 0, 0, 0.6);
@@ -91,20 +95,23 @@ body {
   margin: 80px auto;
 }
 
-.contact-form, .contact-info {
+.contact-form,
+.contact-info {
   background-color: var(--card-background);
   padding: 30px;
   border-radius: 10px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
-.contact-form h2, .contact-info h2 {
+.contact-form h2,
+.contact-info h2 {
   color: var(--primary-color);
   margin-top: 0;
   margin-bottom: 20px;
 }
 
-input, textarea {
+input,
+textarea {
   width: 100%;
   padding: 12px;
   margin-bottom: 15px;
@@ -115,10 +122,11 @@ input, textarea {
   font-size: 1em;
 }
 
-input:focus, textarea:focus {
+input:focus,
+textarea:focus {
   border-color: var(--primary-color);
   outline: none;
-  box-shadow: 0 0 10px rgba(59,162,255,0.5);
+  box-shadow: 0 0 10px rgba(59, 162, 255, 0.5);
 }
 
 .btn {
@@ -145,8 +153,87 @@ a:hover {
   text-decoration: underline;
 }
 
-@media (max-width: 900px) {
+/* --- REGRA DE RESPONSIVIDADE: TELAS MÉDIAS (TABLETS: max-width: 992px) --- */
+@media (max-width: 992px) {
+  /* Banner (Hero) */
+  .hero {
+    min-height: 40vh;
+  }
+
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+
+  /* Contêiner de Contato: Ajusta o espaçamento */
   .contact-container {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    width: 95%; /* Usa mais da largura em tablets */
+    margin: 50px auto;
+  }
+
+  /* Formulário e Info: Reduz o padding interno */
+  .contact-form,
+  .contact-info {
+    padding: 25px;
+  }
+  input,
+  textarea {
+    padding: 10px;
+  }
+}
+
+/* --- REGRA DE RESPONSIVIDADE: TELAS PEQUENAS (CELULARES: max-width: 768px) --- */
+@media (max-width: 768px) {
+  /* Banner (Hero): Reduz a altura e fonte */
+  .hero {
+    min-height: 40vh;
+    padding: 30px 15px;
+  }
+
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+
+  .hero-content p {
+    font-size: 1em;
+  }
+
+  /* Contêiner de Contato: O MAIS IMPORTANTE! Colapsa o grid para coluna única */
+  .contact-container {
+    /* Muda de 2fr 1fr para 1fr (uma coluna) */
     grid-template-columns: 1fr;
+    gap: 40px; /* Aumenta o espaçamento entre a seção de formulário e info */
+    width: 95%;
+    padding: 0 10px;
+    margin: 40px auto;
+  }
+
+  /* Formulário e Informações */
+  .contact-form,
+  .contact-info {
+    padding: 20px;
+  }
+
+  .contact-info h2 {
+    text-align: center;
+  }
+
+  /* Inputs e Textarea: Garante que os campos de texto sejam maiores */
+  input,
+  textarea {
+    padding: 10px;
+    margin-bottom: 15px;
+  }
+
+  .btn {
+    padding: 12px 20px;
+    font-size: 1rem;
+  }
+
+  /* Footer */
+  .footer {
+    padding: 20px 10px;
+    font-size: 0.85rem;
   }
 }

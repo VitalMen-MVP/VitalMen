@@ -21,6 +21,10 @@ form.addEventListener('submit', async (event) => {
         mensagem.style.color = 'green';
 
 
+        const token = resultado.token;
+
+        localStorage.setItem('access_token', token);
+        window.location.href = '/';
     }
     else {
         mensagem.textContent = resultado.message || 'Erro no login. Tente novamente.';

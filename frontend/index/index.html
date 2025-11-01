@@ -6,13 +6,17 @@
     <title>Vitamen Idea | Saúde e Bem-estar Masculino</title>
     <link rel="icon" href="../assets/img/LogoDaEmpresa1.png" type="image/png" />
     <link rel="stylesheet" href="/index/index.css" type="text/css" />
-    <link rel="stylesheet" href="/navbar/navbar.css" type="text/css" />
+    <link rel="stylesheet" href="/override/navbar.css" type="text/css" />
+    <script src="/override/navbar.js"></script>
   </head>
   <body>
-    <nav class="navbar">
+    <nav class="navbar" id="navbar">
       <a href="/" class="logo">
         <img src="../assets/img/LogoDaEmpresa1.png" alt="VitalMen Idea Logo" />
       </a>
+      <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false">
+        ☰
+      </button>
       <ul class="nav-links">
         <li><a href="/saude">SAÚDE</a></li>
         <li><a href="/exercicios">EXERCÍCIOS</a></li>
@@ -21,12 +25,12 @@
         <li><a href="/sobrenos">SOBRE NÓS</a></li>
         <li><a href="/contato">CONTATO</a></li>
       </ul>
-      <a href="/login" class="login-button">LOGIN</a>
+      <a href="/login" id="loginBtn" class="login-button" style="display: none;">LOGIN</a>
     </nav>
 
     <header
       class="banner-destaque"
-      style="background-image: url('../assets/img/TelaQuePodeSerUsada.png')"
+      style="background-image: url('../assets/img/TelaQuePodeSerUsada .png')"
     >
       <div class="banner-content">
         <a href="/nutricao" class="category-tag">NUTRIÇÃO</a>
@@ -94,16 +98,16 @@
           <article class="post-card">
             <a href="/posts/lidando-com-stress" class="post-link-overlay">
               <img
-                src="../assets/img/HomemCalmoPensando.jpg"
+                src="../assets/img/HomemCalmoPensando.png"
                 alt="Homem calmo pensando"
                 class="post-image"
               />
               <div class="post-content">
-                <span class="category-tag" style="background-color: #004d9a;"
+                <span class="category-tag" style="background-color: #004d9a"
                   >MENTALIDADE</span
                 >
                 <h3 class="post-title">
-                  Estratégias de 5 Minutos para Vencer o Stress no Trabalho
+                  Estratégias de 5 Minutos para Vencer o estresse no Trabalho
                 </h3>
                 <p class="post-excerpt">
                   Ferramentas rápidas de respiração e foco para manter a mente
@@ -145,12 +149,12 @@
           <article class="post-card">
             <a href="/posts/treinamento-forca" class="post-link-overlay">
               <img
-                src="../assets/img/Força.png"
+                src="../assets/img/Forca.png"
                 alt="Homem levantando peso"
                 class="post-image"
               />
               <div class="post-content">
-                <span class="category-tag" style="background-color:#004d9a;"
+                <span class="category-tag" style="background-color: #004d9a"
                   >EXERCÍCIOS</span
                 >
                 <h3 class="post-title">
@@ -176,11 +180,12 @@
                 class="post-image"
               />
               <div class="post-content">
-                <span class="category-tag" style="background-color: #004d9a;"
+                <span class="category-tag" style="background-color: #004d9a"
                   >MENTALIDADE</span
                 >
                 <h3 class="post-title">
-                  Rotina matinal de uma pessoa com foco: 5 Regras para o Foco Absoluto
+                  Rotina matinal de uma pessoa com foco: 5 Regras para o Foco
+                  Absoluto
                 </h3>
                 <p class="post-excerpt">
                   Como as pessoas mais bem-sucedidas do mundo começam o dia para

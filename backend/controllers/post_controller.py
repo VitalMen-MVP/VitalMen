@@ -1,7 +1,7 @@
 # arquivo responsável por ter todas as rotas referentes aos posts
 
 from flask import Blueprint, request, jsonify
-from ..models import db, Post
+from models import db, Post
 
 post_bp = Blueprint("posts", __name__)
 

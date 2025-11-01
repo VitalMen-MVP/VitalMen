@@ -1,5 +1,5 @@
 /* --- FONTES E CONFIGURAÇÕES GLOBAIS --- */
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
 
 :root {
   --primary-color: #3ba2ff;
@@ -13,7 +13,9 @@
   --shadow-color: rgba(0, 0, 0, 0.5);
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -23,7 +25,7 @@ html {
 
 body {
   margin: 0;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   background-color: var(--background-color);
   color: var(--text-primary);
   line-height: 1.6;
@@ -44,7 +46,7 @@ main section {
 .navbar {
   display: flex;
   align-items: center;
-  justify-content: flex-start; 
+  justify-content: flex-start;
   padding: 0 40px;
   height: 80px;
   position: sticky;
@@ -71,7 +73,7 @@ main section {
   gap: 30px;
   margin: 0;
   padding: 0;
-  margin-left: 40px; 
+  margin-left: 40px;
 }
 
 .nav-links a {
@@ -89,7 +91,7 @@ main section {
 }
 
 .nav-links a::after {
-  content: '';
+  content: "";
   position: absolute;
   width: 100%;
   height: 2px;
@@ -120,16 +122,39 @@ main section {
   background-position: center;
   padding: 0 20px;
   overflow: hidden;
+  /* Garante que a imagem de fundo cubra toda a área */
+  background-size: cover;
+  /* Centraliza o foco da imagem */
+  background-position: center center;
+  background-repeat: no-repeat;
+
+  /* Altura Mínima: Garante um impacto visual */
+  min-height: 80vh;
+
+  color: var(--text-primary); /* */
+  text-align: center;
+  padding: 80px 20px;
+
+  /* Configurações para centralizar o texto (título/subtítulo) */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .hero::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 60%, rgba(0,0,0,0.8) 100%);
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.8) 0%,
+    rgba(0, 0, 0, 0.2) 60%,
+    rgba(0, 0, 0, 0.8) 100%
+  );
   z-index: 1;
 }
 
@@ -140,11 +165,12 @@ main section {
 }
 
 .hero h1 {
-  font-size: clamp(2.5rem, 5vw, 4rem);
   margin-bottom: 15px;
   text-shadow: 0px 4px 15px var(--shadow-color);
   animation: slideUpFadeIn 0.8s ease-out 0.2s forwards;
   opacity: 0;
+  font-size: 3rem; /* Tamanho do título no desktop */
+  margin-bottom: 0.5rem;
 }
 
 .hero p {
@@ -238,7 +264,7 @@ main section {
   background-color: var(--card-background);
   padding: 40px;
   border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
 .content h2 {
@@ -266,7 +292,7 @@ main section {
 }
 
 .dicas-rapidas h2::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -15px;
   left: 50px;
@@ -315,13 +341,12 @@ main section {
   position: relative;
   overflow: hidden;
   box-shadow: 0 10% 30% rgba(0, 0, 0, 0.5);
-  background: 
-    linear-gradient(rgba(18, 18, 18, 0.85), rgba(18, 18, 18, 0.85)),
-    url('../assets/img/TrabalheAMente.jpg') center/cover no-repeat ;
+  background: linear-gradient(rgba(18, 18, 18, 0.85), rgba(18, 18, 18, 0.85)),
+    url("../assets/img/TrabalheAMente.jpg") center/cover no-repeat;
 }
 
 .cta::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -348,8 +373,12 @@ footer {
 
 /* ANIMAÇÕES */
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes slideUpFadeIn {
@@ -376,4 +405,76 @@ footer {
 }
 ::-webkit-scrollbar-thumb:hover {
   background: var(--primary-color);
+}
+
+/* --- REGRA DE RESPONSIVIDADE: TELAS MÉDIAS (TABLETS: max-width: 992px) --- */
+@media (max-width: 992px) {
+  /* Banner */
+  .hero {
+    min-height: 65vh;
+  }
+
+  /* Conteúdo Principal */
+  main section {
+    width: 95%; /* Usa mais da largura em tablets */
+  }
+
+  /* Grid de Dicas: Mantém 2 colunas em tablets, antes de colapsar */
+  .dica-conteiner {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* CTA: Ajusta o padding */
+  .cta {
+    padding: 60px 30px;
+  }
+}
+
+/* --- REGRA DE RESPONSIVIDADE: TELAS PEQUENAS (CELULARES: max-width: 768px) --- */
+@media (max-width: 768px) {
+  /* BANNER: Ajusta Altura, Padding e Tamanho da Fonte */
+  .hero {
+    min-height: 50vh;
+    padding: 40px 15px;
+  }
+
+  .hero h1 {
+    font-size: 2rem; /* Reduz o título principal */
+  }
+
+  /* CONTEÚDO: Reduz o espaçamento e títulos */
+  .intro p {
+    font-size: 1em;
+  }
+
+  .content h2 {
+    font-size: 1.6rem; /* Títulos de seção menores */
+  }
+
+  /* GRID DE DICAS: Colapsa para uma única coluna */
+  .dica-conteiner {
+    grid-template-columns: 1fr; /* Força coluna única para melhor leitura */
+    gap: 15px;
+  }
+
+  /* Cards de Dica */
+  .dica {
+    padding: 15px;
+  }
+
+  /* CTA: Remove o border-radius agressivo (20%) e reduz padding */
+  .cta {
+    padding: 40px 15px;
+    border-radius: 12px; /* Arredondamento suave */
+  }
+
+  .cta h2 {
+    font-size: 1.5rem;
+  }
+
+  /* FOOTER: Ajusta o padding e a fonte */
+  footer {
+    padding: 20px 10px;
+    font-size: 0.8rem;
+  }
 }

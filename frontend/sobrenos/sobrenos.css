@@ -150,3 +150,67 @@ main section {
 .hero-content h1{
   font-size: 2.8em;
 }
+
+/* --- REGRA DE RESPONSIVIDADE: TELAS MÉDIAS (Max-width: 992px) --- */
+@media (max-width: 992px) {
+    .hero {
+        min-height: 50vh; /* Ajusta a altura mínima em tablets */
+    }
+    
+    .hero-content h1 {
+        font-size: 2.5rem; /* Título ligeiramente menor */
+    }
+    
+    /* Outros ajustes */
+    .content {
+        width: 95%; /* Usa mais espaço nas laterais em tablets */
+    }
+
+    .features-grid {
+        /* Permite 2 colunas em tablets com um tamanho mínimo menor */
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px; /* Reduz o espaçamento entre os cards */
+    }
+}
+
+
+/* --- REGRA DE RESPONSIVIDADE: TELAS PEQUENAS (CELULARES: max-width: 768px) --- */
+@media (max-width: 768px) {
+    .hero {
+        min-height: 40vh; /* Altura do banner menor em celulares */
+        padding: 30px 15px;
+    }
+
+    .hero-content h1 {
+        font-size: 2rem; /* Título menor para celular */
+    }
+
+    .hero-content p {
+        font-size: 1em; /* Texto menor */
+    }
+    /* ... (continuação dos ajustes do item 1) ... */
+
+    .features-grid {
+        grid-template-columns: 1fr; /* Força 1 coluna em celulares */
+        gap: 30px;
+        padding: 0 15px;
+    }
+
+    .feature-card-img {
+        height: 180px; /* Reduz a altura da imagem do card */
+    }
+
+    .feature-card-content h3 {
+        font-size: 1.2rem; /* Título do card menor */
+    }
+
+    /* Outros ajustes de espaçamento */
+    .content, .cta {
+        padding: 20px 15px; /* Reduz o padding interno */
+        margin: 40px auto;
+    }
+    
+    .footer {
+        padding: 20px 10px;
+    }
+}

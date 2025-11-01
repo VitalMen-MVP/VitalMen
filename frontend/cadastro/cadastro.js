@@ -27,7 +27,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 mensagem.textContent = 'Cadastro realizado com sucesso!';
                 mensagem.style.color = 'green';
 
-
+                setTimeout(() => {
+                    window.location.href = '/login';
+                }, 3000);
             } else {
                 mensagem.textContent = resultado.message || 'Erro no Cadastro. Tente novamente.';
                 mensagem.style.color = 'red';

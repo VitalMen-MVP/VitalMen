@@ -253,3 +253,92 @@ footer {
   from { opacity: 0; transform: translateY(30px); }
   to { opacity: 1; transform: translateY(0); }
 }
+
+/* --- 1. AJUSTES GERAIS PARA TABLETS E CELULARES (max-width: 900px) --- */
+@media (max-width: 900px) {
+    /* Reduz a largura máxima dos contêineres para dar mais espaço nas laterais */
+    .content, 
+    .topics, 
+    .cta {
+        width: 95%; /* Usa um pouco mais da largura disponível */
+    }
+}
+
+
+/* --- 2. AJUSTES ESPECÍFICOS PARA CELULARES (max-width: 768px) --- */
+@media (max-width: 768px) {
+    /* HERO: Ajusta o padding e o tamanho do texto do banner principal */
+    .hero {
+        padding: 60px 15px; /* Menos padding vertical */
+        background-size: cover;
+        background-position: center bottom;
+        background-repeat: no-repeat;
+        min-height: 400px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    .hero h1 {
+        font-size: 2rem; /* Reduz o título principal (era 2.5rem) */
+    }
+
+    .subtitulo {
+        font-size: 1rem; /* Reduz o subtítulo (era 1.2rem) */
+    }
+
+    /* CONTEÚDO PRINCIPAL: Ajusta o padding do box de conteúdo */
+    .content {
+        margin: 40px auto; /* Reduz o espaçamento vertical */
+        padding: 20px; /* Reduz o padding interno */
+    }
+
+    .content h2 {
+        font-size: 1.5rem; /* Título de seção menor */
+    }
+    
+    /* DICAS: Reduz o espaçamento vertical entre a seção de dicas e outras seções */
+    .dicas-rapidas {
+        padding: 40px 15px;
+    }
+    
+    .dicas-rapidas h2 {
+        font-size: 1.8rem;
+    }
+    
+    /* DICA CONTEINER: O grid já é responsivo, mas ajustamos o gap */
+    .dica-conteiner {
+        gap: 15px; 
+    }
+
+    /* CTA: Ajusta o padding e o tamanho do título do Call to Action */
+    .cta {
+        padding: 50px 15px;
+        margin: 40px auto;
+    }
+
+    .cta h2 {
+        font-size: 1.5rem; /* Título do CTA menor (era 2rem) */
+    }
+    
+    /* FOOTER: Ajusta o padding e o tamanho da fonte */
+    footer {
+        padding: 20px 10px;
+        font-size: 0.85rem;
+    }
+}
+
+
+/* --- 3. AJUSTES PARA TELAS MUITO PEQUENAS (max-width: 480px) --- */
+@media (max-width: 480px) {
+    /* Force o grid a mostrar apenas 1 coluna para melhor leitura */
+    .topics {
+        grid-template-columns: 1fr;
+    }
+    
+    .dica-conteiner {
+        grid-template-columns: 1fr;
+    }
+}

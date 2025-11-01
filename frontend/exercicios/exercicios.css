@@ -1,5 +1,5 @@
 /* --- FONTES E CONFIGURAÇÕES GLOBAIS --- */
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
 
 :root {
   --primary-color: #3ba2ff;
@@ -13,7 +13,9 @@
   --shadow-color: rgba(0, 0, 0, 0.5);
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -23,7 +25,7 @@ html {
 
 body {
   margin: 0;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   background-color: var(--background-color);
   color: var(--text-primary);
   line-height: 1.6;
@@ -38,75 +40,6 @@ main section {
   animation: fadeIn 1s ease-out forwards;
 }
 
-/* ================================================= */
-/* NAVBAR AZUL CLÁSSICA (CÓDIGO NOVO)        */
-/* ================================================= */
-.navbar {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start; 
-  padding: 0 40px;
-  height: 80px;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  background-color: var(--navbar-blue);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-  border-bottom: none;
-}
-
-.logo img {
-  height: 60px;
-  width: auto;
-  transition: transform 0.3s ease;
-}
-
-.logo:hover img {
-  transform: scale(1.1);
-}
-
-.nav-links {
-  list-style: none;
-  display: flex;
-  gap: 30px;
-  margin: 0;
-  padding: 0;
-  margin-left: 40px; 
-}
-
-.nav-links a {
-  color: #f5f5f5;
-  text-decoration: none;
-  font-weight: 500;
-  font-size: 1.05em;
-  padding: 8px 12px;
-  position: relative;
-  transition: color 0.3s ease;
-}
-
-.nav-links a:hover {
-  color: #ffffff;
-}
-
-.nav-links a::after {
-  content: '';
-  position: absolute;
-  width: 100%;
-  height: 2px;
-  background-color: #ffffff;
-  bottom: -5px;
-  left: 0;
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.3s ease-out;
-}
-
-.nav-links a:hover::after {
-  transform: scaleX(1);
-}
-
-/* O restante do código continua igual... */
-
 /* HERO / BANNER PRINCIPAL */
 .hero {
   min-height: 90vh;
@@ -120,16 +53,32 @@ main section {
   background-position: center;
   padding: 0 20px;
   overflow: hidden;
+  background-size: cover; /* Garante que a imagem cubra toda a área */
+  background-position: center center; /* Centraliza o foco da imagem */
+  background-repeat: no-repeat;
+  min-height: 80vh; /* Ajuste a altura mínima no desktop para um impacto visual */
+
+  /* Garante que o texto fique centralizado no banner */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 .hero::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 60%, rgba(0,0,0,0.8) 100%);
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.8) 0%,
+    rgba(0, 0, 0, 0.2) 60%,
+    rgba(0, 0, 0, 0.8) 100%
+  );
   z-index: 1;
 }
 
@@ -238,7 +187,7 @@ main section {
   background-color: var(--card-background);
   padding: 40px;
   border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
 .content h2 {
@@ -266,7 +215,7 @@ main section {
 }
 
 .dicas-rapidas h2::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -15px;
   left: 50%;
@@ -315,13 +264,12 @@ main section {
   position: relative;
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-  background: 
-    linear-gradient(rgba(18, 18, 18, 0.85), rgba(18, 18, 18, 0.85)),
-    url('VivaComMaisEnergiaEDesempenho.jpg') center/cover no-repeat;
+  background: linear-gradient(rgba(18, 18, 18, 0.85), rgba(18, 18, 18, 0.85)),
+    url("VivaComMaisEnergiaEDesempenho.jpg") center/cover no-repeat;
 }
 
 .cta::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -348,8 +296,12 @@ footer {
 
 /* ANIMAÇÕES */
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes slideUpFadeIn {
@@ -376,4 +328,128 @@ footer {
 }
 ::-webkit-scrollbar-thumb:hover {
   background: var(--primary-color);
+}
+
+/* --- RESPONSIVIDADE --- */
+
+/* Telas médias (tablets) */
+@media (max-width: 992px) {
+  .hero {
+    min-height: 70vh;
+    padding: 60px 20px;
+  }
+
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  .features-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .dica-conteiner {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .content {
+    width: 95%;
+    padding: 25px;
+  }
+
+  footer {
+    padding: 25px;
+  }
+}
+
+/* Telas pequenas (celulares) */
+@media (max-width: 768px) {
+  .hero {
+    min-height: 60vh;
+    padding: 40px 15px;
+  }
+
+  .hero h1 {
+    font-size: 1.8rem;
+  }
+
+  .hero p {
+    font-size: 0.95rem;
+  }
+
+  .content {
+    padding: 20px 15px;
+  }
+
+  .content h2 {
+    font-size: 1.6rem;
+  }
+
+  .features-grid,
+  .dica-conteiner {
+    grid-template-columns: 1fr;
+  }
+
+  .feature-card-content {
+    padding: 1.2rem;
+  }
+
+  .cta {
+    padding: 60px 20px;
+    font-size: 0.95rem;
+  }
+
+  .cta h2 {
+    font-size: 1.6rem;
+  }
+
+  .btn {
+    padding: 12px 28px;
+    font-size: 0.9rem;
+  }
+
+  .dica-conteiner {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+
+  footer {
+    padding: 20px 15px;
+    font-size: 0.8rem;
+  }
+}
+
+/* Telas muito pequenas (smartphones antigos) */
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: 1.6rem;
+  }
+
+  .hero p {
+    font-size: 0.85rem;
+  }
+
+  .btn {
+    padding: 10px 24px;
+  }
+
+  .feature-card h3 {
+    font-size: 1.1rem;
+  }
+
+  .feature-card p {
+    font-size: 0.9rem;
+  }
+
+  .dicas-rapidas h2 {
+    font-size: 1.6rem;
+  }
+
+  .cta {
+    padding: 40px 15px;
+  }
 }

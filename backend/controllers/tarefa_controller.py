@@ -1,7 +1,7 @@
 # arquivo responsável por ter todas as rotas referentes as tasks do usuário
 
 from flask import Blueprint, request, jsonify
-from ..models import db, Tarefa
+from models import db, Tarefa
 
 tarefa_bp = Blueprint("tarefas", __name__)
 
