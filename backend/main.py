@@ -1,5 +1,4 @@
 import os
-
 from flask import Flask, send_from_directory, render_template_string
 from flask_cors import CORS
 
@@ -10,7 +9,6 @@ from models import db
 
 app = Flask(__name__)
 CORS(app)
-
 app.config["SQLALCHEMY_DATABASE_URI"] = DATABASE_URL
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 app.config["SQLALCHEMY_ENGINE_OPTIONS"] = {
@@ -56,7 +54,6 @@ def page_not_found(e):
         return send_from_directory(os.path.join(FRONT_DIR, 'errors'), '404.html'), 404
     else:
         return render_template_string("<h1>404</h1><p>Página não encontrada.</p>"), 404
-
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000, debug=True)
