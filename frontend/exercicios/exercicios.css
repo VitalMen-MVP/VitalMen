@@ -265,7 +265,7 @@ main section {
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
   background: linear-gradient(rgba(18, 18, 18, 0.85), rgba(18, 18, 18, 0.85)),
-    url("VivaComMaisEnergiaEDesempenho.jpg") center/cover no-repeat;
+    url("../assets/img/VivaComMaisEnergiaEDesempenho.jpg") center/cover no-repeat;
 }
 
 .cta::after {

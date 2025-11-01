@@ -1,6 +1,6 @@
 async function fetchUserProfile(authToken, loginBtn, navbar) {
     try {
-        const response = await fetch('http://127.0.0.1:5000/api/perfil', {
+        const response = await fetch('/api/perfil', {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${authToken}`
