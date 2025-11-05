@@ -18,7 +18,7 @@ async function fetchUserProfile(authToken, loginBtn, navbar) {
 
             const msg = document.createElement('a');
             msg.textContent = `Bem-vindo, ${user.username}! 😎`;
-            msg.href = '/perfil';
+            msg.href = '/usuario';
 
             msg.style.color = '#fff';
             msg.style.marginLeft = 'auto';
