@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vitamen Idea | To-Do List</title>
+  <link rel="icon" href="../assets/img/LogoDaEmpresa1.png" type="image/png" />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/override/navbar.css" />
+  <link rel="stylesheet" href="todolist.css">
+  <script defer src="../override/navbar.js"></script>
+
+</head>
+<body>
+
+<nav class="navbar" id="navbar">
+  <a href="/" class="logo">
+    <img src="../assets/img/LogoDaEmpresa1.png" alt="VitalMen Idea Logo" />
+  </a>
+  <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false">☰</button>
+  <ul class="nav-links">
+    <li><a href="/">INICIO</a></li>
+    <li><a href="/usuario">PERFIL</a></li>
+    <li><a href="/config">CONFIGURAÇÕES</a></li>
+  </ul>
+</nav>
+
+<div class="todo-container">
+  <h2>Minha Lista de Metas</h2>
+
+  <div class="todo-input-area">
+    <input type="text" id="todoInput" placeholder="Adicionar nova meta..." />
+    <button onclick="addTodo()">+</button>
+  </div>
+
+  <!-- Seção A Fazer -->
+  <div class="todo-section">
+    <h3>A Fazer</h3>
+    <ul class="todo-list" id="todoList"></ul>
+  </div>
+
+  <!-- Seção Concluídas -->
+  <div class="todo-section">
+    <h3>Concluídas</h3>
+    <ul class="todo-list done-list" id="doneList"></ul>
+  </div>
+
+</div>
+
+<!-- Modal Exclusão -->
+<div id="confirmModal" class="modal">
+  <div class="modal-content">
+    <p id="confirmText">Deseja realmente excluir esta meta?</p>
+    <div class="modal-buttons">
+      <button id="confirmYes" class="btn-yes">Sim</button>
+      <button id="confirmNo" class="btn-no">Não</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Editar -->
+<div id="editModal" class="modal">
+  <div class="modal-content">
+    <p>Editar Meta</p>
+    <input type="text" id="editInput" class="edit-input">
+    <div class="modal-buttons">
+      <button id="saveEdit" class="btn-yes">Salvar</button>
+      <button id="cancelEdit" class="btn-no">Cancelar</button>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <p>&copy; 2025 VitalMen. Todos os direitos reservados.</p>
+</footer>
+
+<!-- JS -->
+<script src="todolist.js"></script>
+
+</body>
+</html>
