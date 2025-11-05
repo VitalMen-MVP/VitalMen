@@ -79,6 +79,45 @@ def get_user_profile(current_user):
         "perfil": {
             "id": current_user.id,
             "username": current_user.username,
-            "email": current_user.email
+            "email": current_user.email,
+            "avatar": current_user.avatar
+        }
+    }), 200
+
+@user_bp.route("/api/user", methods=["PUT", "PATCH"])
+@token_required
+def update_user(current_user):
+    data = request.get_json()
+
+    if not data:
+        return jsonify({"erro": "Nenhum dado enviado."}), 400
+
+    # Campos que podem ser atualizados
+    campos_permitidos = ["username", "email", "password", "avatar"]
+
+    alterado = False
+
+    for campo in campos_permitidos:
+        if campo in data:
+            valor = data[campo]
+
+            if campo == "password":
+                valor = generate_password_hash(valor)
+
+            setattr(current_user, campo, valor)
+            alterado = True
+
+    if not alterado:
+        return jsonify({"erro": "Nenhum campo válido foi enviado."}), 400
+
+    db.session.commit()
+
+    return jsonify({
+        "mensagem": "Perfil atualizado com sucesso!",
+        "user": {
+            "id": current_user.id,
+            "username": current_user.username,
+            "email": current_user.email,
+            "avatar": current_user.avatar
         }
     }), 200

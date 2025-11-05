@@ -127,13 +127,16 @@ document.addEventListener('DOMContentLoaded', async function () {
     const token = localStorage.getItem('access_token');
     const email = document.getElementById('email')
     const username = document.getElementById('username')
+    const avatar = document.getElementById('user-avatar')
 
     loadStats();
     checkAndIncreaseStreak();
     if (token) {
-
-    const user = await fetchUserProfile(token);
-    username.textContent = user.username
-    email.textContent = user.email
+        const user = await fetchUserProfile(token);
+        username.textContent = user.username
+        email.textContent = user.email
+        if (user.avatar) {
+            avatar.src = `data:image/jpeg;base64,{{ ${user.avatar} }}`;
+        }
     }
 });
