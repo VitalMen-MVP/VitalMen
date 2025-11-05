@@ -458,3 +458,22 @@ a:hover {
     color: #888;
     background-color: #222;
 }
+
+.logout-button {
+    background-color: var(--light-color);
+    color: var(--dark-color);
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    transition: all 0.3s ease;
+}
+
+.logout-button:hover {
+    background-color: var(--primary-color-dark);
+    color: var(--light-color);
+    box-shadow: 0 4px 15px rgba(0, 77, 154, 0.7), 0 0 20px rgba(0, 123, 255, 0.5);
+    transform: translateY(-3px);
+}

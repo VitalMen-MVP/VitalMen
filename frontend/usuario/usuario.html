@@ -1,70 +1,72 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Vitamen Idea | Minha Jornada de Foco</title>
 
-    <link rel="icon" href="../assets/img/LogoDaEmpresa1.png" type="image/png" />
+    <link rel="icon" href="../assets/img/LogoDaEmpresa1.png" type="image/png"/>
 
-    <link rel="stylesheet" href="../usuario/usuario.css" type="text/css" />
-    <link rel="stylesheet" href="../override/navbar.css" type="text/css" />
+    <link rel="stylesheet" href="../usuario/usuario.css" type="text/css"/>
+    <link rel="stylesheet" href="../override/navbar.css" type="text/css"/>
     <script defer src="../override/navbar.js"></script>
     <script defer src="../usuario/usuario.js"></script>
-  </head>
-  <body>
-    <nav class="navbar" id="navbar">
-      <a href="/" class="logo">
-        <img src="../assets/img/LogoDaEmpresa1.png" alt="VitalMen Idea Logo" />
-      </a>
-      <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false">
+</head>
+<body>
+<nav class="navbar" id="navbar">
+    <a href="/" class="logo">
+        <img src="../assets/img/LogoDaEmpresa1.png" alt="VitalMen Idea Logo"/>
+    </a>
+    <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false">
         ☰
-      </button>
-      <ul class="nav-links">
+    </button>
+    <ul class="nav-links">
         <li><a href="/">INICIO</a></li>
         <li><a href="/todolist">SUAS TAREFAS</a></li>
         <li><a href="/config">CONFIGURAÇÕES</a></li>
-      </ul>
-    </nav>
-    <main class="profile-container">
-      <section class="main-content">
+    </ul>
+    <a href="/login" id="logoutBtn" class="logout-button">Sair</a>
+
+</nav>
+<main class="profile-container">
+    <section class="main-content">
         <div class="profile-header card">
-          <img
-            src="../assets/img/profile-placeholder.png"
-            alt="Foto de perfil"
-            class="profile-avatar"
-            id="user-avatar"
-          />
-          <div class="profile-info">
-            <h2 id="username"></h2>
-            <p class="email" id="email"></p>
-            <div class="stats-grid">
-              <div class="stat-item">
-                <span class="stat-value" id="tarefas-concluidas">0</span>
-                <span class="stat-label">Tarefas Concluídas</span>
-              </div>
-              <div class="stat-item">
-                <span class="stat-value" id="meta-semanal">00%</span>
-                <span class="stat-label">Meta Semanal</span>
-              </div>
-              <div class="stat-item">
-                <span class="stat-value" id="day-streak">0</span>
-                <span class="stat-label">Day-Streak</span>
-              </div>
+            <img
+                    src="../assets/img/profile-placeholder.png"
+                    alt="Foto de perfil"
+                    class="profile-avatar"
+                    id="user-avatar"
+            />
+            <div class="profile-info">
+                <h2 id="username"></h2>
+                <p class="email" id="email"></p>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <span class="stat-value" id="tarefas-concluidas">0</span>
+                        <span class="stat-label">Tarefas Concluídas</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value" id="meta-semanal">00%</span>
+                        <span class="stat-label">Meta Semanal</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value" id="day-streak">0</span>
+                        <span class="stat-label">Day-Streak</span>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
 
         <div class="account-details card">
-          <h3>Detalhes da Conta</h3>
+            <h3>Detalhes da Conta</h3>
             <div class="detail-group">
                 <p><strong>Membro Desde:</strong> <span id="created-at">--/--/----</span></p>
             </div>
         </div>
-      </section>
-    </main>
-  </body>
-  <footer class="footer">
+    </section>
+</main>
+</body>
+<footer class="footer">
     <p>&copy; 2025 Vitamen Idea. Todos os direitos reservados.</p>
-  </footer>
+</footer>
 </html>

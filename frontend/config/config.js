@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // 1) Buscar dados do usuário e preencher o formulário
     // Ajuste a rota abaixo para a sua API (ex.: /api/user/me)
-    fetch("/api/user", {
+    fetch("/api/perfil", {
         headers: {
             "Authorization": `Bearer ${token}`,
         }, credentials: "include"
@@ -22,11 +22,12 @@ document.addEventListener("DOMContentLoaded", () => {
             return r.json();
         })
         .then((user) => {
+            user = user.perfil;
             usernameInput.value = user.username || "";
             emailInput.value = user.email || "";
-            if (user.avatarUrl) {
-                preview.src = user.avatarUrl;
-                form.dataset.currentAvatar = user.avatarUrl;
+            if (user.avatar) {
+                preview.src = `data:image/jpeg;base64,${user.avatar}`;;
+                form.dataset.currentAvatar = user.avatar;
             }
         })
         .catch((err) => {
@@ -98,5 +99,14 @@ document.addEventListener("DOMContentLoaded", () => {
                 console.error(err);
                 alert("Erro ao atualizar: " + (err.message || err));
             });
+    });
+    const logoutBtn = document.createElement('a');
+    logoutBtn.className = 'login-button';
+    logoutBtn.textContent = 'Sair';
+    logoutBtn.href = "#";
+    logoutBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        localStorage.removeItem('access_token');
+        window.location.reload();
     });
 });

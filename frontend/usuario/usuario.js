@@ -151,4 +151,13 @@ document.addEventListener('DOMContentLoaded', async function () {
             console.error('Erro ao carregar perfil:', error);
         }
     }
+    const logoutBtn = document.createElement('a');
+    logoutBtn.className = 'login-button';
+    logoutBtn.textContent = 'Sair';
+    logoutBtn.href = "#";
+    logoutBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        localStorage.removeItem('access_token');
+        window.location.reload();
+    });
 });

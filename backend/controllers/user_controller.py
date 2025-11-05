@@ -3,11 +3,11 @@ import datetime
 import jwt
 from flask import Blueprint, request, jsonify
 from models import db, User  # importa ORM
+from utils.auth_utils import token_required
 from werkzeug.security import generate_password_hash, check_password_hash
 
-from utils.auth_utils import token_required
-
 user_bp = Blueprint("auth", __name__)
+
 
 # Login
 @user_bp.route("/api/login", methods=["POST"])
@@ -22,29 +22,16 @@ def login():
     # SELECT * FROM users WHERE email = ""
     user = User.query.filter_by(email=email).first()
     if user and check_password_hash(user.password, senha):
-        payload = {
-            'user_id': user.id,
-            # Expiração em 24 horas (o usuário vai ficar logado por 24h)
-            'exp': datetime.datetime.utcnow() + datetime.timedelta(hours=24),
-            'iat': datetime.datetime.utcnow()
-        }
+        payload = {'user_id': user.id, # Expiração em 24 horas (o usuário vai ficar logado por 24h)
+            'exp': datetime.datetime.utcnow() + datetime.timedelta(hours=24), 'iat': datetime.datetime.utcnow()}
 
         # Criando o jwt codificado
-        token = jwt.encode(
-            payload,
-            'chave_secreta',
-            algorithm='HS256'
-        )
+        token = jwt.encode(payload, 'chave_secreta', algorithm='HS256')
         print(token)
-        return jsonify({
-            "mensagem": "Login bem-sucedido!",
-            "token": token,
-            "user": {
-                "id": user.id, # 1
-                "username": user.username, # nemrela
-                "email": user.email # conceicaolucas68@gmail.com
-            }
-        }), 200
+        return jsonify({"mensagem": "Login bem-sucedido!", "token": token, "user": {"id": user.id,  # 1
+            "username": user.username,  # nemrela
+            "email": user.email  # conceicaolucas68@gmail.com
+        }}), 200
     return jsonify({"erro": "Email ou senha inválidos."}), 401
 
 
@@ -52,9 +39,9 @@ def login():
 @user_bp.route("/api/register", methods=["POST"])
 def register():
     data = request.get_json()
-    email = data.get("email") # email@gmail.com
-    username = data.get("username") # bruno
-    password = data.get("password") # senha123
+    email = data.get("email")  # email@gmail.com
+    username = data.get("username")  # bruno
+    password = data.get("password")  # senha123
 
     if not email or not username or not password:
         return jsonify({"erro": "Todos os campos são obrigatórios."}), 400
@@ -70,20 +57,16 @@ def register():
 
     return jsonify({"mensagem": "Cadastro realizado com sucesso!"}), 201
 
+
 @user_bp.route("/api/perfil", methods=["GET"])
-@token_required # A ROTA ESTÁ PROTEGIDA AQUI
+@token_required  # A ROTA ESTÁ PROTEGIDA AQUI
 def get_user_profile(current_user):
     # Se chegamos aqui, o usuário está autenticado e current_user é o usuário
-    return jsonify({
-        "mensagem": f"Bem-vindo(a), {current_user.username}!",
-        "perfil": {
-            "id": current_user.id,
-            "username": current_user.username,
-            "email": current_user.email,
-            "avatar": current_user.avatar,
-            "created_at": current_user.created_at,
-        }
-    }), 200
+    return jsonify({"mensagem": f"Bem-vindo(a), {current_user.username}!",
+        "perfil": {"id": current_user.id, "username": current_user.username, "email": current_user.email,
+            "avatar": current_user.avatar, "created_at": current_user.created_at, }}), 200
+
+
 @user_bp.route("/api/user", methods=["PUT", "PATCH"])
 @token_required
 def update_user(current_user):
@@ -100,7 +83,8 @@ def update_user(current_user):
     for campo in campos_permitidos:
         if campo in data:
             valor = data[campo]
-
+            if not valor:
+                continue
             if campo == "password":
                 valor = generate_password_hash(valor)
 
@@ -118,12 +102,6 @@ def update_user(current_user):
 
     db.session.commit()
 
-    return jsonify({
-        "mensagem": "Perfil atualizado com sucesso!",
-        "user": {
-            "id": current_user.id,
-            "username": current_user.username,
-            "email": current_user.email,
-            "avatar": current_user.avatar
-        }
-    }), 200
+    return jsonify({"mensagem": "Perfil atualizado com sucesso!",
+        "user": {"id": current_user.id, "username": current_user.username, "email": current_user.email,
+            "avatar": current_user.avatar}}), 200
