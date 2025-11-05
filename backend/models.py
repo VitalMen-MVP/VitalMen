@@ -1,5 +1,7 @@
-from flask_sqlalchemy import SQLAlchemy
 
+from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import DateTime
+from sqlalchemy.sql import func
 db = SQLAlchemy()
 
 class User(db.Model):
@@ -10,6 +12,11 @@ class User(db.Model):
     email = db.Column(db.String(255), unique=True, nullable=False)
     password = db.Column(db.Text, nullable=False)
     avatar = db.Column(db.Text, nullable=True)
+    created_at = db.Column(
+        DateTime(timezone=True),
+        server_default=func.now(),
+        nullable=False
+    )
 
 class Post(db.Model):
     __tablename__ = "posts"

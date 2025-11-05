@@ -125,18 +125,35 @@ async function fetchUserProfile(authToken) {
 // Espera o documento carregar antes de manipular o DOM
 document.addEventListener('DOMContentLoaded', async function () {
     const token = localStorage.getItem('access_token');
-    const email = document.getElementById('email')
-    const username = document.getElementById('username')
-    const avatar = document.getElementById('user-avatar')
+    const email = document.getElementById('email');
+    const username = document.getElementById('username');
+    const avatar = document.getElementById('user-avatar');
+    const createdAt = document.getElementById('created-at');
 
     loadStats();
     checkAndIncreaseStreak();
+
     if (token) {
-        const user = await fetchUserProfile(token);
-        username.textContent = user.username
-        email.textContent = user.email
-        if (user.avatar) {
-            avatar.src = `data:image/jpeg;base64,{{ ${user.avatar} }}`;
+        try {
+            const user = await fetchUserProfile(token);
+
+            username.textContent = user.username;
+            email.textContent = user.email;
+
+            if (createdAt && user.created_at) {
+                const date = new Date(user.created_at);
+                createdAt.textContent = date.toLocaleDateString('pt-BR', {
+                    day: '2-digit',
+                    month: '2-digit',
+                    year: 'numeric'
+                });
+            }
+
+            if (user.avatar) {
+                avatar.src = `data:image/jpeg;base64,${user.avatar}`;
+            }
+        } catch (error) {
+            console.error('Erro ao carregar perfil:', error);
         }
     }
 });

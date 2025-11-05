@@ -80,7 +80,8 @@ def get_user_profile(current_user):
             "id": current_user.id,
             "username": current_user.username,
             "email": current_user.email,
-            "avatar": current_user.avatar
+            "avatar": current_user.avatar,
+            "created_at": current_user.created_at,
         }
     }), 200
 
