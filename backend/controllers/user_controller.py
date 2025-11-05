@@ -84,18 +84,17 @@ def get_user_profile(current_user):
             "created_at": current_user.created_at,
         }
     }), 200
-
 @user_bp.route("/api/user", methods=["PUT", "PATCH"])
 @token_required
 def update_user(current_user):
-    data = request.get_json()
+    if request.content_type.startswith("multipart/form-data"):
+        data = request.form
+        file = request.files.get("avatar")
+    else:
+        data = request.get_json() or {}
+        file = None
 
-    if not data:
-        return jsonify({"erro": "Nenhum dado enviado."}), 400
-
-    # Campos que podem ser atualizados
     campos_permitidos = ["username", "email", "password", "avatar"]
-
     alterado = False
 
     for campo in campos_permitidos:
@@ -107,6 +106,12 @@ def update_user(current_user):
 
             setattr(current_user, campo, valor)
             alterado = True
+
+    if file:
+        avatar_bytes = file.read()
+        import base64
+        current_user.avatar = base64.b64encode(avatar_bytes).decode("utf-8")
+        alterado = True
 
     if not alterado:
         return jsonify({"erro": "Nenhum campo válido foi enviado."}), 400
