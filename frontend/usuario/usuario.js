@@ -55,8 +55,7 @@ function checkAndIncreaseStreak() {
          localStorage.setItem(LS_LAST_UPDATE_KEY, today);
          saveStats();
          updateDOM();
-         console.log("Streak iniciada em 1 dia!");
-    } 
+    }
     // Se não for o primeiro acesso e a última atualização NÃO foi hoje
     else if (lastUpdate !== today) {
         const lastDate = new Date(lastUpdate);
@@ -69,15 +68,13 @@ function checkAndIncreaseStreak() {
             localStorage.setItem(LS_LAST_UPDATE_KEY, today);
             saveStats();
             updateDOM();
-            console.log(`Streak atualizada para ${dayStreak} dias!`);
-        } 
+        }
         // Se o último acesso foi antes de ontem, a streak é quebrada
         else {
             dayStreak = 1; // Reinicia a streak
             localStorage.setItem(LS_LAST_UPDATE_KEY, today);
             saveStats();
             updateDOM();
-            console.log("Streak quebrada. Reiniciada em 1 dia!");
         }
     }
     // Se a última atualização foi hoje, não faz nada (mantém a streak)
@@ -94,7 +91,6 @@ function completeTask() {
     // pela primeira vez no dia.
     // checkAndIncreaseStreak(); 
     
-    console.log(`Tarefa concluída! Total: ${tasksCompleted}.`);
 }
 
 
@@ -110,7 +106,6 @@ async function fetchUserProfile(authToken) {
         });
 
         const resultado = await response.json();
-        console.log(resultado)
         return resultado.perfil;
 
     } catch (error) {

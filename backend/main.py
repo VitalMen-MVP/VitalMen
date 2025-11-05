@@ -36,7 +36,6 @@ def index():
 # Rota genérica
 @app.route('/<page>/')
 def page(page):
-    print(page)
     return send_from_directory(os.path.join(FRONT_DIR, page), f'{page}.html')
 
 
