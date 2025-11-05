@@ -1,147 +1,213 @@
 :root {
-    /* Cores atualizadas para o tema escuro */
-    --primary-color: #004d9a; /* Azul escuro principal */
-    --primary-color-dark: #003366; /* Azul ainda mais escuro para hover */
-    --light-color: #ffffff;
-    --dark-color: #000; /* Texto claro para fundo escuro */
-    --background-color: #1a1a1a; /* Fundo geral escuro */
-    --card-background: #2a2a2a; /* Fundo dos cards (artigos, widgets) */
-    --border-color: #444; /* Cor da borda para divisórias */
-    --grey-text: #b0b0b0; /* Texto secundário em cinza claro */
-    --muted-bg: #333333;
-    --radius: 10px;
-    --transition-fast: 0.25s;
+  /* Cores atualizadas para o tema escuro */
+  --primary-color: #004d9a; /* Azul escuro principal */
+  --primary-color-dark: #003366; /* Azul ainda mais escuro para hover */
+  --light-color: #ffffff;
+  --dark-color: #000; /* Texto claro para fundo escuro */
+  --background-color: #1a1a1a; /* Fundo geral escuro */
+  --card-background: #2a2a2a; /* Fundo dos cards (artigos, widgets) */
+  --border-color: #444; /* Cor da borda para divisórias */
+  --grey-text: #b0b0b0; /* Texto secundário em cinza claro */
+  --muted-bg: #333333;
+  --radius: 10px;
+  --transition-fast: 0.25s;
 }
 
-* { box-sizing: border-box;}
-html, body {height: 100%;}
+* {
+  box-sizing: border-box;
+}
+html,
 body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background-color: var(--background-color);
-    color: var(--light-color);
-    -webkit-font-smoothing: antialiased;
-    transition: background-color 0.5s ease, color 0.2s ease;
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
+  background-color: var(--background-color);
+  color: var(--light-color);
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.5s ease, color 0.2s ease;
 }
 
 @keyframes fadein {
-    form {opacity: 0; transform: translateY(12px);}
-    to {opacity: 1; transform: translateY(0);}
+  form {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 a {
-    color: var(--primary-color);
-    text-decoration: none;
-    transition: color var(--transition-fast) ease;
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: color var(--transition-fast) ease;
 }
 a:hover {
-    color: var(--primary-color-dark);
+  color: var(--primary-color-dark);
 }
 
 main {
-    padding: 40px 0;
+  padding: 40px 0;
 }
 
 .config-section {
-    width: 92%;
-    max-width: 900px;
-    margin: 24px auto;
-    background: var(--card-background);
-    border-radius: var(--radius);
-    padding: 28px;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
-    animation: fadein 0.6s ease-out both;
+  width: 92%;
+  max-width: 900px;
+  margin: 24px auto;
+  background: var(--card-background);
+  border-radius: var(--radius);
+  padding: 28px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
+  animation: fadein 0.6s ease-out both;
 }
 
 .config-section h1 {
-    margin: 0 0 18px 0;
-    color: var(--primary-color);
-    font-size: 1.6rem;
+  margin: 0 0 18px 0;
+  color: var(--primary-color);
+  font-size: 1.6rem;
 }
 
 #config-form {
-    display: grid;
-    gap: 18px;
-    grid-template-columns: 1fr;
+  display: grid;
+  gap: 18px;
+  grid-template-columns: 1fr;
+  align-items: start;
 }
 
 .form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .form-group input[type="file"] {
-    display: inline-block;
-    padding: 6px;
-    border-radius: 8px;
-    background: rgba(255, 255, 255, 0.02);
-    color: var(--light-color);
-    border: 1px solid var(--border-color);
+  display: inline-block;
+  padding: 6px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.02);
+  color: var(--light-color);
+  border: 1px solid var(--border-color);
 }
 
 .form-group label {
-    font-size: 0.95rem;
-    color: var(--grey-text);
+  font-size: 0.95rem;
+  color: var(--grey-text);
 }
 
 input[type="text"],
 input[type="email"],
 input[type="password"] {
-    padding: 10px 12px;
-    border-radius: 8px;
-    border: 1px solid var(--border-color);
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent);
-    color: var(--light-color);
-    transition: box-shadow var(--transition-fast), border-color var(--transition-fast);
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent);
+  color: var(--light-color);
+  transition: box-shadow var(--transition-fast),
+    border-color var(--transition-fast);
 }
 
 input:focus {
-    outline: none;
-    border-color: var(--primary-color);
-    box-shadow: 0 0 10px rgba(0, 77, 154, 0.18);
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 10px rgba(0, 77, 154, 0.18);
 }
 
 #preview {
-    width: 96px;
-    height: 96px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 3px solid var(--primary-color);
-    background-color: var(--muted-bg);
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
-    display: inline-block;
-    vertical-align: inline-block;
-    vertical-align: middle;
-    margin-top: 8px;
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--primary-color);
+  background-color: var(--muted-bg);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
+  display: inline-block;
+  vertical-align: inline-block;
+  vertical-align: middle;
+  margin-top: 8px;
 }
 
 #filename {
-    margin: 6px 0 0 0;
-    font-size: 0.9rem;
-    color: var(--grey-text);
-    word-break: break-all;
+  margin: 6px 0 0 0;
+  font-size: 0.9rem;
+  color: var(--grey-text);
+  word-break: break-all;
 }
 
 #preview [alt="preview da imagem"] {
-    opacity: 1;
+  opacity: 1;
 }
 
 .logout-button {
-    background-color: var(--light-color);
-    color: var(--dark-color);
-    text-decoration: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    font-weight: bold;
-    cursor: pointer;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
-    transition: all 0.3s ease;
+  background-color: var(--light-color);
+  color: var(--dark-color);
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  transition: all 0.3s ease;
 }
 
 .logout-button:hover {
-    background-color: var(--primary-color-dark);
-    color: var(--light-color);
-    box-shadow: 0 4px 15px rgba(0, 77, 154, 0.7), 0 0 20px rgba(0, 123, 255, 0.5);
-    transform: translateY(-3px);
+  background-color: var(--primary-color-dark);
+  color: var(--light-color);
+  box-shadow: 0 4px 15px rgba(0, 77, 154, 0.7), 0 0 20px rgba(0, 123, 255, 0.5);
+  transform: translateY(-3px);
+}
+
+@media (min-width: 640px) {
+  #config-form {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .config-section {
+    padding: 32px;
+    width: 90%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .config-section {
+    padding: 40px;
+    max-width: 1100px;
+  }
+
+  #config-form {
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 639px) {
+  body {
+    font-size: 15px;
+  }
+  main {
+    padding: 20px 0;
+  }
+  .config-section {
+    padding: 18px;
+    width: 96%;
+  }
+  #preview {
+    width: 72px;
+    height: 72px;
+    border-width: 2px;
+  }
+
+  .config-section h1 {
+    font-size: clamp(1.2rem, 2.2vw, 1.6rem);
+  }
+
+  .form-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
 }
