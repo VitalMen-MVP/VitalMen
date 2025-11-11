@@ -1,209 +1,219 @@
 :root {
   --primary-color: #004d9a;
-  --primary-color-dark: #003366;
-  --light-color: #fff;
-  --background-color: #1a1a1a;
-  --card-background: #2a2a2a;
-  --border-color: #444;
-  --dark-color: #000; /* Texto claro para fundo escuro */
-
-}
-
-/* Fix footer bottom */
-html, body {
-  height: 100%;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
+  --primary-dark: #003366;
+  --bg: #111;
+  --card-bg: #1f1f1f;
+  --light: #fff;
+  --border: #333;
 }
 
 body {
-  background: var(--background-color);
-  color: var(--light-color);
+  margin: 0;
+  background: var(--bg);
+  color: var(--light);
   font-family: Arial, Helvetica, sans-serif;
-}
-
-.todo-container {
-  flex: 1;
-  width: 90%;
-  max-width: 600px;
-  margin: 120px auto;
-  background: var(--card-background);
-  padding: 25px;
-  border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-}
-
-.todo-container h2 {
-  border-bottom: 2px solid var(--primary-color);
-  padding-bottom: 10px;
-}
-
-/* Input */
-.todo-input-area {
   display: flex;
-  gap: 10px;
-  margin-bottom: 20px;
+  flex-direction: column;
+  height: 100vh;
 }
 
-.todo-input-area input {
+.board-container {
   flex: 1;
+  overflow-x: auto;
+  padding: 20px;
+}
+
+.board {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  min-height: 80%;
+}
+
+/* Listas estilo Trello */
+.list {
+  background: var(--card-bg);
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  width: 280px;
   padding: 10px;
-  border-radius: 5px;
-  border: 1px solid var(--border-color);
-  background: #333;
-  color: var(--light-color);
+  display: flex;
+  flex-direction: column;
+  min-height: 250px;
+  transition: transform 0.2s;
 }
 
-.todo-input-area button {
-  padding: 10px 15px;
-  background: var(--primary-color);
-  border: none;
-  border-radius: 5px;
-  color: var(--light-color);
-  cursor: pointer;
-  font-weight: bold;
+.list.dragging {
+  opacity: 0.6;
+  transform: scale(1.03);
 }
 
-.todo-input-area button:hover {
-  background: var(--primary-color-dark);
-}
-
-/* List style */
-.todo-list li {
-  background: #222;
-  padding: 12px;
-  border-radius: 5px;
-  margin-bottom: 10px;
+.list-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 8px;
 }
 
-.todo-list li.done {
-  text-decoration: line-through;
-  opacity: 0.6;
+.list-title {
+  font-weight: bold;
+  font-size: 1.1em;
+  outline: none;
 }
 
-.todo-list button {
+.list-actions {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.list-actions button {
   background: none;
   border: none;
-  color: var(--primary-color);
+  color: var(--light);
   cursor: pointer;
-  font-size: 1.1em;
+  font-size: 1em;
   transition: 0.3s;
 }
 
-.todo-list button:hover {
-  color: var(--primary-color-dark);
+.list-actions button:hover {
+  color: var(--primary-color);
 }
 
-/* Section background */
-.todo-section {
+.color-picker {
+  cursor: pointer;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 2px solid var(--border);
+  background: var(--primary-color);
+}
+
+.task-list {
+  flex: 1;
+  padding: 8px;
+  border-radius: 8px;
   background: #222;
-  padding: 15px;
-  border-radius: 10px;
-  margin-bottom: 20px;
-  border: 1px solid var(--border-color);
+  min-height: 100px;
 }
 
-.todo-section h3 {
-  margin-top: 0;
-  border-bottom: 2px solid var(--primary-color);
-  padding-bottom: 8px;
+.task {
+  background: #2a2a2a;
+  margin-bottom: 8px;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #444;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: grab;
 }
 
-/* Footer */
-.footer {
-  border-top: 2px solid var(--border-color);
-  padding: 30px 20px;
-  background-color: #222;
-  text-align: center;
+.task.dragging {
+  opacity: 0.6;
+  transform: scale(1.03);
 }
 
-/* Modals */
+.task-actions button {
+  background: none;
+  border: none;
+  color: #ccc;
+  cursor: pointer;
+  font-size: 1.1em;
+}
+
+.task-actions button:hover {
+  color: var(--primary-color);
+}
+
+/* Botões */
+.add-task-btn, .add-list-btn {
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.add-task-btn:hover, .add-list-btn:hover {
+  background: var(--primary-dark);
+}
+
+/* Modal */
 .modal {
   display: none;
   position: fixed;
-  top:0; left:0;
-  width:100%; height:100%;
-  background: rgba(0,0,0,0.6);
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.7);
   justify-content: center;
   align-items: center;
   z-index: 1000;
 }
 
 .modal-content {
-  background: var(--card-background);
+  background: var(--card-bg);
   padding: 20px;
   border-radius: 10px;
-  width: 300px;
   text-align: center;
+  width: 300px;
 }
 
-.modal-buttons button {
-  padding: 10px 20px;
-  border:none;
-  border-radius:5px;
-  cursor:pointer;
-  font-weight:bold;
-  margin: 5px;
-  transition: 0.3s;
+.modal-buttons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-around;
 }
 
 .btn-yes {
   background: var(--primary-color);
-  color: white;
-}
-
-.btn-yes:hover {
-  background: var(--primary-color-dark);
+  color: var(--light);
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 .btn-no {
-  background: #ee1d1d;
-  color: white;
-}
-
-.btn-no:hover {
-  background: #b31414;
-}
-
-.edit-input {
-  width: 90%;
-  padding: 10px;
-  background: #333;
-  border: 1px solid var(--border-color);
-  border-radius:5px;
-  color:white;
-}
-.todo-list li {
-  background: #1f1f1f; /* fundo da tarefa */
-  padding: 12px;
-  margin-bottom: 8px;
-  border-radius: 8px; /* borda arredondada */
-  border: 1px solid #3a3a3a; /* borda cinza */
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  transition: .3s;
-}
-
-.logout-button {
-  background-color: var(--light-color);
-  color: var(--dark-color);
-  text-decoration: none;
-  padding: 10px 20px;
+  background: #e53935;
+  color: var(--light);
+  border: none;
+  padding: 8px 15px;
   border-radius: 5px;
-  font-weight: bold;
   cursor: pointer;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  background: #222;
+  padding: 15px;
+}
+.task-text {
   transition: all 0.3s ease;
 }
+.task.completed {
+  background: #1b1b1b !important;
+  opacity: 0.6;
+}
+/* botão de cor estilo emoji */
+.list-color-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.05rem;
+  padding: 4px;
+}
 
-.logout-button:hover {
-  background-color: var(--primary-color-dark);
-  color: var(--light-color);
-  box-shadow: 0 4px 15px rgba(0, 77, 154, 0.7), 0 0 20px rgba(0, 123, 255, 0.5);
-  transform: translateY(-3px);
+/* tarefa concluída */
+.task.completed {
+  background: #1b1b1b !important;
+  opacity: 0.7;
+}
+
+.task-text {
+  transition: all 0.18s ease;
 }
