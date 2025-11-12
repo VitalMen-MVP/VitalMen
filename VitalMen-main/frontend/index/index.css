@@ -1,0 +1,385 @@
+/* Estilos da Base e Navbar */
+:root {
+    /* Cores atualizadas para o tema escuro */
+    --primary-color: #004d9a; /* Azul escuro principal */
+    --primary-color-dark: #003366; /* Azul ainda mais escuro para hover */
+    --light-color: #ffffff;
+    --dark-color: #000; /* Texto claro para fundo escuro */
+    --background-color: #1a1a1a; /* Fundo geral escuro */
+    --card-background: #2a2a2a; /* Fundo dos cards (artigos, widgets) */
+    --border-color: #444; /* Cor da borda para divisórias */
+    --grey-text: #b0b0b0; /* Texto secundário em cinza claro */
+}
+
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    background-color: var(--background-color); /* Fundo escuro */
+    color: var(--dark-color); /* Texto padrão claro */
+    /* EFEITO: Transição suave na cor de fundo */
+    transition: background-color 0.5s ease;
+}
+
+/* EFEITO: Animação de fade-in para o conteúdo principal */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-color);
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--primary-color-dark);
+}
+
+.navbar {
+    background-color: var(--primary-color);
+    color: var(--light-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    height: 100px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    position: sticky; /* EFEITO: Navbar fixa no topo */
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(10px); /* EFEITO: Desfoque sutil no fundo (opcional) */
+    background-color: rgba(0, 77, 154, 0.9); /* EFEITO: Leve transparência */
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding-right: 20px;
+}
+
+.logo img {
+    height: 80px;
+    width: auto;
+    /* EFEITO: Transição suave no logo */
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+/* EFEITO: Logo aumenta e fica mais brilhante ao passar o mouse */
+.logo:hover img {
+    transform: scale(1.05);
+    filter: brightness(1.1);
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+    flex-grow: 1;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100%;
+}
+
+.nav-links a {
+    color: var(--light-color);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.05em;
+    padding: 8px 12px;
+    border-radius: 5px;
+    position: relative; /* Necessário para o pseudo-elemento ::after */
+    transition: color 0.3s ease;
+}
+
+/* EFEITO: Linha que aparece sob o link do menu no hover */
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: var(--light-color);
+    bottom: -5px;
+    left: 0;
+    transform: scaleX(0); /* Começa invisível */
+    transform-origin: bottom right;
+    transition: transform 0.3s ease-out;
+}
+
+.nav-links a:hover::after {
+    transform: scaleX(1); /* Expande a linha */
+    transform-origin: bottom left;
+}
+
+
+.login-button {
+    background-color: var(--light-color);
+    color: var(--dark-color);
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    transition: all 0.3s ease;
+}
+
+/* EFEITO: Brilho sutil no botão ao passar o mouse */
+.login-button:hover {
+    background-color: var(--primary-color-dark);
+    color: var(--light-color);
+    box-shadow: 0 4px 15px rgba(0, 77, 154, 0.7), 0 0 20px rgba(0, 123, 255, 0.5);
+    transform: translateY(-3px);
+}
+
+
+/* --- ESTILO DO POST EM DESTAQUE --- */
+.banner-destaque {
+    position: relative;
+    width: 100%;
+    min-height: 450px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    color: var(--light-color);
+    /* EFEITO: Animação de parallax sutil no scroll (requer JavaScript para funcionar perfeitamente) */
+    background-attachment: fixed;
+}
+.banner-destaque::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.5));
+}
+.banner-content {
+    position: relative;
+    padding: 20px;
+    max-width: 700px;
+    /* EFEITO: Animação de entrada para o conteúdo do banner */
+    animation: fadeIn 0.8s ease-out forwards;
+}
+.banner-content h1 { font-size: 2.8em; margin: 15px 0; text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.9); }
+.banner-content p { font-size: 1.2em; margin-bottom: 30px; }
+.button-banner {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: var(--light-color);
+    padding: 15px 40px;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+.button-banner:hover {
+    background-color: var(--primary-color-dark);
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 4px 15px rgba(0, 77, 154, 0.7);
+}
+
+
+/* --- TAG DE CATEGORIA (reutilizável) --- */
+.category-tag {
+    background-color: var(--primary-color);
+    color: var(--light-color);
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.8em;
+    font-weight: bold;
+    text-transform: uppercase;
+    display: inline-block;
+    /* EFEITO: Transição suave na tag */
+    transition: transform 0.3s ease;
+}
+
+.category-tag:hover {
+    transform: scale(1.1);
+}
+
+
+/* --- LAYOUT PRINCIPAL DO BLOG --- */
+.blog-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 40px;
+    width: 90%;
+    max-width: 1200px;
+    margin: 60px auto;
+    /* EFEITO: Animação de entrada para todo o container */
+    animation: fadeIn 0.8s 0.2s ease-out forwards;
+    opacity: 0; /* Começa invisível para a animação */
+}
+
+/* --- GRID DE POSTS RECENTES --- */
+.posts-recentes h2 {
+    font-size: 2em;
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+    color: var(--light-color);
+}
+.posts-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+/* --- ESTILO DO CARD DE POST --- */
+.post-card {
+    background-color: var(--card-background);
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    border: 1px solid transparent; /* Borda inicial transparente */
+}
+/* EFEITO: Card levanta e ganha uma borda colorida no hover */
+.post-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+    border-color: var(--primary-color);
+}
+.post-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    /* EFEITO: Zoom suave na imagem do post */
+    transition: transform 0.4s ease;
+}
+.post-card:hover .post-image {
+    transform: scale(1.05);
+}
+.post-content { padding: 25px; }
+.post-title { font-size: 1.4em; margin-top: 0; margin-bottom: 15px; }
+.post-title a { color: var(--light-color); transition: color 0.3s ease; }
+.post-card:hover .post-title a {
+    color: var(--primary-color); /* EFEITO: Título fica azul no hover do card */
+}
+.post-excerpt {
+    color: var(--grey-text);
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+.post-meta { font-size: 0.9em; color: #ffffff; }
+
+/* --- ESTILO DA SIDEBAR --- */
+.sidebar .widget {
+    background-color: var(--card-background);
+    padding: 25px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+}
+
+.sidebar .widget:hover {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.widget-title {
+    margin-top: 0;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 20px;
+    color: var(--light-color);
+}
+.search-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    background-color: #333;
+    color: var(--light-color);
+    transition: all 0.3s ease;
+}
+/* EFEITO: Borda e sombra no input de busca quando focado */
+.search-input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 10px rgba(0, 77, 154, 0.6);
+}
+.search-input::placeholder {
+    color: #888;
+}
+.category-list, .popular-posts-list {
+    list-style: none;
+    padding: 0;
+}
+.category-list li a, .popular-posts-list li a {
+    display: block;
+    padding: 8px 0;
+    color: var(--grey-text);
+    transition: all 0.3s ease;
+}
+/* EFEITO: Links da sidebar se movem e mudam de cor no hover */
+.category-list li a:hover, .popular-posts-list li a:hover {
+    color: var(--primary-color);
+    transform: translateX(5px);
+}
+
+
+/* --- RESPONSIVIDADE PARA TELAS MENORES --- */
+@media (max-width: 992px) {
+    .blog-container {
+        grid-template-columns: 1fr;
+    }
+    .nav-links {
+        justify-content: center;
+        flex-grow: 0;
+        height: auto;
+        padding: 10px 0;
+        border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    .navbar {
+        flex-direction: column;
+        height: auto;
+        padding: 15px 20px;
+        position: static; /* Remove a navbar fixa em telas menores */
+    }
+    .logo {
+        padding-right: 0;
+        margin-bottom: 15px;
+    }
+    .login-button {
+        margin-top: 15px;
+    }
+}
+@media (max-width: 768px) {
+    .posts-grid {
+        grid-template-columns: 1fr;
+    }
+    .nav-links {
+        display: none;
+    }
+    .login-button {
+        display: block;
+        width: 100%;
+        text-align: center;
+        margin-left: 0;
+    }
+}
+
+.footer {
+    border-top: 2px solid var(--border-color);
+    padding: 30px 20px;
+    margin-top: 40px;
+    text-align: center;
+    color: #888;
+    background-color: #222;
+}
