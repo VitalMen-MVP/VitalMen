@@ -1,16 +1,16 @@
 /*:root {*/
-/*    --primary-color: #004d9a;*/
-/*    --primary-color-dark: #003366;*/
-/*    --light-color: #ffffff;*/
-/*    --dark-color: #000;*/
-/*    --background-color: #1a1a1a;*/
-/*    --card-background: #2a2a2a;*/
-/*    --border-color: #444;*/
-/*    --grey-text: #b0b0b0;*/
+/* --primary-color: #004d9a;*/
+/* --primary-color-dark: #003366;*/
+/* --light-color: #ffffff;*/
+/* --dark-color: #000;*/
+/* --background-color: #1a1a1a;*/
+/* --card-background: #2a2a2a;*/
+/* --border-color: #444;*/
+/* --grey-text: #b0b0b0;*/
 
 
 .login-button {
-    background-color: #fff; 
+    background-color: #fff;
     color: #000;
     text-decoration: none;
     padding: 10px 20px;
@@ -124,10 +124,41 @@
     padding: 8px;
 }
 
+/* === ESTILO DO BOTÃO DE TEMA (GLOBAL) === */
+.theme-toggle-button {
+    background: transparent;
+    border: none;
+    color: #fff;
+    /* Cor do ícone (lua/sol) */
+    font-size: 1.5rem;
+    /* Tamanho do ícone */
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: transform 0.2s ease, background-color 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 15px;
+    /* Espaço do botão ao lado dos links/botões */
+}
+
+.theme-toggle-button:hover {
+    transform: scale(1.05);
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
 /* Tablet */
 @media (max-width: 992px) {
-    .logo img { height: 64px; }
-    .navbar { padding: 0 24px; height: auto; gap: 8px; }
+    .logo img {
+        height: 64px;
+    }
+
+    .navbar {
+        padding: 0 24px;
+        height: auto;
+        gap: 8px;
+    }
 }
 
 /* MOBILE */
@@ -158,24 +189,49 @@
         height: 56px;
     }
 
-    /* Login à direita */
+    /* Login/Sair à direita */
     .login-button {
         position: absolute;
         right: 12px;
         top: 50%;
         transform: translateY(-50%);
-        padding: 6px 12px;         /* deixa mais compacto */
+        padding: 6px 12px;
+        /* deixa mais compacto */
         font-size: 0.85rem;
         border-radius: 4px;
-        width: auto;               /* impede de expandir */
-        max-width: none;           /* remove limite anterior */
-        margin: 0;                 /* tira qualquer margin automática */
-        display: inline-block;     /* volta ao modo de botão */
+        width: auto;
+        /* impede de expandir */
+        max-width: none;
+        /* remove limite anterior */
+        margin: 0;
+        /* tira qualquer margin automática */
+        display: inline-block;
+        /* volta ao modo de botão */
+    }
+
+    /* Botão de Tema à esquerda do Login */
+    .theme-toggle-button {
+        position: absolute;
+        right: 80px;
+        /* 12px (Login) + ~60px (Login width) + 8px (gap) */
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 1.1rem;
+        /* Ícone menor no mobile */
+        padding: 6px;
+        margin-left: 0;
+    }
+
+    /* O elemento Bem-Vindo é adicionado via JS e quebra o layout. 
+       Isso o esconde no mobile, mantendo o layout limpo. */
+    .navbar a[href="/usuario"] {
+        display: none !important;
     }
 
     /* Menu dropdown escondido */
     .nav-links {
-        position: absolute; /* volta pra absolute pra não cobrir tudo */
+        position: absolute;
+        /* volta pra absolute pra não cobrir tudo */
         top: 70px;
         left: 0;
         right: 0;
@@ -184,7 +240,8 @@
         flex-direction: column;
         align-items: center;
         justify-content: flex-start;
-        gap: 28px; /* mais espaço entre os links */
+        gap: 28px;
+        /* mais espaço entre os links */
         padding: 24px 0 32px;
         backdrop-filter: blur(8px);
         opacity: 0;
@@ -193,12 +250,16 @@
         transition: all 0.35s ease;
         z-index: 3000;
         pointer-events: none;
-        border: none; /* remove a linha preta */
+        border: none;
+        /* remove a linha preta */
         border-top: none;
         height: auto;
-        max-height: 65vh; /* reduz o tamanho do fundo azul */
-        overflow-y: auto; /* se tiver muitos links, rola */
-        border-radius: 0 0 12px 12px; /* bordas inferiores suaves */
+        max-height: 65vh;
+        /* reduz o tamanho do fundo azul */
+        overflow-y: auto;
+        /* se tiver muitos links, rola */
+        border-radius: 0 0 12px 12px;
+        /* bordas inferiores suaves */
         box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
     }
 
@@ -232,7 +293,25 @@
 
 /* Telas muito pequenas */
 @media (max-width: 420px) {
-    .logo img { height: 48px; }
-    .menu-toggle { font-size: 24px; padding: 6px; left: 8px; }
-    .login-button { right: 8px; font-size: 0.85rem; padding: 6px 12px; }
+    .logo img {
+        height: 48px;
+    }
+
+    .menu-toggle {
+        font-size: 24px;
+        padding: 6px;
+        left: 8px;
+    }
+
+    .login-button {
+        right: 8px;
+        font-size: 0.85rem;
+        padding: 6px 12px;
+    }
+
+    /* Ajuste do botão de tema para telas muito pequenas */
+    .theme-toggle-button {
+        right: 76px;
+        /* Posiciona à esquerda do login-button (right: 8px) */
+    }
 }
