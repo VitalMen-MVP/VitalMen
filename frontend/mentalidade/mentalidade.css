@@ -86,27 +86,6 @@ main section {
   transition: color 0.3s ease;
 }
 
-.nav-links a:hover {
-  color: #ffffff;
-}
-
-.nav-links a::after {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 2px;
-  background-color: #ffffff;
-  bottom: -5px;
-  left: 0;
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.3s ease-out;
-}
-
-.nav-links a:hover::after {
-  transform: scaleX(1);
-}
-
 /* O restante do código continua igual... */
 
 /* HERO / BANNER PRINCIPAL */

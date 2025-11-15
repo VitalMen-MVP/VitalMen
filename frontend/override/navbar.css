@@ -7,11 +7,11 @@
 /*    --card-background: #2a2a2a;*/
 /*    --border-color: #444;*/
 /*    --grey-text: #b0b0b0;*/
-/*}*/
+
 
 .login-button {
-    background-color: var(--light-color);
-    color: var(--dark-color);
+    background-color: #fff; 
+    color: #000;
     text-decoration: none;
     padding: 10px 20px;
     border-radius: 5px;
@@ -22,14 +22,15 @@
 }
 
 .login-button:hover {
-    background-color: var(--primary-color-dark);
-    color: var(--light-color);
+    background-color: #003366;
+    color: #fff;
     box-shadow: 0 4px 15px rgba(0, 77, 154, 0.7), 0 0 20px rgba(0, 123, 255, 0.5);
+    text-decoration: none;
     transform: translateY(-3px);
 }
 
 .navbar {
-    background-color: rgba(0, 77, 154, 0.9);
+    background-color: rgba(0, 28, 242, 0.9);
     color: var(--light-color);
     display: flex;
     align-items: center;
@@ -106,7 +107,7 @@
 
 .nav-links a.activate,
 .nav-links a[aria-current="page"] {
-    background: rgba(255, 255, 255, 0.12);
+    background: rgba(0, 19, 161, 0.9);
     color: var(--light-color);
     border-radius: 6px;
     padding: 8px 12px;
