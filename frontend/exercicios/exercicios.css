@@ -11,6 +11,17 @@
   --text-primary: #f5f5f5;
   --text-secondary: #a0a0a0;
   --shadow-color: rgba(0, 0, 0, 0.5);
+
+  /* === Variáveis de Tema (Modo Claro) === */
+  --page-bg: #ffffff;
+  --page-text: #222222;
+  --card-bg: #f4f4f4;
+  --border-color: #dddddd;
+  --grey-text: #555555;
+  --widget-bg: #eeeeee;
+  --widget-text: #222222;
+  --footer-bg: #f9f9f9;
+  --footer-text: #666;
 }
 
 *,
@@ -23,12 +34,32 @@ html {
   scroll-behavior: smooth;
 }
 
+body.dark-mode {
+  --page-bg: #1a1a1a;
+  --page-text: #f0f0f0;
+  --card-bg: #2a2a2a;
+  --border-color: #444;
+  --grey-text: #b0b0b0;
+  --widget-bg: #333;
+  --widget-text: #ffffff;
+  --footer-bg: #222;
+  --footer-text: #888;
+  --text-primary: #f5f5f5;
+  --text-secondary: #a0a0a0;
+}
+
 body {
   margin: 0;
-  font-family: "Roboto", sans-serif;
-  background-color: var(--background-color);
-  color: var(--text-primary);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  background-color: var(--page-bg);
+  color: var(--page-text);
   line-height: 1.6;
+  /* USA VARIÁVEL */
+  color: var(--page-text);
+  transition: background-color 0.5s ease, color 0.5s ease;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -138,8 +169,17 @@ main section {
   gap: 2rem;
 }
 
-.feature-card {
+.feature-card.dark-mode {
   background: var(--card-background);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px var(--shadow-color);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid var(--border-color);
+}
+
+.feature-card {
+  background: var(--card-bg);
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 4px 12px var(--shadow-color);
@@ -182,9 +222,23 @@ main section {
   font-size: 0.95rem;
 }
 
+.feature-card.dark-mode p {
+  color: var(--light-color);
+  line-height: 1.5;
+  font-size: 0.95rem;
+}
 /* SEÇÃO DE CONTEÚDO PRINCIPAL */
-.content {
+
+
+.content.dark-mode {
   background-color: var(--card-background);
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.content{
+  background-color: var(--card-bg);
   padding: 40px;
   border-radius: 10px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
@@ -199,10 +253,18 @@ main section {
 }
 
 /* DICAS RÁPIDAS */
-.dicas-rapidas {
+.dicas-rapidas.dark-mode {
   text-align: center;
   padding: 60px 20px;
   background-color: var(--background-color);
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.dicas-rapidas {
+  text-align: center;
+  padding: 60px 20px;
+  background-color: var(--page-bg);
   border-top: 1px solid var(--border-color);
   border-bottom: 1px solid var(--border-color);
 }
@@ -232,8 +294,17 @@ main section {
   gap: 25px;
 }
 
-.dica {
+.dica.dark-mode {
   background-color: var(--card-background);
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px var(--shadow-color);
+  transition: transform 0.3s ease, border-color 0.3s ease;
+  border: 1px solid var(--border-color);
+}
+
+.dica {
+  background-color: var(--card-bg);
   padding: 25px;
   border-radius: 10px;
   box-shadow: 0 3px 10px var(--shadow-color);
@@ -265,7 +336,8 @@ main section {
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
   background: linear-gradient(rgba(18, 18, 18, 0.85), rgba(18, 18, 18, 0.85)),
-    url("../assets/img/VivaComMaisEnergiaEDesempenho.jpg") center/cover no-repeat;
+    url("../assets/img/VivaComMaisEnergiaEDesempenho.jpg") center/cover
+      no-repeat;
 }
 
 .cta::after {
@@ -368,6 +440,13 @@ footer {
 
 /* Telas pequenas (celulares) */
 @media (max-width: 768px) {
+
+  main section {
+    width: 100%;
+    margin: 40px 0;
+    padding: 0 8px;
+  }
+
   .hero {
     min-height: 60vh;
     padding: 40px 15px;

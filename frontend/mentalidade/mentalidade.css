@@ -11,6 +11,17 @@
   --text-primary: #f5f5f5;
   --text-secondary: #a0a0a0;
   --shadow-color: rgba(0, 0, 0, 0.5);
+
+  /* === Variáveis de Tema (Modo Claro) === */
+  --page-bg: #ffffff;
+  --page-text: #222222;
+  --card-bg: #f4f4f4;
+  --border-color: #dddddd;
+  --grey-text: #555555;
+  --widget-bg: #eeeeee;
+  --widget-text: #222222;
+  --footer-bg: #f9f9f9;
+  --footer-text: #666;
 }
 
 *,
@@ -33,6 +44,18 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+body.dark-mode {
+  --page-bg: #1a1a1a;
+  --page-text: #f0f0f0;
+  --card-bg: #2a2a2a;
+  --border-color: #444;
+  --grey-text: #b0b0b0;
+  --widget-bg: #333;
+  --widget-text: #ffffff;
+  --footer-bg: #222;
+  --footer-text: #888;
+}
+
 main section {
   width: 90%;
   max-width: 1200px;
@@ -40,53 +63,6 @@ main section {
   animation: fadeIn 1s ease-out forwards;
 }
 
-/* ================================================= */
-/* NAVBAR AZUL CLÁSSICA (CÓDIGO NOVO)        */
-/* ================================================= */
-.navbar {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  padding: 0 40px;
-  height: 80px;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  background-color: var(--navbar-blue);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-  border-bottom: none;
-}
-
-.logo img {
-  height: 60px;
-  width: auto;
-  transition: transform 0.3s ease;
-}
-
-.logo:hover img {
-  transform: scale(1.1);
-}
-
-.nav-links {
-  list-style: none;
-  display: flex;
-  gap: 30px;
-  margin: 0;
-  padding: 0;
-  margin-left: 40px;
-}
-
-.nav-links a {
-  color: #f5f5f5;
-  text-decoration: none;
-  font-weight: 500;
-  font-size: 1.05em;
-  padding: 8px 12px;
-  position: relative;
-  transition: color 0.3s ease;
-}
-
-/* O restante do código continua igual... */
 
 /* HERO / BANNER PRINCIPAL */
 .hero {
