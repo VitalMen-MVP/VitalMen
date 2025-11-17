@@ -163,6 +163,33 @@ input:focus {
     filter: brightness(1.1);
 }
 
+.input-box i {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+    color: white;
+    z-index: 1; /* Garante que o ícone fique abaixo do botão */
+}
+
+.versenha{
+    position: absolute;
+    top: 50%;
+    right: 14px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: white;
+    font-size: 18px;
+    user-select: none;
+    background: none;
+    border: none;
+    outline: none;
+    padding: 0;
+    display: none;
+    z-index: 2; /* Fica acima do cadeado */
+}
+
 @media (prefers-reduced-motion: reduce){
     .container
     .SetaRetornar img,
