@@ -250,7 +250,7 @@ footer {
   padding: 30px;
   border-top: 2px solid var(--border-color);
   color: var(--grey-text);
-  background-color: #111;
+  background-color: var(--card-bg);
 }
 
 /* --- ANIMAÇÕES --- */

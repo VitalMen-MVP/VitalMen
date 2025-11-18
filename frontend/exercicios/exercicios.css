@@ -22,6 +22,8 @@
   --widget-text: #222222;
   --footer-bg: #f9f9f9;
   --footer-text: #666;
+  --light-color: #ffffff;
+  --dark-color: #000;
 }
 
 *,
@@ -363,7 +365,7 @@ footer {
   padding: 40px;
   border-top: 1px solid var(--border-color);
   color: var(--text-secondary);
-  background-color: #0c0c0c;
+  background-color: var(--card-bg);
 }
 
 /* ANIMAÇÕES */
@@ -499,36 +501,5 @@ footer {
   footer {
     padding: 20px 15px;
     font-size: 0.8rem;
-  }
-}
-
-/* Telas muito pequenas (smartphones antigos) */
-@media (max-width: 480px) {
-  .hero h1 {
-    font-size: 1.6rem;
-  }
-
-  .hero p {
-    font-size: 0.85rem;
-  }
-
-  .btn {
-    padding: 10px 24px;
-  }
-
-  .feature-card h3 {
-    font-size: 1.1rem;
-  }
-
-  .feature-card p {
-    font-size: 0.9rem;
-  }
-
-  .dicas-rapidas h2 {
-    font-size: 1.6rem;
-  }
-
-  .cta {
-    padding: 40px 15px;
   }
 }

@@ -22,6 +22,8 @@
   --widget-text: #222222;
   --footer-bg: #f9f9f9;
   --footer-text: #666;
+  --light-color: #ffffff;
+  --dark-color: #000;
 }
 
 *,
@@ -34,15 +36,6 @@ html {
   scroll-behavior: smooth;
 }
 
-body {
-  margin: 0;
-  font-family: "Roboto", sans-serif;
-  background-color: var(--background-color);
-  color: var(--text-primary);
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
 
 body.dark-mode {
   --page-bg: #1a1a1a;
@@ -55,6 +48,24 @@ body.dark-mode {
   --footer-bg: #222;
   --footer-text: #888;
 }
+
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  background-color: var(--page-bg);
+  color: var(--page-text);
+  line-height: 1.6;
+  /* USA VARIÁVEL */
+  color: var(--page-text);
+  transition: background-color 0.5s ease, color 0.5s ease;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 
 main section {
   width: 90%;
@@ -171,7 +182,16 @@ main section {
 }
 
 .feature-card {
-  background: var(--card-background);
+  background: var(--card-bg);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px var(--shadow-color);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid var(--border-color);
+}
+
+body.dark-mode .feature-card {
+  background: var(--card-bg);
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 4px 12px var(--shadow-color);
@@ -214,9 +234,22 @@ main section {
   font-size: 0.95rem;
 }
 
+body.dark-mode .feature-card p {
+  color: var(--text-secondary);
+  line-height: 1.5;
+  font-size: 0.95rem;
+}
+
 /* SEÇÃO DE CONTEÚDO PRINCIPAL */
 .content {
-  background-color: var(--card-background);
+  background-color: var(--card-bg);
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.content.dark-mode {
+  background-color: var(--card-bg);
   padding: 40px;
   border-radius: 10px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
@@ -230,11 +263,25 @@ main section {
   margin-top: 0;
 }
 
+.content p {
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
 /* DICAS RÁPIDAS */
 .dicas-rapidas {
   text-align: center;
   padding: 60px 20px;
-  background-color: var(--background-color);
+  background-color: var(--card-bg);
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.dicas-rapidas.dark-mode {
+  text-align: center;
+  padding: 60px 20px;
+  background-color: var(--card-bg);
   border-top: 1px solid var(--border-color);
   border-bottom: 1px solid var(--border-color);
 }
@@ -250,12 +297,12 @@ main section {
   content: "";
   position: absolute;
   bottom: -15px;
-  left: 50px;
-  transform: translateX(-50px);
-  width: 60px;
+  left: 0;
+  width: 100%;
   height: 3px;
   background-color: var(--primary-color);
   border-radius: 2px;
+  transform: none;
 }
 
 .dica-conteiner {
@@ -265,7 +312,16 @@ main section {
 }
 
 .dica {
-  background-color: var(--card-background);
+  background-color: var(--card-bg);
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px var(--shadow-color);
+  transition: transform 0.3s ease, border-color 0.3s ease;
+  border: 1px solid var(--border-color);
+}
+
+.dica.dark-mode {
+  background-color: var(--card-bg);
   padding: 25px;
   border-radius: 10px;
   box-shadow: 0 3px 10px var(--shadow-color);
@@ -291,7 +347,7 @@ main section {
 .cta {
   text-align: center;
   padding: 100px 40px;
-  border-radius: 20%;
+  border-radius: 2%;
   color: var(--text-primary);
   position: relative;
   overflow: hidden;
@@ -320,10 +376,10 @@ main section {
 /* FOOTER */
 footer {
   text-align: center;
-  padding: 40%;
+  padding: 20px 10px;
   border-top: 1px solid var(--border-color);
   color: var(--text-secondary);
-  background-color: #0c0c0c;
+  background-color: var(--card-bg);
 }
 
 /* ANIMAÇÕES */
