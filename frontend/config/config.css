@@ -11,6 +11,19 @@
   --muted-bg: #333333;
   --radius: 10px;
   --transition-fast: 0.25s;
+
+  /* === Variáveis de Tema (Modo Claro) === */
+  --page-bg: #ffffff;
+  --page-text: #222222;
+  --card-bg: #f4f4f4;
+  --border-color: #dddddd;
+  --grey-text: #555555;
+  --widget-bg: #eeeeee;
+  --widget-text: #222222;
+  --footer-bg: #f9f9f9;
+  --footer-text: #666;
+  --light-color: #ffffff;
+  --dark-color: #000;
 }
 
 * {
@@ -24,10 +37,22 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
     Arial, sans-serif;
-  background-color: var(--background-color);
-  color: var(--light-color);
+  background-color: var(--page-bg);
+  color: var(--page-text);
   -webkit-font-smoothing: antialiased;
   transition: background-color 0.5s ease, color 0.2s ease;
+}
+
+body.dark-mode {
+  --page-bg: #1a1a1a;
+  --page-text: #f0f0f0;
+  --card-bg: #2a2a2a;
+  --border-color: #444;
+  --grey-text: #b0b0b0;
+  --widget-bg: #333;
+  --widget-text: #ffffff;
+  --footer-bg: #222;
+  --footer-text: #888;
 }
 
 @keyframes fadein {
@@ -58,7 +83,7 @@ main {
   width: 92%;
   max-width: 900px;
   margin: 24px auto;
-  background: var(--card-background);
+  background: var(--card-bg);
   border-radius: var(--radius);
   padding: 28px;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
@@ -82,6 +107,7 @@ main {
   display: flex;
   flex-direction: column;
   gap: 8px;
+  background-color: var(--card-bg);
 }
 
 .form-group input[type="file"] {
@@ -89,7 +115,7 @@ main {
   padding: 6px;
   border-radius: 8px;
   background: rgba(255, 255, 255, 0.02);
-  color: var(--light-color);
+  color: var(--page-bg);
   border: 1px solid var(--border-color);
 }
 
@@ -105,7 +131,7 @@ input[type="password"] {
   border-radius: 8px;
   border: 1px solid var(--border-color);
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent);
-  color: var(--light-color);
+  color: var(--page-text);
   transition: box-shadow var(--transition-fast),
     border-color var(--transition-fast);
 }
@@ -122,12 +148,12 @@ input:focus {
   border-radius: 50%;
   object-fit: cover;
   border: 3px solid var(--primary-color);
-  background-color: var(--muted-bg);
+  background-color: var(--card-bg);
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
   display: inline-block;
-  vertical-align: inline-block;
   vertical-align: middle;
   margin-top: 8px;
+  color: var(--page-text);
 }
 
 #filename {

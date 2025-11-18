@@ -1,17 +1,46 @@
 :root {
-  --primary-color: #004d9a;
-  --primary-dark: #003366;
-  --bg: #111;
-  --card-bg: #1f1f1f;
-  --light: #fff;
-  --border: #333;
+  /* Cores atualizadas para o tema escuro */
+  --primary-color: #004d9a; /* Azul escuro principal */
+  --primary-color-dark: #003366; /* Azul ainda mais escuro para hover */
+  --light-color: #ffffff;
+  --dark-color: #000; /* Texto claro para fundo escuro */
+  --background-color: #1a1a1a; /* Fundo geral escuro */
+  --card-background: #2a2a2a; /* Fundo dos cards (artigos, widgets) */
+  --border-color: #444; /* Cor da borda para divisórias */
+  --grey-text: #b0b0b0; /* Texto secundário em cinza claro */
+
+  /* === Variáveis de Tema (Modo Claro) === */
+  --page-bg: #ffffff;
+  --page-text: #222222;
+  --card-bg: #f4f4f4;
+  --border-color: #dddddd;
+  --grey-text: #555555;
+  --widget-bg: #eeeeee;
+  --widget-text: #222222;
+  --footer-bg: #f9f9f9;
+  --footer-text: #666;
+  --light-color: #ffffff;
+  --dark-color: #000;
+}
+
+body.dark-mode {
+  --page-bg: #1a1a1a;
+  --page-text: #f0f0f0;
+  --card-bg: #2a2a2a;
+  --border-color: #444;
+  --grey-text: #b0b0b0;
+  --widget-bg: #333;
+  --widget-text: #ffffff;
+  --footer-bg: #222;
+  --footer-text: #888;
 }
 
 body {
   margin: 0;
-  background: var(--bg);
-  color: var(--light);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--page-bg);
+  color: var(--page-text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
   display: flex;
   flex-direction: column;
   height: 100vh;
@@ -70,7 +99,7 @@ body {
 .list-actions button {
   background: none;
   border: none;
-  color: var(--light);
+  color: var(--light-color);
   cursor: pointer;
   font-size: 1em;
   transition: 0.3s;
@@ -85,7 +114,7 @@ body {
   width: 22px;
   height: 22px;
   border-radius: 50%;
-  border: 2px solid var(--border);
+  border: 2px solid var(--border-color);
   background: var(--primary-color);
 }
 
@@ -93,16 +122,16 @@ body {
   flex: 1;
   padding: 8px;
   border-radius: 8px;
-  background: #222;
+  background-color: var(--card-bg);
   min-height: 100px;
 }
 
 .task {
-  background: #2a2a2a;
+  background-color: var(--card-bg);
   margin-bottom: 8px;
   padding: 8px;
   border-radius: 8px;
-  border: 1px solid #444;
+  border: 1px solid var(--border-color);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -127,7 +156,8 @@ body {
 }
 
 /* Botões */
-.add-task-btn, .add-list-btn {
+.add-task-btn,
+.add-list-btn {
   background: var(--primary-color);
   color: white;
   border: none;
@@ -138,7 +168,8 @@ body {
   transition: 0.3s;
 }
 
-.add-task-btn:hover, .add-list-btn:hover {
+.add-task-btn:hover,
+.add-list-btn:hover {
   background: var(--primary-dark);
 }
 
@@ -146,9 +177,11 @@ body {
 .modal {
   display: none;
   position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(0,0,0,0.7);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
   justify-content: center;
   align-items: center;
   z-index: 1000;
@@ -169,8 +202,8 @@ body {
 }
 
 .btn-yes {
-  background: var(--primary-color);
-  color: var(--light);
+  background-color: var(--primary-color);
+  color: var(--light-color);
   border: none;
   padding: 8px 15px;
   border-radius: 5px;
@@ -179,7 +212,7 @@ body {
 
 .btn-no {
   background: #e53935;
-  color: var(--light);
+  color: var(--light-color);
   border: none;
   padding: 8px 15px;
   border-radius: 5px;
@@ -216,4 +249,30 @@ body {
 
 .task-text {
   transition: all 0.18s ease;
+}
+
+.logout-button {
+  background-color: var(--light-color);
+  color: var(--dark-color);
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  transition: all 0.3s ease;
+}
+
+.logout-button:hover {
+  background-color: var(--primary-color-dark);
+  color: var(--light-color);
+  box-shadow: 0 4px 15px rgba(0, 77, 154, 0.7), 0 0 20px rgba(0, 123, 255, 0.5);
+  transform: translateY(-3px);
+}
+
+.footer {
+  text-align: center;
+  background: var(--footer-bg);
+  color: var(--footer-text);
+  padding: 15px;
 }
