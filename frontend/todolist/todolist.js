@@ -122,33 +122,17 @@ function createTask(taskList, text) {
 function handleTaskStatusChange(task, checkbox) {
   const textEl = task.querySelector(".task-text");
 
-  const listaConcluidas = [...document.querySelectorAll(".list-title")]
-    .find(el => el.textContent.trim().toLowerCase() === "concluídas");
-  const listaAFazer = [...document.querySelectorAll(".list-title")]
-    .find(el => el.textContent.trim().toLowerCase() === "a fazer");
-
   if (checkbox.checked) {
-    // Marcar como concluída (estilo)
     textEl.style.textDecoration = "line-through";
     textEl.style.opacity = "0.6";
     task.classList.add("completed");
-
-    if (listaConcluidas) {
-      const destino = listaConcluidas.closest(".list").querySelector(".task-list");
-      destino.appendChild(task);
-    }
   } else {
-    // Reverter
     textEl.style.textDecoration = "none";
     textEl.style.opacity = "1";
     task.classList.remove("completed");
-
-    if (listaAFazer) {
-      const destino = listaAFazer.closest(".list").querySelector(".task-list");
-      destino.appendChild(task);
-    }
   }
 }
+
 
 // === MODAL DE CONFIRMAÇÃO ===
 confirmYes.onclick = () => {
