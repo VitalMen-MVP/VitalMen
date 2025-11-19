@@ -259,11 +259,13 @@ a:hover {
 
 /* --- LAYOUT PRINCIPAL DO BLOG --- */
 .blog-container {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
+    /* REMOVIDO: display: grid; e grid-template-columns: 2fr 1fr; para remover o layout de duas colunas */
+    display: block;
+    /* Garante o comportamento de bloco padrão */
     gap: 40px;
     width: 90%;
     max-width: 1200px;
+    /* Mantém a largura máxima para centralização */
     margin: 60px auto;
     /* EFEITO: Animação de entrada para todo o container */
     animation: fadeIn 0.8s 0.2s ease-out forwards;
@@ -353,79 +355,14 @@ a:hover {
 }
 
 /* --- ESTILO DA SIDEBAR --- */
-.sidebar .widget {
-    background-color: var(--card-bg);
-    /* USA VARIÁVEL */
-    padding: 25px;
-    border-radius: 10px;
-    margin-bottom: 30px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-    transition: all 0.3s ease;
-}
-
-.sidebar .widget:hover {
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
-}
-
-.widget-title {
-    margin-top: 0;
-    padding-bottom: 10px;
-    border-bottom: 1px solid var(--border-color);
-    margin-bottom: 20px;
-    color: var(--page-text);
-    /* USA VARIÁVEL */
-}
-
-.search-input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid var(--border-color);
-    border-radius: 5px;
-    background-color: var(--widget-bg);
-    /* USA VARIÁVEL */
-    color: var(--widget-text);
-    /* USA VARIÁVEL */
-    transition: all 0.3s ease;
-}
-
-/* EFEITO: Borda e sombra no input de busca quando focado */
-.search-input:focus {
-    outline: none;
-    border-color: var(--primary-color);
-    box-shadow: 0 0 10px rgba(0, 77, 154, 0.6);
-}
-
-.search-input::placeholder {
-    color: var(--grey-text);
-    /* USA VARIÁVEL (era #888) */
-}
-
-.category-list,
-.popular-posts-list {
-    list-style: none;
-    padding: 0;
-}
-
-.category-list li a,
-.popular-posts-list li a {
-    display: block;
-    padding: 8px 0;
-    color: var(--grey-text);
-    /* USA VARIÁVEL */
-    transition: all 0.3s ease;
-}
-
-/* EFEITO: Links da sidebar se movem e mudam de cor no hover */
-.category-list li a:hover,
-.popular-posts-list li a:hover {
-    color: var(--primary-color);
-    transform: translateX(5px);
-}
-
+/* REMOVIDO: Todo o estilo da Sidebar */
+/* Foi mantido apenas o CSS que afeta o conteúdo principal (como .posts-recentes e .posts-grid) */
 
 /* --- RESPONSIVIDADE PARA TELAS MENORES --- */
 @media (max-width: 992px) {
     .blog-container {
+        /* A regra abaixo não é mais estritamente necessária após a mudança acima, 
+           mas vamos mantê-la para ser seguro em caso de reintrodução do grid */
         grid-template-columns: 1fr;
     }
 
