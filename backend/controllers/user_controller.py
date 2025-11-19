@@ -2,7 +2,7 @@ import datetime
 
 import jwt
 from flask import Blueprint, request, jsonify
-from models import db, User  # importa ORM
+from models import db, User
 from werkzeug.security import generate_password_hash, check_password_hash
 
 from utils.auth_utils import token_required
@@ -19,9 +19,14 @@ def login():
     if not email or not senha:
         return jsonify({"erro": "Email e senha são obrigatórios."}), 400
 
-    # SELECT * FROM users WHERE email = ""
+    # ORM:
     user = User.query.filter_by(email=email).first()
 
+    # SQL equivalente:
+    # SELECT id, username, email, password
+    # FROM users
+    # WHERE email = :email
+    # LIMIT 1;
 
     if user and check_password_hash(user.password, senha):
         payload = {
@@ -30,7 +35,6 @@ def login():
             'iat': datetime.datetime.utcnow()
         }
 
-        # Criando o jwt codificado
         token = jwt.encode(
             payload,
             'chave_secreta',
@@ -41,11 +45,12 @@ def login():
             "mensagem": "Login bem-sucedido!",
             "token": token,
             "user": {
-                "id": user.id, # 1
-                "username": user.username, # nemrela
-                "email": user.email # conceicaolucas68@gmail.com
+                "id": user.id,
+                "username": user.username,
+                "email": user.email
             }
         }), 200
+
     return jsonify({"erro": "Email ou senha inválidos."}), 401
 
 
@@ -53,28 +58,51 @@ def login():
 @user_bp.route("/api/register", methods=["POST"])
 def register():
     data = request.get_json()
-    email = data.get("email") # email@gmail.com
-    username = data.get("username") # bruno
-    password = data.get("password") # senha123
+    email = data.get("email")  # email@gmail.com
+    username = data.get("username")  # bruno
+    password = data.get("password")  # senha123
 
     if not email or not username or not password:
         return jsonify({"erro": "Todos os campos são obrigatórios."}), 400
 
-    # SELECT * FROM users WHERE email = ""
-    if User.query.filter_by(email=email).first():
+    # ORM:
+    existing = User.query.filter_by(email=email).first()
+
+    # SQL equivalente:
+    # SELECT id
+    # FROM users
+    # WHERE email = :email
+    # LIMIT 1;
+
+    if existing:
         return jsonify({"erro": "Email já cadastrado."}), 409
 
     hashed = generate_password_hash(password)
+
+    # ORM INSERT:
     user = User(username=username, email=email, password=hashed)
     db.session.add(user)
     db.session.commit()
 
+    # SQL equivalente:
+    # INSERT INTO users (username, email, password)
+    # VALUES (:username, :email, :password);
+
     return jsonify({"mensagem": "Cadastro realizado com sucesso!"}), 201
 
+
 @user_bp.route("/api/perfil", methods=["GET"])
-@token_required # A ROTA ESTÁ PROTEGIDA AQUI
+@token_required
 def get_user_profile(current_user):
-    # Se chegamos aqui, o usuário está autenticado e current_user é o usuário
+    # ORM (feito lá dentro do decorator token_required)
+    # User.query.filter_by(id=user_id).first()
+
+    # SQL equivalente:
+    # SELECT id, username, email, password
+    # FROM users
+    # WHERE id = :id
+    # LIMIT 1;
+
     return jsonify({
         "mensagem": f"Bem-vindo(a), {current_user.username}!",
         "perfil": {
