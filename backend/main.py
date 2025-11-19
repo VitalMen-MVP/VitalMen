@@ -2,7 +2,7 @@ import os
 from flask import Flask, send_from_directory, render_template_string
 from flask_cors import CORS
 
-from controllers import post_controller, tarefa_controller, user_controller
+from controllers import post_controller, tarefa_controller, user_controller, listas_controller
 from database.db_config import DATABASE_URL
 from models import db
 
@@ -18,10 +18,10 @@ app.config["SQLALCHEMY_ENGINE_OPTIONS"] = {
 }
 
 db.init_app(app)
-
 app.register_blueprint(post_controller.post_bp)  # "carrega" as rotas ligadas aos posts
 app.register_blueprint(tarefa_controller.tarefa_bp)  # "carrega" as rotas ligadas as tasks
 app.register_blueprint(user_controller.user_bp)  # "carrega" as rotas ligadas aos usuários
+app.register_blueprint(listas_controller.lista_bp)  # "carrega" as rotas ligadas as listas
 
 FRONT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'frontend'))
 
@@ -36,6 +36,7 @@ def index():
 # Rota genérica
 @app.route('/<page>/')
 def page(page):
+    print(page)
     return send_from_directory(os.path.join(FRONT_DIR, page), f'{page}.html')
 
 

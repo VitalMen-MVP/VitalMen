@@ -40,6 +40,7 @@ def get_post_by_title(titulo_url):
         filename = f'{titulo_url}'
     else:
         filename = f'{titulo_url}.html'
+    print(f"Tentando servir arquivo: {os.path.join(directory, filename)}")
     try:
         return send_from_directory(directory, filename)
     except NotFound:
