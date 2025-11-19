@@ -300,7 +300,37 @@ body {
     padding: 8px;
   }
 }
+/* --- NOVOS ESTILOS PARA O RADIX SORT --- */
 
+/* Input de prioridade dentro da tarefa */
+.task-priority {
+  width: 45px;
+  padding: 4px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background: var(--page-bg);
+  color: var(--page-text);
+  margin-right: 10px;
+  text-align: center;
+  font-size: 0.9em;
+}
+
+/* Botão de ordenar na lista */
+.sort-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.1em;
+  transition: transform 0.2s;
+}
+
+.sort-btn:hover {
+  transform: scale(1.2);
+}
+
+.sort-btn:active {
+  transform: scale(0.9);
+}
 /* Garante que o body não tenha rolagem horizontal indesejada */
 body {
   overflow-x: hidden;
