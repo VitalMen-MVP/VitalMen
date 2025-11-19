@@ -393,6 +393,12 @@ a:hover {
     justify-content: space-around;
     width: 100%;
   }
+    .footer {
+    padding: 8px 4px !important;
+    font-size: 0.95em !important;
+    margin-top: 10px !important;
+  }
+
 }
 
 .footer {
@@ -422,3 +428,4 @@ a:hover {
   box-shadow: 0 4px 15px rgba(0, 77, 154, 0.7), 0 0 20px rgba(0, 123, 255, 0.5);
   transform: translateY(-3px);
 }
+

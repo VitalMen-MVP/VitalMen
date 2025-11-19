@@ -1,181 +1,228 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vitamen Idea | Saúde e Bem-estar Masculino</title>
+    <link rel="icon" href="../assets/img/LogoDaEmpresa1.png" type="image/png" />
+    <link rel="stylesheet" href="/index/index.css" type="text/css" />
+    <link rel="stylesheet" href="/override/navbar.css" type="text/css" />
+    <script src="/override/navbar.js" defer></script>
+    <script src="/index/index.js" defer></script>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vitamen Idea | Saúde e Bem-estar Masculino</title>
-  <link rel="icon" href="../assets/img/LogoDaEmpresa1.png" type="image/png" />
-  <link rel="stylesheet" href="/index/index.css" type="text/css" />
-  <link rel="stylesheet" href="/override/navbar.css" type="text/css" />
-  <script src="/override/navbar.js" defer></script>
-  <script src="/index/index.js" defer></script>
-</head>
-
-<body>
-  <nav class="navbar" id="navbar">
-    <a href="/" class="logo">
-      <img src="../assets/img/LogoDaEmpresa1.png" alt="VitalMen Idea Logo" />
-    </a>
-    <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false">
-      ☰
-    </button>
-    <ul class="nav-links">
-      <li><a href="/saude">SAÚDE</a></li>
-      <li><a href="/exercicios">EXERCÍCIOS</a></li>
-      <li><a href="/nutricao">NUTRIÇÃO</a></li>
-      <li><a href="/mentalidade">MENTALIDADE</a></li>
-      <li><a href="/sobrenos">SOBRE NÓS</a></li>
-      <li><a href="/contato">CONTATO</a></li>
-    </ul>
-    <button id="theme-toggle" class="theme-toggle-button" aria-label="Alternar tema">🌙</button>
-    <a href="/login" id="loginBtn" class="login-button" style="display: none;">LOGIN</a>
-  </nav>
-
-  <header class="banner-destaque" style="background-image: url('../assets/img/TelaQuePodeSerUsada\ .png')">
-    <div class="banner-content">
-      <a href="/nutricao" class="category-tag">NUTRIÇÃO</a>
-      <h1>Guia Completo de Nutrição para Ganho de Massa Muscular</h1>
-      <p>
-        Descubra os alimentos, suplementos e estratégias para potencializar
-        seus resultados na academia de forma saudável.
-      </p>
-      <a href="/posts/guia-nutricao" class="button-banner">Leia Mais</a>
-    </div>
-  </header>
-
-  <main class="blog-container">
-    <section class="posts-recentes">
-      <h2>Últimas Postagens</h2>
-      <div class="posts-grid">
-        <article class="post-card">
-          <a href="/posts/mobilidade-manha" class="post-link-overlay">
-            <img src="../assets/img/Corrida.png" alt="Homem se alongando antes de correr" class="post-image" />
-            <div class="post-content">
-              <span class="category-tag">EXERCÍCIOS</span>
-              <h3 class="post-title">
-                Os 5 Melhores Exercícios de Mobilidade para Fazer Pela Manhã
-              </h3>
-              <p class="post-excerpt">
-                Comece seu dia com mais energia e menos dores. Estes
-                exercícios rápidos vão transformar suas manhãs.
-              </p>
-              <div class="post-meta">
-                <span>Por Bruno Amorim</span> |
-                <span>7 de Outubro, 2025</span>
-              </div>
-            </div>
-          </a>
-        </article>
-
-        <article class="post-card">
-          <a href="/posts/jejum-intermitente" class="post-link-overlay">
-            <img src="../assets/img/Comida.png" alt="Prato de comida saudável" class="post-image" />
-            <div class="post-content">
-              <span class="category-tag">NUTRIÇÃO</span>
-              <h3 class="post-title">
-                Jejum Intermitente: Funciona Mesmo para Homens?
-              </h3>
-              <p class="post-excerpt">
-                Analisamos os prós e contras do jejum intermitente e como ele
-                pode impactar sua testosterona e bem-estar.
-              </p>
-              <div class="post-meta">
-                <span>Por Equipe Vitamen Idea</span> |
-                <span>5 de Outubro, 2025</span>
-              </div>
-            </div>
-          </a>
-        </article>
-
-        <article class="post-card">
-          <a href="/posts/lidando-com-stress" class="post-link-overlay">
-            <img src="../assets/img/HomemCalmoPensando.png" alt="Homem calmo pensando" class="post-image" />
-            <div class="post-content">
-              <span class="category-tag" style="background-color: #004d9a">MENTALIDADE</span>
-              <h3 class="post-title">
-                Estratégias de 5 Minutos para Vencer o estresse no Trabalho
-              </h3>
-              <p class="post-excerpt">
-                Ferramentas rápidas de respiração e foco para manter a mente
-                clara sob pressão.
-              </p>
-              <div class="post-meta">
-                <span>Por Sarah Vilar</span> | <span>1 de Outubro, 2025</span>
-              </div>
-            </div>
-          </a>
-        </article>
-
-        <article class="post-card">
-          <a href="/posts/aumento-testosterona" class="post-link-overlay">
-            <img src="../assets/img/Testosterona.png" alt="Suplementos e alimentos" class="post-image" />
-            <div class="post-content">
-              <span class="category-tag" style="background-color: #004d9a">SAÚDE</span>
-              <h3 class="post-title">
-                Como Aumentar Sua Testosterona Naturalmente Após os 30
-              </h3>
-              <p class="post-excerpt">
-                Guia de suplementos e rotinas que comprovadamente ajudam a
-                manter os níveis hormonais ideais.
-              </p>
-              <div class="post-meta">
-                <span>Por Dr. Marcos Vilela</span> |
-                <span>28 de Setembro, 2025</span>
-              </div>
-            </div>
-          </a>
-        </article>
-
-        <article class="post-card">
-          <a href="/posts/treinamento-forca" class="post-link-overlay">
-            <img src="../assets/img/Forca.png" alt="Homem levantando peso" class="post-image" />
-            <div class="post-content">
-              <span class="category-tag" style="background-color: #004d9a">EXERCÍCIOS</span>
-              <h3 class="post-title">
-                Treino de Força: O Pilar da Saúde Masculina na Maturidade
-              </h3>
-              <p class="post-excerpt">
-                A importância de manter a massa muscular e densidade óssea
-                após os 40 anos.
-              </p>
-              <div class="post-meta">
-                <span>Por Equipe Vitamen Idea</span> |
-                <span>25 de Setembro, 2025</span>
-              </div>
-            </div>
-          </a>
-        </article>
-
-        <article class="post-card">
-          <a href="/posts/rotina-foco" class="post-link-overlay">
-            <img src="../assets/img/Foco.png" alt="Foco e concentração" class="post-image" />
-            <div class="post-content">
-              <span class="category-tag" style="background-color: #004d9a">MENTALIDADE</span>
-              <h3 class="post-title">
-                Rotina matinal de uma pessoa com foco: 5 Regras para o Foco
-                Absoluto
-              </h3>
-              <p class="post-excerpt">
-                Como as pessoas mais bem-sucedidas do mundo começam o dia para
-                alcançar o máximo de Foco.
-              </p>
-              <div class="post-meta">
-                <span>Por Bruno Amorim</span> |
-                <span>20 de Setembro, 2025</span>
-              </div>
-            </div>
-          </a>
-        </article>
+  <body>
+    <nav class="navbar" id="navbar">
+      <a href="/" class="logo">
+        <img src="../assets/img/LogoDaEmpresa1.png" alt="VitalMen Idea Logo" />
+      </a>
+      <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false">
+        ☰
+      </button>
+      <ul class="nav-links">
+        <li><a href="/saude">SAÚDE</a></li>
+        <li><a href="/exercicios">EXERCÍCIOS</a></li>
+        <li><a href="/nutricao">NUTRIÇÃO</a></li>
+        <li><a href="/mentalidade">MENTALIDADE</a></li>
+        <li><a href="/sobrenos">SOBRE NÓS</a></li>
+        <li><a href="/contato">CONTATO</a></li>
+      </ul>
+      <div class="navbar-right">
+        <button
+          id="theme-toggle"
+          class="theme-toggle-button"
+          aria-label="Alternar tema"
+        >
+          🌙
+        </button>
+        <a
+          href="/login"
+          id="loginBtn"
+          class="login-button"
+          style="display: none"
+          >LOGIN</a
+        >
       </div>
-    </section>
-  </main>
+    </nav>
 
-  <footer class="footer">
-    <p>&copy; 2025 Vitamen Idea. Todos os direitos reservados.</p>
-  </footer>
+    <header
+      class="banner-destaque"
+      style="background-image: url('../assets/img/TelaQuePodeSerUsada\ .png')"
+    >
+      <div class="banner-content">
+        <a href="/nutricao" class="category-tag">NUTRIÇÃO</a>
+        <h1>Guia Completo de Nutrição para Ganho de Massa Muscular</h1>
+        <p>
+          Descubra os alimentos, suplementos e estratégias para potencializar
+          seus resultados na academia de forma saudável.
+        </p>
+        <a href="/posts/guia-nutricao" class="button-banner">Leia Mais</a>
+      </div>
+    </header>
 
-  <script src="/index/index.js"></script>
-</body>
+    <main class="blog-container">
+      <section class="posts-recentes">
+        <h2>Últimas Postagens</h2>
+        <div class="posts-grid">
+          <article class="post-card">
+            <a href="/posts/mobilidade-manha" class="post-link-overlay">
+              <img
+                src="../assets/img/Corrida.png"
+                alt="Homem se alongando antes de correr"
+                class="post-image"
+              />
+              <div class="post-content">
+                <span class="category-tag">EXERCÍCIOS</span>
+                <h3 class="post-title">
+                  Os 5 Melhores Exercícios de Mobilidade para Fazer Pela Manhã
+                </h3>
+                <p class="post-excerpt">
+                  Comece seu dia com mais energia e menos dores. Estes
+                  exercícios rápidos vão transformar suas manhãs.
+                </p>
+                <div class="post-meta">
+                  <span>Por Bruno Amorim</span> |
+                  <span>7 de Outubro, 2025</span>
+                </div>
+              </div>
+            </a>
+          </article>
 
+          <article class="post-card">
+            <a href="/posts/jejum-intermitente" class="post-link-overlay">
+              <img
+                src="../assets/img/Comida.png"
+                alt="Prato de comida saudável"
+                class="post-image"
+              />
+              <div class="post-content">
+                <span class="category-tag">NUTRIÇÃO</span>
+                <h3 class="post-title">
+                  Jejum Intermitente: Funciona Mesmo para Homens?
+                </h3>
+                <p class="post-excerpt">
+                  Analisamos os prós e contras do jejum intermitente e como ele
+                  pode impactar sua testosterona e bem-estar.
+                </p>
+                <div class="post-meta">
+                  <span>Por Equipe Vitamen Idea</span> |
+                  <span>5 de Outubro, 2025</span>
+                </div>
+              </div>
+            </a>
+          </article>
+
+          <article class="post-card">
+            <a href="/posts/lidando-com-stress" class="post-link-overlay">
+              <img
+                src="../assets/img/HomemCalmoPensando.png"
+                alt="Homem calmo pensando"
+                class="post-image"
+              />
+              <div class="post-content">
+                <span class="category-tag" style="background-color: #004d9a"
+                  >MENTALIDADE</span
+                >
+                <h3 class="post-title">
+                  Estratégias de 5 Minutos para Vencer o estresse no Trabalho
+                </h3>
+                <p class="post-excerpt">
+                  Ferramentas rápidas de respiração e foco para manter a mente
+                  clara sob pressão.
+                </p>
+                <div class="post-meta">
+                  <span>Por Sarah Vilar</span> | <span>1 de Outubro, 2025</span>
+                </div>
+              </div>
+            </a>
+          </article>
+
+          <article class="post-card">
+            <a href="/posts/aumento-testosterona" class="post-link-overlay">
+              <img
+                src="../assets/img/Testosterona.png"
+                alt="Suplementos e alimentos"
+                class="post-image"
+              />
+              <div class="post-content">
+                <span class="category-tag" style="background-color: #004d9a"
+                  >SAÚDE</span
+                >
+                <h3 class="post-title">
+                  Como Aumentar Sua Testosterona Naturalmente Após os 30
+                </h3>
+                <p class="post-excerpt">
+                  Guia de suplementos e rotinas que comprovadamente ajudam a
+                  manter os níveis hormonais ideais.
+                </p>
+                <div class="post-meta">
+                  <span>Por Dr. Marcos Vilela</span> |
+                  <span>28 de Setembro, 2025</span>
+                </div>
+              </div>
+            </a>
+          </article>
+
+          <article class="post-card">
+            <a href="/posts/treinamento-forca" class="post-link-overlay">
+              <img
+                src="../assets/img/Forca.png"
+                alt="Homem levantando peso"
+                class="post-image"
+              />
+              <div class="post-content">
+                <span class="category-tag" style="background-color: #004d9a"
+                  >EXERCÍCIOS</span
+                >
+                <h3 class="post-title">
+                  Treino de Força: O Pilar da Saúde Masculina na Maturidade
+                </h3>
+                <p class="post-excerpt">
+                  A importância de manter a massa muscular e densidade óssea
+                  após os 40 anos.
+                </p>
+                <div class="post-meta">
+                  <span>Por Equipe Vitamen Idea</span> |
+                  <span>25 de Setembro, 2025</span>
+                </div>
+              </div>
+            </a>
+          </article>
+
+          <article class="post-card">
+            <a href="/posts/rotina-foco" class="post-link-overlay">
+              <img
+                src="../assets/img/Foco.png"
+                alt="Foco e concentração"
+                class="post-image"
+              />
+              <div class="post-content">
+                <span class="category-tag" style="background-color: #004d9a"
+                  >MENTALIDADE</span
+                >
+                <h3 class="post-title">
+                  Rotina matinal de uma pessoa com foco: 5 Regras para o Foco
+                  Absoluto
+                </h3>
+                <p class="post-excerpt">
+                  Como as pessoas mais bem-sucedidas do mundo começam o dia para
+                  alcançar o máximo de Foco.
+                </p>
+                <div class="post-meta">
+                  <span>Por Bruno Amorim</span> |
+                  <span>20 de Setembro, 2025</span>
+                </div>
+              </div>
+            </a>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>&copy; 2025 Vitamen Idea. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="/index/index.js"></script>
+  </body>
 </html>

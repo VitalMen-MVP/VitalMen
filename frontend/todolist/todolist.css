@@ -276,3 +276,32 @@ body {
   color: var(--footer-text);
   padding: 15px;
 }
+
+/* Responsividade: listas lado a lado com scroll horizontal no mobile */
+@media (max-width: 768px) {
+  .board-container {
+    padding: 8px 0 8px 8px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+  }
+  .board {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 12px;
+    min-width: 600px;
+    width: max-content;
+  }
+  .list {
+    min-width: 240px;
+    max-width: 90vw;
+    width: 80vw;
+    margin-right: 8px;
+    padding: 8px;
+  }
+}
+
+/* Garante que o body não tenha rolagem horizontal indesejada */
+body {
+  overflow-x: hidden;
+}

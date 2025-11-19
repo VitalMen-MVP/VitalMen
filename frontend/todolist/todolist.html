@@ -15,19 +15,24 @@
       <a href="/" class="logo">
         <img src="../assets/img/LogoDaEmpresa1.png" alt="VitalMen Logo" />
       </a>
+      <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false">
+        ☰
+      </button>
       <ul class="nav-links">
         <li><a href="/usuario">PERFIL</a></li>
         <li><a href="/todolist" aria-current="page">SUAS TAREFAS</a></li>
         <li><a href="/config">CONFIGURAÇÕES</a></li>
       </ul>
-      <button
-        id="theme-toggle"
-        class="theme-toggle-button"
-        aria-label="Alternar tema"
-      >
-        🌙
-      </button>
-      <a href="/login" id="logoutBtn" class="logout-button">Sair</a>
+      <div class="navbar-right">
+        <button
+          id="theme-toggle"
+          class="theme-toggle-button"
+          aria-label="Alternar tema"
+        >
+          🌙
+        </button>
+        <a href="/login" id="logoutBtn" class="logout-button">Sair</a>
+      </div>
     </nav>
 
     <main class="board-container">
