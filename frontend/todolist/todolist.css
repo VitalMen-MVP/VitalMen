@@ -61,7 +61,7 @@ body {
 
 /* Listas estilo Trello */
 .list {
-  background: var(--card-bg);
+  background-color: var(--card-bg);
   border-radius: 10px;
   border: 1px solid var(--border);
   width: 280px;
@@ -88,6 +88,11 @@ body {
   font-weight: bold;
   font-size: 1.1em;
   outline: none;
+  color: var(--page-text);
+}
+
+body.dark-mode .list-title {
+  color: var(--page-bg);
 }
 
 .list-actions {
