@@ -1,13 +1,15 @@
+import base64
 import datetime
 
 import jwt
 from flask import Blueprint, request, jsonify
-from models import db, User
 from werkzeug.security import generate_password_hash, check_password_hash
 
+from models import db, User
 from utils.auth_utils import token_required
 
 user_bp = Blueprint("auth", __name__)
+
 
 # Login
 @user_bp.route("/api/login", methods=["POST"])
@@ -40,7 +42,6 @@ def login():
             'chave_secreta',
             algorithm='HS256'
         )
-        print(token)
         return jsonify({
             "mensagem": "Login bem-sucedido!",
             "token": token,
@@ -79,8 +80,18 @@ def register():
 
     hashed = generate_password_hash(password)
 
+    with open('../assets/img/profile-placeholder.png', "rb") as img:
+        avatar_base64 = base64.b64encode(img.read()).decode("utf-8")
+
+
     # ORM INSERT:
-    user = User(username=username, email=email, password=hashed)
+    user = User(
+        username=username,
+        email=email,
+        password=hashed,
+        created_at=datetime.utcnow(),
+        avatar=avatar_base64
+    )
     db.session.add(user)
     db.session.commit()
 
@@ -108,6 +119,8 @@ def get_user_profile(current_user):
         "perfil": {
             "id": current_user.id,
             "username": current_user.username,
-            "email": current_user.email
+            "email": current_user.email,
+            "avatar": current_user.avatar,
+            "created_at": current_user.created_at
         }
     }), 200

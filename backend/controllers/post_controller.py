@@ -35,7 +35,7 @@ def criar_post():
 
 @post_bp.route("/posts/<titulo_url>/", methods=["GET"])
 def get_post_by_title(titulo_url):
-    directory = os.path.join(FRONT_DIR, 'posts')
+    directory = os.path.join(FRONT_DIR, 'postagens')
     if titulo_url.endswith(".css"):
         filename = f'{titulo_url}'
     else:

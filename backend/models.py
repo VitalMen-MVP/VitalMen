@@ -11,7 +11,8 @@ class User(db.Model):
     username = db.Column(db.String(255), nullable=False)
     email = db.Column(db.String(255), unique=True, nullable=False)
     password = db.Column(db.Text, nullable=False)
-
+    avatar = db.Column(db.Text)
+    created_at = db.Column(db.DateTime(timezone=True), server_default=db.func.now())
 class Post(db.Model):
     __tablename__ = "posts"
 
