@@ -28,7 +28,7 @@ class Lista(db.Model):
     titulo = db.Column(db.String(255), nullable=False)
     cor = db.Column(db.String(20), default="#ffffff")
     posicao = db.Column(db.Integer, default=0)
-
+    usuario_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
     tarefas = db.relationship("Tarefa", backref="lista", cascade="all, delete")
 
 class Tarefa(db.Model):
