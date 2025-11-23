@@ -1,136 +1,177 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VitalMan | Viva com Saúde</title>
-    <link rel="icon" href="../assets/img/vital-logo.png" type="image/png">
-    <link rel="stylesheet" href="saude.css" textype="text/css">
-    <link rel="stylesheet" href="/override/navbar.css" type="text/css">
 
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title>VitalMan | Viva com Saúde</title>
+    <link rel="icon" href="../assets/img/vital-logo.png" type="image/png" />
+
+    <link rel="stylesheet" href="saude.css" />
+    <link rel="stylesheet" href="/override/navbar.css" type="text/css">
     <script src="/override/navbar.js"></script>
+
+    <meta name="description"
+        content="VitalMan: Informação e prevenção para a saúde do homem. Cuide do corpo e da mente para viver com qualidade." />
+    <meta name="keywords" content="saúde masculina, prevenção, exames, bem-estar, saúde mental, vitalidade" />
+    <meta name="author" content="VitalMan Team" />
 </head>
+
 <body>
     <header>
         <nav class="navbar">
-            <div class="logo">
-                <a href="/home"><img src="../assets/img/vital-logo.png" alt="VitalMan Logo"></a>
-            </div>
+            <a href="/" class="logo">
+                <img src="../assets/img/vital-logo.png" alt="VitalMen Logo">
+            </a>
             <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false">☰</button>
             <ul class="nav-links">
-            <li><a href="/saude" aria-current="page">SAÚDE</a></li>
-            <li><a href="/exercicios">EXERCÍCIOS</a></li>
-            <li><a href="/nutricao">NUTRIÇÃO</a></li>
-            <li><a href="/mentalidade">MENTALIDADE</a></li>
-            <li><a href="/sobrenos">SOBRE NOS</a></li>
-            <li><a href="/contato">CONTATO</a></li>
-        </ul>
-        <div class="navbar-right">
-        <button id="theme-toggle" class="theme-toggle-button" aria-label="Alternar tema">🌙</button>
-        <a href="/login" id="loginBtn" class="login-button" style="display: none;">LOGIN</a>
-        </div>
+                <li><a href="/saude" aria-current="page">SAÚDE</a></li>
+                <li><a href="/exercicios">EXERCÍCIOS</a></li>
+                <li><a href="/nutricao">NUTRIÇÃO</a></li>
+                <li><a href="/mentalidade">MENTALIDADE</a></li>
+                <li><a href="/sobrenos">SOBRE NÓS</a></li>
+                <li><a href="/contato">CONTATO</a></li>
+            </ul>
+            <button id="theme-toggle" class="theme-toggle-button" aria-label="Alternar tema">🌙</button>
+            <a href="/login" id="loginBtn" class="login-button" style="display: none;">LOGIN</a>
         </nav>
     </header>
+
     <main>
-        <section class ="hero" style="background-image: url(../assets/img/medico.png);">
+        <section class="hero" style="background-image: url('../assets/img/Medico.png')">
             <div class="hero-content">
                 <h1>Saúde masculina: informação é prevenção</h1>
-                <p class="subtitulo">Saúde masculina sem tabu. Fale, previna-se, viva.</p>
+                <p>Saúde masculina sem tabu. Fale, previna-se, viva.</p>
+                <a href="#conteudo-saude" class="btn">Saiba Mais</a>
             </div>
         </section>
-        <section class="content">
+
+        <section id="conteudo-saude" class="content">
             <h2>Importância da Saúde Masculina</h2>
-            <p>A saúde masculina ainda é cercada de tabus e descuidos. Muitos homens crescem acreditando que buscar ajuda é sinal de fraqueza, quando na verdade é o contrário: é um ato de coragem.<br>
-            Manter uma rotina de cuidados, realizar exames preventivos e cuidar do bem-estar mental são passos essenciais pra uma vida mais equilibrada e feliz.<br>
-            A <strong>VitalMan</strong> nasceu pra mudar essa realidade — promovendo informação, conscientização e apoio. Cuidar da saúde é o primeiro passo pra conquistar tudo o que você quer viver.</p>
+            <p>
+                A saúde masculina ainda é cercada de tabus e descuidos. Muitos homens crescem acreditando que buscar
+                ajuda é sinal de fraqueza, quando na verdade é o contrário: é um ato de coragem.<br /><br />
+                Manter uma rotina de cuidados, realizar exames preventivos e cuidar do bem-estar mental são passos
+                essenciais pra uma vida mais equilibrada e feliz.
+                A <strong>VitalMan</strong> nasceu pra mudar essa realidade — promovendo informação, conscientização e
+                apoio.
+            </p>
         </section>
-        <section class="topics">
-            <div class="topic">
-                <h3>Prevenção é o melhor cuidado🩺</h3>
-                <p>Fazer exames regulares é essencial pra detectar doenças antes que elas avancem.
-                Muitos problemas de saúde, como hipertensão, diabetes e câncer de próstata, podem ser controlados ou até evitados com o diagnóstico precoce.</p>
-            </div>
-            <div class="topic">
-                <h3>Saúde mental também é saúde🧠</h3>
-                <p>O homem moderno precisa aprender a cuidar da mente.
-                Falar sobre sentimentos, buscar terapia e aprender a lidar com o estresse é parte da vida saudável — e não tem nada de fraqueza nisso.</p>
-            </div>
-            <div class="topic">
-                <h3>Exercício e alimentação🏋️</h3>
-                <p>Cuidar do corpo é investir em qualidade de vida.
-                Praticar esportes, comer de forma equilibrada e dormir bem ajudam no humor, no foco e na prevenção de doenças.</p>
-            </div>
-            <div class="topic">
-                <h3>Exames que todo homem deve fazer🧪</h3>
-                <ul>
-                    <li>A partir dos 30: check-up geral, colesterol, glicemia</li>
-                    <li>A partir dos 40: próstata, coração, pressão</li>
-                    <li>Sempre: exames de rotina, controle de peso, vacinação</li>
-                </ul>
-            </div>
-            <div class="topic">
-                <h3>Quebre o tabu, fale sobre saúde!🗣️</h3>
-                <p>Conversar sobre saúde não é fácil, mas é necessário.
-                Compartilhar experiências, buscar apoio e incentivar outros homens a cuidarem de si mesmos faz toda a diferença.</p>
-            </div>
-            <div class="topic">
-                <h3>Viva com mais qualidade de vida🌟</h3>
-                <p>Cuidar da saúde é o primeiro passo pra uma vida plena.
-                Com mais energia, disposição e bem-estar, você pode aproveitar cada momento ao máximo.</p>
-            </div>
+
+        <section class="features-grid">
+            <article class="feature-card">
+                <img src="../assets/img/prevencao.png" alt="Símbolo de prevenção com estetoscópio"
+                    class="feature-card-img" />
+                <div class="feature-card-content">
+                    <h3>Prevenção é o melhor cuidado 🩺</h3>
+                    <p>Fazer exames regulares é essencial pra detectar doenças antes que elas avancem. Hipertensão e
+                        diabetes podem ser evitadas com diagnóstico precoce.</p>
+                </div>
+            </article>
+
+            <article class="feature-card">
+                <img src="../assets/img/saudemental.png" alt="Representação de saúde mental com cérebro e coração"
+                    class="feature-card-img" />
+                <div class="feature-card-content">
+                    <h3>Saúde mental também é saúde 🧠</h3>
+                    <p>O homem moderno precisa aprender a cuidar da mente. Falar sobre sentimentos e buscar terapia não
+                        é fraqueza, é parte da vida saudável.</p>
+                </div>
+            </article>
+
+            <article class="feature-card">
+                <img src="../assets/img/exercicioalimentacao.png" alt="Halteres e alimentos saudáveis"
+                    class="feature-card-img" />
+                <div class="feature-card-content">
+                    <h3>Exercício e alimentação 🏋️</h3>
+                    <p>Cuidar do corpo é investir em qualidade de vida. Comer bem e dormir corretamente ajudam no humor,
+                        no foco e na prevenção de doenças.</p>
+                </div>
+            </article>
+
+            <article class="feature-card">
+                <img src="../assets/img/exames.png" alt="Símbolo de tubos de ensaio para exames"
+                    class="feature-card-img" />
+                <div class="feature-card-content">
+                    <h3>Exames essenciais 🧪</h3>
+                    <p>
+                        <strong>30+:</strong> Check-up geral e colesterol.<br>
+                        <strong>40+:</strong> Próstata e coração.<br>
+                        <strong>Sempre:</strong> Rotina e vacinação.
+                    </p>
+                </div>
+            </article>
+
+            <article class="feature-card">
+                <img src="../assets/img/DesempenhoeSaudeSexual.png" alt="Balões de fala indicando conversa"
+                    class="feature-card-img" />
+                <div class="feature-card-content">
+                    <h3>Saúde Sexual e Performance Masculina 🩺 </h3>
+                    <p>Não deixe dúvidas ou preocupações afetarem sua qualidade de vida. Compartilhar e buscar ajuda
+            profissional sobre desempenho e saúde sexual é o primeiro passo para o bem-estar completo.</p>
+                </div>
+            </article>
+
+            <article class="feature-card">
+                <img src="../assets/img/qualidadevida.png" alt="Pessoa meditando ou relaxando em um campo"
+                    class="feature-card-img" />
+                <div class="feature-card-content">
+                    <h3>Mais qualidade de vida 🌟</h3>
+                    <p>Cuidar da saúde é o primeiro passo pra uma vida plena. Com mais disposição, você aproveita cada
+                        momento ao máximo.</p>
+                </div>
+            </article>
         </section>
+
         <section class="dicas-rapidas">
             <h2>Dicas Rápidas para cuidar da sua saúde</h2>
             <div class="dica-conteiner">
-                <div class="dica">
-                    <h3>🍎Alimente-se bem</h3>
-                    <p>Evite excesso de gorduras e ultraprocessados.
-                    Inclua frutas, verduras e proteínas magras no prato.</p>
-                </div>
-                <div class="dica">
-                    <h3>💦Beba água todos os dias</h3>
-                    <p>O corpo precisa de hidratação constante.
-                    Beba pelo menos 2 litros de água por dia.</p>
-                </div>
-                <div class="dica">
-                    <h3>🏃Mexa-se!</h3>
-                    <p>Pratique alguma atividade física pelo menos 3x por semana.
-                    Pode ser caminhada, musculação, esportes ou o que curtir.</p>
-                </div>
-                <div class="dica">
-                    <h3>🧠Cuide da sua mente</h3>
-                    <p>Durma bem, tenha momentos de lazer e não guarde tudo pra si.
-                    Falar é um ato de coragem — e faz bem.</p>
-                </div>
-                <div class="dica">
-                    <h3>🚭Evite vícios</h3>
-                    <p>O cigarro e o excesso de álcool prejudicam coração, pulmões e desempenho físico.
-                    Busque ajuda se sentir dificuldade pra parar.</p>
-                </div>
-                <div class="dica">
-                    <h3>👨‍⚕️Vá ao médico regularmente</h3>
-                    <p>Não espere sentir dor pra procurar ajuda.
-                    Check-ups anuais salvam vidas.</p>
-                </div>
-                <div class="dica">
-                    <h3>😴Priorize o descanso</h3>
-                    <p>Durma de 7 a 9 horas por noite.
-                    O sono é fundamental pra recuperação do corpo e da mente.</p>
-                </div>
-                <div class="dica">
-                    <h3>🛡️Use proteção</h3>
-                    <p>Pratique sexo seguro.
-                    O uso de preservativos previne doenças sexualmente transmissíveis.</p>
-                </div>
+                <article class="dica">
+                    <h3>🍎 Alimente-se bem</h3>
+                    <p>Evite excesso de gorduras e ultraprocessados. Inclua frutas e verduras.</p>
+                </article>
+                <article class="dica">
+                    <h3>💦 Beba água</h3>
+                    <p>Hidratação constante é vital. Beba pelo menos 2 litros por dia.</p>
+                </article>
+                <article class="dica">
+                    <h3>🏃 Mexa-se!</h3>
+                    <p>Pratique atividade física 3x por semana. Caminhada ou esporte, o importante é mover.</p>
+                </article>
+                <article class="dica">
+                    <h3>🧠 Cuide da mente</h3>
+                    <p>Tenha momentos de lazer. Falar sobre problemas é um ato de coragem.</p>
+                </article>
+                <article class="dica">
+                    <h3>🚭 Evite vícios</h3>
+                    <p>Cigarro e álcool em excesso prejudicam o coração e o desempenho.</p>
+                </article>
+                <article class="dica">
+                    <h3>👨‍⚕️ Vá ao médico</h3>
+                    <p>Não espere a dor chegar. Check-ups anuais salvam vidas.</p>
+                </article>
+                <article class="dica">
+                    <h3>😴 Priorize o sono</h3>
+                    <p>Durma de 7 a 9 horas. O sono recupera o corpo e a mente.</p>
+                </article>
+                <article class="dica">
+                    <h3>🛡️ Use proteção</h3>
+                    <p>Sexo seguro sempre. Preservativos previnem doenças transmissíveis.</p>
+                </article>
             </div>
         </section>
+
         <section class="cta">
             <h2>Cuide-se. Você merece viver bem.</h2>
             <a href="/login" class="btn">Comece agora</a>
         </section>
     </main>
+
     <footer>
         <p>&copy; 2025 VitalMan. Todos os direitos reservados.</p>
     </footer>
 </body>
+
 </html>

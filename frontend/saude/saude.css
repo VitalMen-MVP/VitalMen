@@ -1,14 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+/* --- FONTES E CONFIGURAÇÕES GLOBAIS --- */
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
 
 :root {
-  --primary-color: #004d9a;
-  --primary-color-dark: #003366;
-  --light-color: #ffffff;
-  --dark-color: #000000;
-  --background-color: #1a1a1a;
-  --card-background: #2a2a2a;
-  --border-color: #444;
-  --black-text: #000;
+  --primary-color: #3ba2ff;
+  --primary-color-dark: #007bff;
+  --navbar-blue: #004d9a;
+  /* Adicionei a cor azul aqui */
+  --background-color: #121212;
+  --card-background: #1e1e1e;
+  --border-color: #333333;
+  --text-primary: #f5f5f5;
+  --text-secondary: #a0a0a0;
+  --shadow-color: rgba(0, 0, 0, 0.5);
 
   /* === Variáveis de Tema (Modo Claro) === */
   --page-bg: #ffffff;
@@ -20,6 +23,18 @@
   --widget-text: #222222;
   --footer-bg: #f9f9f9;
   --footer-text: #666;
+  --light-color: #ffffff;
+  --dark-color: #000;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body.dark-mode {
@@ -32,6 +47,8 @@ body.dark-mode {
   --widget-text: #ffffff;
   --footer-bg: #222;
   --footer-text: #888;
+  --text-primary: #f5f5f5;
+  --text-secondary: #a0a0a0;
 }
 
 body {
@@ -41,137 +58,181 @@ body {
   font-weight: 400;
   font-style: normal;
   background-color: var(--page-bg);
+  color: var(--page-text);
+  line-height: 1.6;
   /* USA VARIÁVEL */
   color: var(--page-text);
-  /* USA VARIÁVEL */
-  /* EFEITO: Transição suave na cor de fundo */
   transition: background-color 0.5s ease, color 0.5s ease;
-}
-/* --- NAVBAR --- */
-.navbar {
-    background-color: var(--primary-color);
-    color: var(--light-color);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 40px;
-    height: 100px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-    position: sticky; /* EFEITO: Navbar fixa no topo */
-    top: 0;
-    z-index: 1000;
-    backdrop-filter: blur(10px); /* EFEITO: Desfoque sutil no fundo (opcional) */
-    background-color: rgba(0, 77, 154, 0.9); /* EFEITO: Leve transparência */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-.logo {
-    display: flex;
-    align-items: center;
-    height: 100%;
-    padding-right: 20px;
-    margin-top: 20px;
+/* CORREÇÃO AQUI: Adicionei :not(.hero) para não aplicar margem no banner */
+main section:not(.hero) {
+  width: 90%;
+  max-width: 1200px;
+  margin: 80px auto;
+  animation: fadeIn 1s ease-out forwards;
 }
 
-.logo img {
-    height: 80px;
-    width: auto;
-    /* EFEITO: Transição suave no logo */
-    transition: transform 0.3s ease, filter 0.3s ease;
-}
-
-/* EFEITO: Logo aumenta e fica mais brilhante ao passar o mouse */
-.logo:hover img {
-    transform: scale(1.05);
-    filter: brightness(1.1);
-}
-
-.nav-links {
-    list-style: none;
-    display: flex;
-    gap: 30px;
-    margin: 0;
-    padding: 0;
-    flex-grow: 1;
-    justify-content: flex-start;
-    align-items: center;
-    height: 100%;
-}
-
-.nav-links a {
-    color: var(--light-color);
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 1.05em;
-    padding: 8px 12px;
-    border-radius: 5px;
-    position: relative; /* Necessário para o pseudo-elemento ::after */
-    transition: color 0.3s ease;
-}
-
-/* EFEITO: Linha que aparece sob o link do menu no hover */
-.nav-links a::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 2px;
-    background-color: var(--light-color);
-    bottom: -5px;
-    left: 0;
-    transform: scaleX(0); /* Começa invisível */
-    transform-origin: bottom right;
-    transition: transform 0.3s ease-out;
-}
-
-.nav-links a:hover::after {
-    transform: scaleX(1); /* Expande a linha */
-    transform-origin: bottom left;
-}
-
-/* --- HERO / BANNER PRINCIPAL --- */
+/* HERO / BANNER PRINCIPAL (Corrigido para Largura Total e Altura Fixa) */
 .hero {
-  background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.4)),
-              url("../assets/img/saude-banner.jpg") center/cover no-repeat;
-  text-align: center;
-  padding: 100px 20px;
-  color: var(--light-color);
+  /* Fundo e Efeitos */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   animation: fadeIn 1s ease-out;
+
+  /* Posicionamento e Tamanho */
+  width: 100%;
+  /* OBRIGA A LARGURA TOTAL */
+  margin: 0;
+  /* REMOVE MARGENS LATERAIS DO CONTEINER PRINCIPAL */
+  min-height: 600px;
+  /* ALTURA FIXA PARA DESKTOP */
+
+  /* Alinhamento do Conteúdo */
+  display: Left;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 200px 20px;
+
+  /* Cores */
+  color: var(--light-color);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
 }
 
 .hero h1 {
-  font-size: 2.5rem;
+  font-size: clamp(2.5rem, 5vw, 4rem);
   margin-bottom: 15px;
-  text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
+  text-shadow: 0px 4px 15px var(--shadow-color);
+  animation: slideUpFadeIn 0.8s ease-out 0.2s forwards;
+  opacity: 0;
 }
 
-.subtitulo {
-  font-size: 1.2rem;
+.hero p {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  color: #f0f0f0;
+  text-shadow: 0px 2px 10px var(--shadow-color);
+  animation: slideUpFadeIn 0.8s ease-out 0.4s forwards;
+  opacity: 0;
+}
+
+.btn {
+  display: inline-block;
+  background: var(--primary-color);
+  color: var(--text-primary);
+  padding: 14px 35px;
+  border-radius: 50px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  margin-top: 20px;
+  border: 2px solid transparent;
+  box-shadow: 0 4px 20px rgba(0, 123, 255, 0.3);
+}
+
+.hero .btn {
+  animation: slideUpFadeIn 0.8s ease-out 0.6s forwards;
+  opacity: 0;
+}
+
+.btn:hover {
+  background: transparent;
+  color: var(--primary-color);
+  border: 2px solid var(--primary-color);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 25px rgba(0, 123, 255, 0.5);
+}
+
+/* SEÇÃO DE CARDS COM IMAGEM (FEATURES) */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.feature-card.dark-mode {
+  background: var(--card-background);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px var(--shadow-color);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid var(--border-color);
+}
+
+.feature-card {
+  background: var(--card-bg);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px var(--shadow-color);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid var(--border-color);
+}
+
+.feature-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 25px var(--shadow-color);
+}
+
+.feature-card-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  filter: saturate(0.8);
+  transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.feature-card:hover .feature-card-img {
+  filter: saturate(1);
+  transform: scale(1.05);
+}
+
+.feature-card-content {
+  padding: 1.5rem;
+}
+
+.feature-card h3 {
+  color: var(--primary-color);
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-size: 1.25rem;
+}
+
+.feature-card p {
+  color: var(--text-secondary);
+  line-height: 1.5;
+  font-size: 0.95rem;
+}
+
+.feature-card.dark-mode p {
   color: var(--light-color);
-    text-shadow: 1px 1px 8px rgba(0,0,0,0.7);
+  line-height: 1.5;
+  font-size: 0.95rem;
 }
 
-/* --- CONTEÚDO PRINCIPAL --- */
+/* SEÇÃO DE CONTEÚDO PRINCIPAL */
 
 
 .content.dark-mode {
-  width: 90%;
-  max-width: 900px;
-  margin: 60px auto;
   background-color: var(--card-background);
   padding: 40px;
   border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-  animation: fadeIn 1s ease-out;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
-.content{
-  width: 90%;
-  max-width: 900px;
-  margin: 60px auto;
+.content {
   background-color: var(--card-bg);
   padding: 40px;
   border-radius: 10px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-  animation: fadeIn 1s ease-out;
 }
 
 .content h2 {
@@ -179,91 +240,71 @@ body {
   border-bottom: 2px solid var(--primary-color);
   padding-bottom: 10px;
   margin-bottom: 20px;
+  margin-top: 0;
 }
 
-/* --- TÓPICOS --- */
-.topics {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 25px;
-  width: 90%;
-  max-width: 1200px;
-  margin: 50px auto;
-}
-
-.topic.dark-mode {
-  background-color: var(--card-background);
-  padding: 25px;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
-  border: 1px solid transparent;
-  transition: all 0.3s ease;
-}
-
-.topic {
-  background-color: var(--card-bg);
-  padding: 25px;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-  border: 1px solid transparent;
-  transition: all 0.3s ease;
-}
-
-.topic:hover {
-  border-color: var(--primary-color);
-  transform: translateY(-5px);
-}
-
-.topic h3 {
-  color: var(--primary-color);
-  margin-bottom: 10px;
-}
-
-/* --- DICAS RÁPIDAS --- */
+/* DICAS RÁPIDAS */
 .dicas-rapidas.dark-mode {
   text-align: center;
   padding: 60px 20px;
-  background-color: #222;
+  background-color: var(--background-color);
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
 }
 
 .dicas-rapidas {
   text-align: center;
   padding: 60px 20px;
-  background-color: var(--widget-bg);
+  background-color: var(--page-bg);
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
 }
 
 .dicas-rapidas h2 {
   color: var(--primary-color);
-  font-size: 2rem;
-  margin-bottom: 40px;
+  font-size: 2.2rem;
+  margin-bottom: 50px;
+  position: relative;
+}
+
+.dicas-rapidas h2::after {
+  content: "";
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background-color: var(--primary-color);
+  border-radius: 2px;
 }
 
 .dica-conteiner {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
 }
 
 .dica.dark-mode {
   background-color: var(--card-background);
-  padding: 20px;
+  padding: 25px;
   border-radius: 10px;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+  box-shadow: 0 3px 10px var(--shadow-color);
   transition: transform 0.3s ease, border-color 0.3s ease;
-  border: 1px solid transparent;
+  border: 1px solid var(--border-color);
 }
 
 .dica {
   background-color: var(--card-bg);
-  padding: 20px;
+  padding: 25px;
   border-radius: 10px;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 3px 10px var(--shadow-color);
   transition: transform 0.3s ease, border-color 0.3s ease;
-  border: 1px solid transparent;
+  border: 1px solid var(--border-color);
 }
 
 .dica:hover {
-  transform: scale(1.03);
+  transform: scale(1.05);
   border-color: var(--primary-color);
 }
 
@@ -272,138 +313,187 @@ body {
   margin-bottom: 10px;
 }
 
-/* --- CHAMADA PARA AÇÃO (CTA) --- */
+.dica p {
+  color: var(--text-secondary);
+}
+
+/* CHAMADA PARA AÇÃO (CTA) */
 .cta {
   text-align: center;
-  padding: 80px 20px;
-  background: url("../assets/img/TelaQuePodeSerUsada.png")  center/cover no-repeat;
-  color: var(--light-color);
-  border-radius: 10px;
-  width: 90%;
-  max-width: 1000px;
-  margin: 60px auto;
+  padding: 100px 40px;
+  border-radius: 20px;
+  color: var(--text-primary);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(116, 115, 115, 0.5);
+  background: linear-gradient(rgba(18, 18, 18, 0.85), rgba(18, 18, 18, 0.85)),
+    url("../assets/img/Banner.png") center/cover no-repeat;
 }
 
-.cta h2 {
-  font-size: 2rem;
-  margin-bottom: 20px;
+.cta::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: inherit;
+  background-size: cover;
+  z-index: -1;
+  transition: transform 0.5s ease;
 }
 
-.btn {
-  background: var(--light-color);
-  color: var(--primary-color);
-  padding: 12px 30px;
-  border-radius: 8px;
-  font-weight: bold;
-  text-decoration: none;
-  transition: all 0.3s ease;
+.cta:hover::after {
+  transform: scale(1.05);
 }
 
-.btn:hover {
-  background: var(--primary-color-dark);
-  color: var(--light-color);
-}
-
-/* --- FOOTER --- */
+/* FOOTER */
 footer {
   text-align: center;
-  padding: 30px;
-  border-top: 2px solid var(--border-color);
-  color: var(--grey-text);
+  padding: 40px;
+  border-top: 1px solid var(--border-color);
+  color: var(--text-secondary);
   background-color: var(--card-bg);
 }
 
-/* --- ANIMAÇÕES --- */
+/* ANIMAÇÕES */
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
-/* --- 1. AJUSTES GERAIS PARA TABLETS E CELULARES (max-width: 900px) --- */
-@media (max-width: 900px) {
-    /* Reduz a largura máxima dos contêineres para dar mais espaço nas laterais */
-    .content, 
-    .topics, 
-    .cta {
-        width: 95%; /* Usa um pouco mais da largura disponível */
-    }
+@keyframes slideUpFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
+/* SCROLLBAR CUSTOMIZADA */
+::-webkit-scrollbar {
+  width: 10px;
+}
 
-/* --- 2. AJUSTES ESPECÍFICOS PARA CELULARES (max-width: 768px) --- */
+::-webkit-scrollbar-track {
+  background: var(--background-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-color);
+}
+
+/* --- RESPONSIVIDADE --- */
+
+/* Telas médias (tablets) */
+@media (max-width: 992px) {
+  .hero {
+    min-height: 70vh;
+    padding: 60px 20px;
+  }
+
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  .features-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .dica-conteiner {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .content {
+    width: 95%;
+    padding: 25px;
+  }
+
+  footer {
+    padding: 25px;
+  }
+}
+
+/* Telas pequenas (celulares) */
 @media (max-width: 768px) {
-    /* HERO: Ajusta o padding e o tamanho do texto do banner principal */
-    .hero {
-        padding: 60px 15px; /* Menos padding vertical */
-        background-size: cover;
-        background-position: center bottom;
-        background-repeat: no-repeat;
-        min-height: 400px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-    }
 
-    .hero h1 {
-        font-size: 2rem; /* Reduz o título principal (era 2.5rem) */
-    }
+  /* CORREÇÃO: Também adicionei :not(.hero) aqui para evitar margem no mobile */
+  main section:not(.hero) {
+    width: 100%;
+    margin: 40px 0;
+    padding: 0 8px;
+  }
 
-    .subtitulo {
-        font-size: 1rem; /* Reduz o subtítulo (era 1.2rem) */
-    }
+  .hero {
+    min-height: 60vh;
+    padding: 40px 15px;
+  }
 
-    /* CONTEÚDO PRINCIPAL: Ajusta o padding do box de conteúdo */
-    .content {
-        margin: 40px auto; /* Reduz o espaçamento vertical */
-        padding: 20px; /* Reduz o padding interno */
-    }
+  .hero h1 {
+    font-size: 1.8rem;
+  }
 
-    .content h2 {
-        font-size: 1.5rem; /* Título de seção menor */
-    }
-    
-    /* DICAS: Reduz o espaçamento vertical entre a seção de dicas e outras seções */
-    .dicas-rapidas {
-        padding: 40px 15px;
-    }
-    
-    .dicas-rapidas h2 {
-        font-size: 1.8rem;
-    }
-    
-    /* DICA CONTEINER: O grid já é responsivo, mas ajustamos o gap */
-    .dica-conteiner {
-        gap: 15px; 
-    }
+  .hero p {
+    font-size: 0.95rem;
+  }
 
-    /* CTA: Ajusta o padding e o tamanho do título do Call to Action */
-    .cta {
-        padding: 50px 15px;
-        margin: 40px auto;
-    }
+  .content {
+    padding: 20px 15px;
+  }
 
-    .cta h2 {
-        font-size: 1.5rem; /* Título do CTA menor (era 2rem) */
-    }
-    
-    /* FOOTER: Ajusta o padding e o tamanho da fonte */
-    footer {
-        padding: 20px 10px;
-        font-size: 0.85rem;
-    }
-}
+  .content h2 {
+    font-size: 1.6rem;
+  }
 
+  .features-grid,
+  .dica-conteiner {
+    grid-template-columns: 1fr;
+  }
 
-/* --- 3. AJUSTES PARA TELAS MUITO PEQUENAS (max-width: 480px) --- */
-@media (max-width: 480px) {
-    /* Force o grid a mostrar apenas 1 coluna para melhor leitura */
-    .topics {
-        grid-template-columns: 1fr;
-    }
-    
-    .dica-conteiner {
-        grid-template-columns: 1fr;
-    }
+  .feature-card-content {
+    padding: 1.2rem;
+  }
+
+  .cta {
+    padding: 60px 20px;
+    font-size: 0.95rem;
+  }
+
+  .cta h2 {
+    font-size: 1.6rem;
+  }
+
+  .btn {
+    padding: 12px 28px;
+    font-size: 0.9rem;
+  }
+
+  .dica-conteiner {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+
+  footer {
+    padding: 20px 15px;
+    font-size: 0.8rem;
+  }
 }

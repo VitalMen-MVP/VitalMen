@@ -61,7 +61,7 @@ body {
 
 /* Listas estilo Trello */
 .list {
-  background-color: var(--card-bg);
+  background: var(--card-bg);
   border-radius: 10px;
   border: 1px solid var(--border);
   width: 280px;
@@ -88,11 +88,6 @@ body {
   font-weight: bold;
   font-size: 1.1em;
   outline: none;
-  color: var(--page-text);
-}
-
-body.dark-mode .list-title {
-  color: var(--page-bg);
 }
 
 .list-actions {
@@ -280,63 +275,4 @@ body.dark-mode .list-title {
   background: var(--footer-bg);
   color: var(--footer-text);
   padding: 15px;
-}
-
-/* Responsividade: listas lado a lado com scroll horizontal no mobile */
-@media (max-width: 768px) {
-  .board-container {
-    padding: 8px 0 8px 8px;
-    overflow-x: auto;
-    overflow-y: hidden;
-    -webkit-overflow-scrolling: touch;
-  }
-  .board {
-    flex-direction: row;
-    flex-wrap: nowrap;
-    gap: 12px;
-    min-width: 600px;
-    width: max-content;
-  }
-  .list {
-    min-width: 240px;
-    max-width: 90vw;
-    width: 80vw;
-    margin-right: 8px;
-    padding: 8px;
-  }
-}
-/* --- NOVOS ESTILOS PARA O RADIX SORT --- */
-
-/* Input de prioridade dentro da tarefa */
-.task-priority {
-  width: 45px;
-  padding: 4px;
-  border: 1px solid var(--border-color);
-  border-radius: 4px;
-  background: var(--page-bg);
-  color: var(--page-text);
-  margin-right: 10px;
-  text-align: center;
-  font-size: 0.9em;
-}
-
-/* Botão de ordenar na lista */
-.sort-btn {
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 1.1em;
-  transition: transform 0.2s;
-}
-
-.sort-btn:hover {
-  transform: scale(1.2);
-}
-
-.sort-btn:active {
-  transform: scale(0.9);
-}
-/* Garante que o body não tenha rolagem horizontal indesejada */
-body {
-  overflow-x: hidden;
 }
