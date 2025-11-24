@@ -11,12 +11,22 @@
     <link rel="stylesheet" href="/config/config.css" type="text/css" />
     <link rel="stylesheet" href="/override/navbar.css" type="text/css" />
     <link rel="stylesheet" href="/posts/style.css" type="text/css" />
-    <link rel="stylesheet" href="style.css" />
+    
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="navbar.css">
+    <link rel="stylesheet" href="index.css">
 
+    
+    
     <!-- Scripts -->
     <script defer src="/config/config.js"></script>
     <script defer src="/override/navbar.js"></script>
     <script defer src="/index/index.js"></script>
+    
+    <script src="index.js"></script>
+   <script src="navbar.js"></script>
+
+
 </head>
 <body>
 
@@ -43,15 +53,14 @@
         >
             🌙
         </button>
-        <a
-                href="/login"
-                id="loginBtn"
-                class="login-button"
-                style="display: none"
-        >LOGIN</a
-        >
+      <a href="/login" 
+      id="loginBtn" 
+      class="login-button"
+       style="display:
+        nome;">LOGIN</a>
     </div>
 </nav>
+
 
 <main>
     <article>
@@ -130,6 +139,20 @@
             </p>
         </section>
 
+
+ <h1>Comentários</h1>
+
+    <section id="comments">
+   <link rel="stylesheet" href="comments.css">
+    <h3>Comentários</h3>
+
+    <div id="comments-list"></div>
+
+    <h4>Adicionar Comentário</h4>
+    <input id="username" placeholder="Seu nome" />
+    <textarea id="commentText" placeholder="Escreva seu comentário..."></textarea>
+    <button onclick="sendComment()">Enviar</button>
+</section>    
         <footer>
             <hr />
             <p>&copy; 2025 VitalMan. Todos os direitos reservados.</p>

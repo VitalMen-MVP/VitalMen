@@ -1,8 +1,6 @@
 body {
     font-family: Arial, Helvetica, sans-serif;
     line-height: 1.7;
-    /*background-color: #fafafa;*/
-    color: #222;
     margin: 0;
     padding: 0;
 }
@@ -12,7 +10,6 @@ article {
     max-width: 760px;        
     margin: 40px auto;       
     padding: 0 20px;
-    background: #fff;
 }
 
 
@@ -50,7 +47,7 @@ section h2 {
 section h3 {
     font-size: 1.2rem;
     margin-top: 25px;
-    color: #222;
+
 }
 
 p, li {
@@ -67,4 +64,167 @@ footer {
     padding: 20px;
     font-size: .9rem;
     color: #666;
+}
+
+
+
+
+
+
+
+
+/* 🎨 VARIÁVEIS (MODO CLARO - padrão) */
+:root {
+    --bg: #ffffff;
+    --text: #222;
+    --card: #f4f4f4;
+    --border: #ddd;
+    --grey: #555;
+    --primary: #004d9a;
+    --primary-dark: #003366;
+    --footer-bg: #f9f9f9;
+    --footer-text: #666;
+}
+
+/* 🌙 VARIÁVEIS (MODO ESCURO) */
+body.dark-mode {
+    --bg: #1a1a1a;
+    --text: #f0f0f0;
+    --card: #2a2a2a;
+    --border: #444;
+    --grey: #b0b0b0;
+    --footer-bg: #222;
+    --footer-text: #888;
+}
+
+/* ESTILO GLOBAL */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    transition: 0.3s ease;
+}
+
+a {
+    color: var(--primary);
+}
+a:hover {
+    color: var(--primary-dark);
+}
+
+
+.card,
+.post-card,
+form,
+.comment-item {
+    background: var(--card);
+    color: var(--text);
+    border: 1px solid var(--border);
+    transition: 0.3s;
+}
+
+.footer {
+    background: var(--footer-bg);
+    color: var(--footer-text);
+    border-top: 1px solid var(--border);
+    text-align: center;
+    padding: 20px;
+}
+
+
+.theme-toggle-button {
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--text);
+}
+
+
+
+  
+
+/*  VARIÁVEIS (MODO CLARO) */
+:root {
+    --bg: #f5f5f5;
+    --card: #ffffff;
+    --text: #222;
+    --primary: #004d9a;
+    --primary-dark: #003366;
+    --border-accent: #004d9a;
+}
+
+/* 🌙 VARIÁVEIS (MODO ESCURO) */
+body.dark-mode {
+    --bg: #1a1a1a;
+    --card: #2a2a2a;
+    --text: #f0f0f0;
+    --primary: #4da3ff;
+    --primary-dark: #1d6bb5;
+    --border-accent: #4da3ff;
+}
+
+/* 🌍 BASE */
+body {
+    font-family: Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    padding: 20px;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* LISTA */
+#comments-list {
+    margin-top: 20px;
+    padding: 0;
+    list-style: none;
+}
+
+/* ITEM DO COMENTÁRIO */
+.comment-item {
+    background: var(--card);
+    margin-bottom: 10px;
+    padding: 10px 15px;
+    border-radius: 5px;
+    border-left: 4px solid var(--border-accent);
+    transition: 0.3s;
+}
+
+.comment-author {
+    font-weight: bold;
+    color: var(--primary);
+}
+
+/* FORMULÁRIO */
+form {
+    background: var(--card);
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    transition: 0.3s;
+}
+
+/* INPUTS */
+input, textarea, button {
+    width: 100%;
+    margin-top: 10px;
+    padding: 8px;
+    background: var(--card);
+    color: var(--text);
+    border: 1px solid var(--border-accent);
+    border-radius: 4px;
+}
+
+/* BOTÕES */
+button {
+    background: var(--primary);
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: var(--primary-dark);
 }

@@ -27,3 +27,64 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+ // ===== GET COMMENTS =====
+        async function loadComments() {
+            const response = await fetch("/comments/");
+            const data = await response.json();
+
+            const list = document.getElementById("comments-list");
+            list.innerHTML = "";
+
+            data.forEach(comment => {
+                const li = document.createElement("li");
+                li.className = "comment-item";
+                li.innerHTML = `
+                    <span class="comment-author">${comment.author}</span><br>
+                    ${comment.content}<br>
+                    <small>${new Date(comment.created_at).toLocaleString()}</small>
+                `;
+                list.appendChild(li);
+            });
+        }
+
+        // ===== CREATE COMMENT =====
+        const form = document.getElementById("comment-form");
+        form.addEventListener("submit", async (e) => {
+            e.preventDefault();
+
+            const author = document.getElementById("author").value;
+            const content = document.getElementById("content").value;
+
+            await fetch("/comments/", {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify({ author, content })
+            });
+
+            form.reset();
+            loadComments();
+        });
+
+        // Carrega ao abrir a página
+        loadComments();
+
+
+
+      
+      
+      
+      
+      

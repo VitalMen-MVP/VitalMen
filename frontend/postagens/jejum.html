@@ -1,33 +1,59 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vitamen Idea | Minha Jornada de Foco</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VitalMen Idea | Jejum Intermitente: Funciona Mesmo para Homens?</title>
 
-    <link rel="icon" href="../../assets/img/LogoDaEmpresa1.png" type="image/png"/>
-    <link rel="stylesheet" href="/config/config.css" type="text/css"/>
-    <link rel="stylesheet" href="/override/navbar.css" type="text/css"/>
-    <link rel="stylesheet" href="/posts/style.css" type="text/css"/>
+    <link rel="icon" href="../assets/img/LogoDaEmpresa1.png" type="image/png" />
 
+    <!-- CSS Global -->
+    <link rel="stylesheet" href="/config/config.css" type="text/css" />
+    <link rel="stylesheet" href="/override/navbar.css" type="text/css" />
+    <link rel="stylesheet" href="/posts/style.css" type="text/css" />
+    <!-- Scripts -->
     <script defer src="/config/config.js"></script>
     <script defer src="/override/navbar.js"></script>
     <script defer src="/index/index.js"></script>
 </head>
 <body>
+
 <nav class="navbar" id="navbar">
     <a href="/" class="logo">
         <img src="../../assets/img/LogoDaEmpresa1.png" alt="VitalMen Idea Logo" />
     </a>
-    <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false">☰</button>
+    <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false">
+        ☰
+    </button>
     <ul class="nav-links">
-        <li><a href="/usuario">PERFIL</a></li>
-        <li><a href="/todolist">SUAS TAREFAS</a></li>
-        <li><a href="/config" aria-current="page">CONFIGURAÇÕES</a></li>
+        <li><a href="/saude">SAÚDE</a></li>
+        <li><a href="/exercicios">EXERCÍCIOS</a></li>
+        <li><a href="/nutricao">NUTRIÇÃO</a></li>
+        <li><a href="/mentalidade">MENTALIDADE</a></li>
+        <li><a href="/sobrenos">SOBRE NÓS</a></li>
+        <li><a href="/contato">CONTATO</a></li>
     </ul>
-    <button id="theme-toggle" class="theme-toggle-button" aria-label="Alternar tema">🌙</button>
+    <div class="navbar-right">
+        <button
+                id="theme-toggle"
+                class="theme-toggle-button"
+                aria-label="Alternar tema"
+        >
+            🌙
+        </button>
+        <a
+                href="/login"
+                id="loginBtn"
+                class="login-button"
+                style="display: none"
+        >LOGIN</a
+        >
+    </div>
 </nav>
 
+
+
+<main>
 <article>
     <header>
         <h1>Jejum Intermitente: Funciona Mesmo para Homens?</h1>
@@ -121,11 +147,26 @@
         <p>O jejum intermitente pode sim funcionar muito bem para homens — seja para melhorar composição corporal,
             foco, disciplina ou até saúde hormonal. Porém, não é uma solução mágica e deve ser ajustado à rotina e aos objetivos individuais.</p>
     </section>
+<section>
+   <h1>Comentários</h1>
 
-    <footer>
-        <hr>
-        <p>&copy; 2025 VitalMan. Todos os direitos reservados.</p>
-    </footer>
-</article>
+    <section id="comments">
+   <link rel="stylesheet" href="comments.css">
+    <h3>Comentários</h3>
+
+    <div id="comments-list"></div>
+
+    <h4>Adicionar Comentário</h4>
+    <input id="username" placeholder="Seu nome" />
+    <textarea id="commentText" placeholder="Escreva seu comentário..."></textarea>
+    <button onclick="sendComment()">Enviar</button>
+</section>    
+        <footer>
+            <hr />
+            <p>&copy; 2025 VitalMan. Todos os direitos reservados.</p>
+        </footer>
+    </article>
+</main>
+
 </body>
 </html>
