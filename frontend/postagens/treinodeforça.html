@@ -1,55 +1,43 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
+
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>VitalMen Idea | Treino de Força: O Pilar da Saúde Masculina na Maturidade</title>
-
-    <link rel="icon" href="../assets/img/LogoDaEmpresa1.png" type="image/png" />
-
-    <!-- CSS Global -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vitamen Idea | Treino de Força: O Pilar da Saúde Masculina na Maturidade</title>
+  <link rel="icon" href="../assets/img/LogoDaEmpresa1.png" type="image/png" />
+  
+  
+  <!-- CSS Global -->
     <link rel="stylesheet" href="/config/config.css" type="text/css" />
     <link rel="stylesheet" href="/override/navbar.css" type="text/css" />
     <link rel="stylesheet" href="/posts/style.css" type="text/css" />
+ 
     <!-- Scripts -->
     <script defer src="/config/config.js"></script>
     <script defer src="/override/navbar.js"></script>
     <script defer src="/index/index.js"></script>
 </head>
-<body>
 
-<nav class="navbar" id="navbar">
+<body>
+  <nav class="navbar" id="navbar">
     <a href="/" class="logo">
-        <img src="../../assets/img/LogoDaEmpresa1.png" alt="VitalMen Idea Logo" />
+      <img src="../assets/img/LogoDaEmpresa1.png" alt="VitalMen Idea Logo" />
     </a>
     <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false">
-        ☰
+      ☰
     </button>
     <ul class="nav-links">
-        <li><a href="/saude">SAÚDE</a></li>
-        <li><a href="/exercicios">EXERCÍCIOS</a></li>
-        <li><a href="/nutricao">NUTRIÇÃO</a></li>
-        <li><a href="/mentalidade">MENTALIDADE</a></li>
-        <li><a href="/sobrenos">SOBRE NÓS</a></li>
-        <li><a href="/contato">CONTATO</a></li>
+      <li><a href="/saude">SAÚDE</a></li>
+      <li><a href="/exercicios">EXERCÍCIOS</a></li>
+      <li><a href="/nutricao">NUTRIÇÃO</a></li>
+      <li><a href="/mentalidade">MENTALIDADE</a></li>
+      <li><a href="/sobrenos">SOBRE NÓS</a></li>
+      <li><a href="/contato">CONTATO</a></li>
     </ul>
-    <div class="navbar-right">
-        <button
-                id="theme-toggle"
-                class="theme-toggle-button"
-                aria-label="Alternar tema"
-        >
-            🌙
-        </button>
-        <a
-                href="/login"
-                id="loginBtn"
-                class="login-button"
-                style="display: none"
-        >LOGIN</a
-        >
-    </div>
-</nav>
+    <button id="theme-toggle" class="theme-toggle-button" aria-label="Alternar tema">🌙</button>
+    <a href="/login" id="loginBtn" class="login-button" style="display: none;">LOGIN</a>
+  </nav>
 
 
 <main>
@@ -58,7 +46,7 @@
         <header>
             <h1>Treino de Força: O Pilar da Saúde Masculina na Maturidade</h1>
             <p><em>A importância de manter a massa muscular e densidade óssea após os 40 anos.</em></p>
-            <p><strong>Por Equipe Vitamen Idea | 25 de Setembro, 2025</strong></p>
+            <p>Por Equipe Vitamen Idea | 25 de Setembro, 2025</p>
             <hr>
         </header>
 
@@ -172,18 +160,21 @@
 </section>
 
 <section>
-<h1>Comentários</h1>
 
-    <section id="comments">
-   <link rel="stylesheet" href="comments.css">
-    <h3>Comentários</h3>
 
-    <div id="comments-list"></div>
+   <div class="comments-container">
 
-    <h4>Adicionar Comentário</h4>
-    <input id="username" placeholder="Seu nome" />
-    <textarea id="commentText" placeholder="Escreva seu comentário..."></textarea>
-    <button onclick="sendComment()">Enviar</button>
+    <h2 class="comments-title">Comentários</h2>
+
+    <form id="comment-form">
+        <input type="text" id="author" placeholder="Seu nome">
+        <textarea id="message" placeholder="Seu comentário"></textarea>
+        <button type="submit">Enviar</button>
+    </form>
+
+    <ul id="comments-list"></ul>
+
+</div>
 </section>    
         <footer>
             <hr />
