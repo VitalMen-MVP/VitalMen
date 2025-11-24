@@ -9,14 +9,16 @@
   
   
   <!-- CSS Global -->
-    <link rel="stylesheet" href="/config/config.css" type="text/css" />
+
     <link rel="stylesheet" href="/override/navbar.css" type="text/css" />
     <link rel="stylesheet" href="/posts/style.css" type="text/css" />
- 
+   <link rel="stylesheet" href="index.css">
+    
     <!-- Scripts -->
-    <script defer src="/config/config.js"></script>
     <script defer src="/override/navbar.js"></script>
     <script defer src="/index/index.js"></script>
+
+
 </head>
 
 <body>
@@ -151,30 +153,26 @@
                 Com treino consistente, alimentação adequada e descanso de qualidade, é possível construir um corpo mais forte, 
                 saudável e resistente do que muitos homens têm aos 20.
             </p>
-        </section>
-
-        <footer>
-            <hr>
-            <p>&copy; 2025 Vitamen Idea. Todos os direitos reservados.</p>
-        </footer>
-</section>
-
+    
 <section>
 
 
-   <div class="comments-container">
 
+    <section id="comments">
+ <div class="comments-container">
     <h2 class="comments-title">Comentários</h2>
 
     <form id="comment-form">
-        <input type="text" id="author" placeholder="Seu nome">
-        <textarea id="message" placeholder="Seu comentário"></textarea>
+        <input type="text" id="author" placeholder="Seu nome" required>
+        <textarea id="message" placeholder="Seu comentário" required></textarea>
         <button type="submit">Enviar</button>
     </form>
 
     <ul id="comments-list"></ul>
-
 </div>
+
+
+
 </section>    
         <footer>
             <hr />

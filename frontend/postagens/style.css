@@ -1,5 +1,5 @@
 /* ----------------------------------------------------
-   SISTEMA DE TEMA (CLARO/ESCURO)
+   SISTEMA DE TEMA (CLARO / ESCURO)
 ---------------------------------------------------- */
 
 :root {
@@ -15,15 +15,22 @@
     --grey-text: #555;
     --divider: #ddd;
     --highlight: #0000ff;
+
+    /* Variáveis usadas na área de comentários */
+    --card-bg: #f5f5f5;
+    --border-color: #ccc;
 }
 
 [data-theme="dark"] {
     --page-bg: #0d1117;
     --page-text: #e6e6e6;
 
-    --grey-text: #aaaaaa;
+    --grey-text: #b5b5b5;
     --divider: #333;
-    --highlight: #4a6cff; 
+    --highlight: #4a6cff;
+
+    --card-bg: #1a1f24;
+    --border-color: #444;
 }
 
 /* ----------------------------------------------------
@@ -109,9 +116,7 @@ ul {
     margin-left: 25px;
 }
 
-/* ----------------------------------------------------
-   RODAPÉ
----------------------------------------------------- */
+
 
 footer {
     text-align: center;
@@ -122,95 +127,58 @@ footer {
 
 
 
-
-
-
-/* ===========================================================
-   ÁREA DE COMENTÁRIOS – CSS TOTALMENTE ISOLADO
-   Não altera nada fora de .comments-container
-=========================================================== */
-
-.comments-container {
+/* Reset total APENAS dentro da área */
+.comments-container * {
+    all: unset;
+    box-sizing: border-box;
     font-family: Arial, sans-serif;
+}
+
+/* Container */
+.comments-container {
     background: var(--card-bg);
-    /* usa fundo do tema */
-    padding: 20px;
-    border-radius: 10px;
-    margin-top: 40px;
-    transition: background-color 0.5s ease, color 0.5s ease;
-}
-
-/* Título */
-.comments-container .comments-title {
-    font-size: 1.4rem;
-    font-weight: bold;
-    margin-bottom: 15px;
-    color: var(--primary-color);
-}
-
-/* Lista de comentários */
-.comments-container #comments-list {
-    margin-top: 20px;
-    padding: 0;
-    list-style: none;
-}
-
-/* Cada comentário */
-.comments-container .comment-item {
-    background: var(--card-bg);
-    margin-bottom: 12px;
-    padding: 12px 15px;
-    border-radius: 6px;
-    border-left: 4px solid var(--primary-color);
     color: var(--page-text);
-    transition: background-color 0.5s ease, color 0.5s ease;
+    padding: 20px;
+    border-radius: 12px;
+    margin-top: 40px;
+    width: 100%;
+    max-width: 700px;
+    transition: background 0.3s ease, color 0.3s ease;
 }
 
-/* Nome do autor */
-.comments-container .comment-author {
+/* Labels */
+.comments-container label {
+    font-size: 15px;
     font-weight: bold;
-    color: var(--primary-color);
-    margin-bottom: 5px;
+    margin: 10px 0 5px 0;
     display: block;
 }
 
-/* Formulário */
-.comments-container form {
-    background: var(--card-bg);
-    padding: 15px;
-    border-radius: 6px;
-    margin-bottom: 25px;
-    transition: background-color 0.5s ease, color 0.5s ease;
-}
-
-/* Inputs – totalmente isolados */
-.comments-container input,
-.comments-container textarea,
-.comments-container button {
-    width: 100%;
-    margin-top: 10px;
-    padding: 10px;
-    box-sizing: border-box;
-    font-size: 1rem;
-    border-radius: 5px;
-}
-
-/* Campos de texto */
+/* Inputs & Textarea */
 .comments-container input,
 .comments-container textarea {
-    background: var(--page-bg);
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
     border: 1px solid var(--border-color);
+    background: var(--page-bg);
     color: var(--page-text);
-    transition: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease;
+    font-size: 15px;
+    margin-bottom: 12px;
+    transition: background 0.3s ease, border 0.3s ease, color 0.3s ease;
 }
 
 /* Botão */
 .comments-container button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
     background: var(--primary-color);
     color: var(--light-color);
-    border: none;
     cursor: pointer;
-    font-weight: bold;
     transition: background 0.3s ease;
 }
 
@@ -218,24 +186,32 @@ footer {
     background: var(--primary-color-dark);
 }
 
-/* ===========================================================
-   SUPORTE A MODO ESCURO (usa body.dark-mode)
-=========================================================== */
-
-body.dark-mode .comments-container {
-    background: var(--card-bg);
+/* Lista */
+.comments-container ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
 }
 
-body.dark-mode .comments-container .comment-item,
-body.dark-mode .comments-container form {
+/* Comentário */
+.comments-container li {
     background: var(--card-bg);
-    color: var(--page-text);
-    border-color: var(--border-color);
-}
-
-body.dark-mode .comments-container input,
-body.dark-mode .comments-container textarea {
-    background: #1e1e1e; /* combina com seu dark mode */
     border: 1px solid var(--border-color);
-    color: var(--page-text);
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    transition: background 0.3s ease, border 0.3s ease;
+}
+
+/* Autor e texto */
+.comments-container .author {
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-bottom: 6px;
+   border: var(--dark-color);
+
+}
+
+.comments-container .text {
+    font-size: 14px;
 }
