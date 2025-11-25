@@ -46,6 +46,8 @@ document.addEventListener("DOMContentLoaded", () => {
   });
   const senhaInput = document.getElementById("password");
   const toggleSenha = document.getElementById("toggleSenha");
+  const confSenhaInput = document.getElementById("confirmpassword");
+  const toggleConfSenha = document.getElementById("toggleConfSenha");
 
   // Mostrar/ocultar botão de ver senha conforme digitação
   senhaInput.addEventListener("input", function () {
@@ -68,6 +70,30 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
       senhaInput.type = "password";
       toggleSenha.textContent = "👁️"; // Ícone para "ocultar"
+    }
+  });
+
+  // Mostrar/ocultar botão de ver senha conforme digitação
+  confSenhaInput.addEventListener("input", function () {
+    if (confSenhaInput.value.length > 0) {
+      toggleConfSenha.style.display = "block";
+    } else {
+      toggleConfSenha.style.display = "none";
+      confSenhaInput.type = "password";
+      toggleConfSenha.textContent = "👁️";
+    }
+  });
+
+  // Toggle password visibility
+  toggleConfSenha.style.display = "none"; // Inicialmente oculto
+  
+  toggleConfSenha.addEventListener("click", function () {
+    if (confSenhaInput.type === "password") {
+      confSenhaInput.type = "text";
+      toggleConfSenha.textContent = "🙈"; // Ícone diferente para "mostrar"
+    } else {
+      confSenhaInput.type = "password";
+      toggleConfSenha.textContent = "👁️"; // Ícone para "ocultar"
     }
   });
 });

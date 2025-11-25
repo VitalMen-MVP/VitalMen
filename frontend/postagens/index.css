@@ -70,7 +70,6 @@ a:hover {
 }
 
 .navbar {
-    background-color: var(--primary-color);
     color: var(--light-color);
     display: flex;
     align-items: center;
@@ -84,7 +83,6 @@ a:hover {
     z-index: 1000;
     backdrop-filter: blur(10px);
     /* EFEITO: Desfoque sutil no fundo (opcional) */
-    background-color: rgba(0, 77, 154, 0.9);
     /* EFEITO: Leve transparência */
 }
 

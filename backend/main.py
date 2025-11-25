@@ -2,9 +2,9 @@ import os
 from flask import Flask, send_from_directory, render_template_string
 from flask_cors import CORS
 
-from controllers import post_controller, tarefa_controller, user_controller, listas_controller
-from database.db_config import DATABASE_URL
-from models import db
+from .controllers import post_controller, tarefa_controller, user_controller, listas_controller
+from .database.db_config import DATABASE_URL
+from .models import db
 
 
 app = Flask(__name__)

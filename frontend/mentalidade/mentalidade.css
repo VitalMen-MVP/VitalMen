@@ -4,8 +4,7 @@
 :root {
   --primary-color: #3ba2ff;
   --primary-color-dark: #007bff;
-  --navbar-blue: #004d9a;
-  /* Adicionei a cor azul aqui */
+  --navbar-blue: #004d9a; /* Adicionei a cor azul aqui */
   --background-color: #121212;
   --card-background: #1e1e1e;
   --border-color: #333333;
@@ -37,6 +36,7 @@ html {
   scroll-behavior: smooth;
 }
 
+
 body.dark-mode {
   --page-bg: #1a1a1a;
   --page-text: #f0f0f0;
@@ -47,9 +47,8 @@ body.dark-mode {
   --widget-text: #ffffff;
   --footer-bg: #222;
   --footer-text: #888;
-  --text-primary: #f5f5f5;
-  --text-secondary: #a0a0a0;
 }
+
 
 body {
   margin: 0;
@@ -67,41 +66,62 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* CORREÇÃO AQUI: Adicionei :not(.hero) para não aplicar margem no banner */
-main section:not(.hero) {
+
+main section {
   width: 90%;
   max-width: 1200px;
   margin: 80px auto;
   animation: fadeIn 1s ease-out forwards;
 }
 
-/* HERO / BANNER PRINCIPAL (Corrigido para Largura Total e Altura Fixa) */
+
+/* HERO / BANNER PRINCIPAL */
 .hero {
-  /* Fundo e Efeitos */
-  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.4)), url(../assets/img/saude-banner.jpg) center / cover no-repeat;
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  position: relative;
   background-size: cover;
   background-position: center;
+  padding: 0 20px;
+  overflow: hidden;
+  /* Garante que a imagem de fundo cubra toda a área */
+  background-size: cover;
+  /* Centraliza o foco da imagem */
+  background-position: center center;
   background-repeat: no-repeat;
-  animation: fadeIn 1s ease-out;
 
-  /* Posicionamento e Tamanho */
-  width: 100%;
-  /* OBRIGA A LARGURA TOTAL */
-  margin: 0;
-  /* REMOVE MARGENS LATERAIS DO CONTEINER PRINCIPAL */
-  min-height: 600px;
-  /* ALTURA FIXA PARA DESKTOP */
+  /* Altura Mínima: Garante um impacto visual */
+  min-height: 80vh;
 
-  /* Alinhamento do Conteúdo */
+  color: var(--text-primary); /* */
+  text-align: center;
+  padding: 80px 20px;
+
+  /* Configurações para centralizar o texto (título/subtítulo) */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  text-align: center;
-  padding: 100px 20px;
+}
 
-  /* Cores */
-  color: var(--light-color);
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.8) 0%,
+    rgba(0, 0, 0, 0.2) 60%,
+    rgba(0, 0, 0, 0.8) 100%
+  );
+  z-index: 1;
 }
 
 .hero-content {
@@ -111,11 +131,12 @@ main section:not(.hero) {
 }
 
 .hero h1 {
-  font-size: clamp(2.5rem, 5vw, 4rem);
   margin-bottom: 15px;
   text-shadow: 0px 4px 15px var(--shadow-color);
   animation: slideUpFadeIn 0.8s ease-out 0.2s forwards;
   opacity: 0;
+  font-size: 3rem; /* Tamanho do título no desktop */
+  margin-bottom: 0.5rem;
 }
 
 .hero p {
@@ -160,8 +181,8 @@ main section:not(.hero) {
   gap: 2rem;
 }
 
-.feature-card.dark-mode {
-  background: var(--card-background);
+.feature-card {
+  background: var(--card-bg);
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 4px 12px var(--shadow-color);
@@ -169,7 +190,7 @@ main section:not(.hero) {
   border: 1px solid var(--border-color);
 }
 
-.feature-card {
+body.dark-mode .feature-card {
   background: var(--card-bg);
   border-radius: 16px;
   overflow: hidden;
@@ -213,23 +234,21 @@ main section:not(.hero) {
   font-size: 0.95rem;
 }
 
-.feature-card.dark-mode p {
-  color: var(--light-color);
+body.dark-mode .feature-card p {
+  color: var(--text-secondary);
   line-height: 1.5;
   font-size: 0.95rem;
 }
 
 /* SEÇÃO DE CONTEÚDO PRINCIPAL */
-
-
-.content.dark-mode {
-  background-color: var(--card-background);
+.content {
+  background-color: var(--card-bg);
   padding: 40px;
   border-radius: 10px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
-.content {
+.content.dark-mode {
   background-color: var(--card-bg);
   padding: 40px;
   border-radius: 10px;
@@ -244,19 +263,25 @@ main section:not(.hero) {
   margin-top: 0;
 }
 
+.content p {
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
 /* DICAS RÁPIDAS */
-.dicas-rapidas.dark-mode {
+.dicas-rapidas {
   text-align: center;
   padding: 60px 20px;
-  background-color: var(--background-color);
+  background-color: var(--card-bg);
   border-top: 1px solid var(--border-color);
   border-bottom: 1px solid var(--border-color);
 }
 
-.dicas-rapidas {
+.dicas-rapidas.dark-mode {
   text-align: center;
   padding: 60px 20px;
-  background-color: var(--page-bg);
+  background-color: var(--card-bg);
   border-top: 1px solid var(--border-color);
   border-bottom: 1px solid var(--border-color);
 }
@@ -272,12 +297,12 @@ main section:not(.hero) {
   content: "";
   position: absolute;
   bottom: -15px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 60px;
+  left: 0;
+  width: 100%;
   height: 3px;
   background-color: var(--primary-color);
   border-radius: 2px;
+  transform: none;
 }
 
 .dica-conteiner {
@@ -286,8 +311,8 @@ main section:not(.hero) {
   gap: 25px;
 }
 
-.dica.dark-mode {
-  background-color: var(--card-background);
+.dica {
+  background-color: var(--card-bg);
   padding: 25px;
   border-radius: 10px;
   box-shadow: 0 3px 10px var(--shadow-color);
@@ -295,7 +320,7 @@ main section:not(.hero) {
   border: 1px solid var(--border-color);
 }
 
-.dica {
+.dica.dark-mode {
   background-color: var(--card-bg);
   padding: 25px;
   border-radius: 10px;
@@ -322,13 +347,13 @@ main section:not(.hero) {
 .cta {
   text-align: center;
   padding: 100px 40px;
-  border-radius: 20px;
+  border-radius: 2%;
   color: var(--text-primary);
   position: relative;
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 10% 30% rgba(0, 0, 0, 0.5);
   background: linear-gradient(rgba(18, 18, 18, 0.85), rgba(18, 18, 18, 0.85)),
-    url("../assets/img/Banner.png") center/cover no-repeat;
+    url("../assets/img/TrabalheAMente.jpg") center/cover no-repeat;
 }
 
 .cta::after {
@@ -351,7 +376,7 @@ main section:not(.hero) {
 /* FOOTER */
 footer {
   text-align: center;
-  padding: 40px;
+  padding: 20px 10px;
   border-top: 1px solid var(--border-color);
   color: var(--text-secondary);
   background-color: var(--card-bg);
@@ -362,7 +387,6 @@ footer {
   from {
     opacity: 0;
   }
-
   to {
     opacity: 1;
   }
@@ -373,7 +397,6 @@ footer {
     opacity: 0;
     transform: translateY(40px);
   }
-
   to {
     opacity: 1;
     transform: translateY(0);
@@ -382,119 +405,87 @@ footer {
 
 /* SCROLLBAR CUSTOMIZADA */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 10%;
 }
-
 ::-webkit-scrollbar-track {
   background: var(--background-color);
 }
-
 ::-webkit-scrollbar-thumb {
   background: var(--border-color);
-  border-radius: 10px;
+  border-radius: 10%;
 }
-
 ::-webkit-scrollbar-thumb:hover {
   background: var(--primary-color);
 }
 
-/* --- RESPONSIVIDADE --- */
-
-/* Telas médias (tablets) */
+/* --- REGRA DE RESPONSIVIDADE: TELAS MÉDIAS (TABLETS: max-width: 992px) --- */
 @media (max-width: 992px) {
+  /* Banner */
   .hero {
-    min-height: 70vh;
-    padding: 60px 20px;
+    min-height: 65vh;
   }
 
-  .hero h1 {
-    font-size: 2.2rem;
+  /* Conteúdo Principal */
+  main section {
+    width: 95%; /* Usa mais da largura em tablets */
   }
 
-  .hero p {
-    font-size: 1rem;
-  }
-
-  .features-grid {
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1.5rem;
-  }
-
+  /* Grid de Dicas: Mantém 2 colunas em tablets, antes de colapsar */
   .dica-conteiner {
     grid-template-columns: 1fr 1fr;
   }
 
-  .content {
-    width: 95%;
-    padding: 25px;
-  }
-
-  footer {
-    padding: 25px;
+  /* CTA: Ajusta o padding */
+  .cta {
+    padding: 60px 30px;
   }
 }
 
-/* Telas pequenas (celulares) */
+/* --- REGRA DE RESPONSIVIDADE: TELAS PEQUENAS (CELULARES: max-width: 768px) --- */
 @media (max-width: 768px) {
-
-  /* CORREÇÃO: Também adicionei :not(.hero) aqui para evitar margem no mobile */
-  main section:not(.hero) {
-    width: 100%;
-    margin: 40px 0;
-    padding: 0 8px;
-  }
-
+  /* BANNER: Ajusta Altura, Padding e Tamanho da Fonte */
   .hero {
-    min-height: 60vh;
+    min-height: 50vh;
     padding: 40px 15px;
   }
 
   .hero h1 {
-    font-size: 1.8rem;
+    font-size: 2rem; /* Reduz o título principal */
   }
 
-  .hero p {
-    font-size: 0.95rem;
-  }
-
-  .content {
-    padding: 20px 15px;
+  /* CONTEÚDO: Reduz o espaçamento e títulos */
+  .intro p {
+    font-size: 1em;
   }
 
   .content h2 {
-    font-size: 1.6rem;
+    font-size: 1.6rem; /* Títulos de seção menores */
   }
 
-  .features-grid,
+  /* GRID DE DICAS: Colapsa para uma única coluna */
   .dica-conteiner {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* Força coluna única para melhor leitura */
+    gap: 15px;
   }
 
-  .feature-card-content {
-    padding: 1.2rem;
+  /* Cards de Dica */
+  .dica {
+    padding: 15px;
   }
 
+  /* CTA: Remove o border-radius agressivo (20%) e reduz padding */
   .cta {
-    padding: 60px 20px;
-    font-size: 0.95rem;
+    padding: 40px 15px;
+    border-radius: 12px; /* Arredondamento suave */
   }
 
   .cta h2 {
-    font-size: 1.6rem;
+    font-size: 1.5rem;
   }
 
-  .btn {
-    padding: 12px 28px;
-    font-size: 0.9rem;
-  }
-
-  .dica-conteiner {
-    grid-template-columns: 1fr;
-    gap: 1.2rem;
-  }
-
+  /* FOOTER: Ajusta o padding e a fonte */
   footer {
-    padding: 20px 15px;
+    padding: 20px 10px;
     font-size: 0.8rem;
   }
 }

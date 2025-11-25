@@ -1,12 +1,12 @@
 import base64
-import datetime
+from datetime import datetime, timedelta
 
 import jwt
 from flask import Blueprint, request, jsonify
 from werkzeug.security import generate_password_hash, check_password_hash
 
-from models import db, User
-from utils.auth_utils import token_required
+from ..models import db, User
+from ..utils.auth_utils import token_required
 
 user_bp = Blueprint("auth", __name__)
 
@@ -33,8 +33,8 @@ def login():
     if user and check_password_hash(user.password, senha):
         payload = {
             'user_id': user.id,
-            'exp': datetime.datetime.utcnow() + datetime.timedelta(hours=24),
-            'iat': datetime.datetime.utcnow()
+            'exp': datetime.utcnow() + timedelta(hours=24),
+            'iat': datetime.utcnow()
         }
 
         token = jwt.encode(
@@ -80,8 +80,6 @@ def register():
 
     hashed = generate_password_hash(password)
 
-    with open('../assets/img/profile-placeholder.png', "rb") as img:
-        avatar_base64 = base64.b64encode(img.read()).decode("utf-8")
 
 
     # ORM INSERT:
@@ -89,8 +87,7 @@ def register():
         username=username,
         email=email,
         password=hashed,
-        created_at=datetime.utcnow(),
-        avatar=avatar_base64
+        created_at=datetime.utcnow()
     )
     db.session.add(user)
     db.session.commit()

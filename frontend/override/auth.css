@@ -198,3 +198,54 @@ input:focus {
         transition: nome !important;
     }
 }
+
+@media (max-width: 768px) {
+    body {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        min-height: 100vh;
+        padding: 16px 0;
+        background-position: center center;
+        background-size: cover;
+    }
+
+    .container {
+        margin: auto;
+        padding: 18px 4vw;
+        max-width: 96vw;
+        width: 100%;
+        border-radius: 18px;
+        box-shadow: 0 0 6px rgba(0,0,0,0.18);
+    }
+
+    .SetaRetornar {
+        top: 8px;
+        left: 8px;
+    }
+
+    .SetaRetornar img {
+        width: 28px;
+    }
+
+    .container h1 {
+        font-size: 20px;
+    }
+
+    .input-box {
+        margin: 12px 0;
+        height: 40px;
+    }
+
+    .container .login {
+        height: 40px;
+        font-size: 13px;
+        margin-top: 10px;
+    }
+
+    .register-link {
+        font-size: 11px;
+        margin-top: 14px;
+    }
+}
