@@ -45,7 +45,6 @@ class Tarefa(db.Model):
 
     data_criacao = db.Column(db.DateTime, default=datetime.utcnow)
 
-
 class Comment(db.Model):
     __tablename__ = 'comments'
     id = db.Column(db.Integer, primary_key=True)
