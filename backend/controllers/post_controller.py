@@ -2,7 +2,7 @@
 import os
 
 from flask import Blueprint, request, jsonify, send_from_directory, abort
-from ..models import db, Post
+from models import db, Post
 from werkzeug.exceptions import NotFound
 
 post_bp = Blueprint("posts", __name__)

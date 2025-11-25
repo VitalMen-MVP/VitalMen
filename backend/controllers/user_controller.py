@@ -5,8 +5,8 @@ import jwt
 from flask import Blueprint, request, jsonify
 from werkzeug.security import generate_password_hash, check_password_hash
 
-from ..models import db, User
-from ..utils.auth_utils import token_required
+from models import db, User
+from utils.auth_utils import token_required
 
 user_bp = Blueprint("auth", __name__)
 

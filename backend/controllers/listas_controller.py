@@ -1,5 +1,5 @@
 from flask import Blueprint, request, jsonify
-from ..models import db, Lista
+from models import db, Lista
 
 lista_bp = Blueprint("listas", __name__)
 
