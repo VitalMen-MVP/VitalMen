@@ -256,6 +256,14 @@ body.dark-mode .list-title {
   transition: all 0.18s ease;
 }
 
+.task.completed .task-text {
+  color: #fff;
+}
+
+body.dark-mode .task.completed .task-text {
+  color: #f0f0f0
+}
+
 .logout-button {
   background-color: var(--light-color);
   color: var(--dark-color);
