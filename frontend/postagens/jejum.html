@@ -139,23 +139,16 @@
  
 
 
-    <section id="comments">
- <div class="comments-container">
-    <h2 class="comments-title">Comentários</h2>
+  <script defer src="/postagens/historico.js"></script>
 
-    <form id="comment-form">
-        <input type="text" id="author" placeholder="Seu nome" required>
-        <textarea id="message" placeholder="Seu comentário" required></textarea>
-        <button type="submit">Enviar</button>
-    </form>
-
-    <ul id="comments-list"></ul>
-</div>
-
-
-       
-<footer>
-            <hr />
+    <div class="comments-container">
+<form id="commentForm"> 
+    <textarea id="commentText" placeholder="Escreva seu comentário..." required></textarea>
+    <button type="submit">Enviar</button> 
+</form>
+</div> 
+<div id="commentList" data-post-id="6"></div> 
+</section>    
             <p>&copy; 2025 VitalMan. Todos os direitos reservados.</p>
         </footer>
     </article>

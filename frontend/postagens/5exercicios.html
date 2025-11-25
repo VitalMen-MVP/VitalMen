@@ -120,16 +120,20 @@
         </section>
 
 
-    <section id="comments">
- <div class="comments-container">
-    <h2 class="comments-title">Comentários</h2>
-    <form id="comment-form">
-        <input type="text" id="author" placeholder="Seu nome" required>
-        <textarea id="message" placeholder="Seu comentário" required></textarea>
-        <button type="submit">Enviar</button>
-    </form>
-    <ul id="comments-list"></ul>
-</div>
+    <script defer src="/postagens/historico.js"></script>
+
+
+<div class="comments-container">
+<form id="commentForm"> 
+    <textarea id="commentText" placeholder="Escreva seu comentário..." required></textarea>
+    <button type="submit">Enviar</button> 
+</form>
+</div> 
+<div id="commentList" data-post-id="1"></div> 
+<script>
+    // Agora o script pode simplesmente ler o ID do atributo
+    // Não é mais necessário ter <const POSTAGEM_ID = 1;> aqui
+</script>
 
 
 </section>    
