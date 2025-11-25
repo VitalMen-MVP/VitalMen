@@ -102,15 +102,6 @@ def register():
 @user_bp.route("/api/perfil", methods=["GET"])
 @token_required
 def get_user_profile(current_user):
-    # ORM (feito lá dentro do decorator token_required)
-    # User.query.filter_by(id=user_id).first()
-
-    # SQL equivalente:
-    # SELECT id, username, email, password
-    # FROM users
-    # WHERE id = :id
-    # LIMIT 1;
-
     return jsonify({
         "mensagem": f"Bem-vindo(a), {current_user.username}!",
         "perfil": {
@@ -118,6 +109,65 @@ def get_user_profile(current_user):
             "username": current_user.username,
             "email": current_user.email,
             "avatar": current_user.avatar,
-            "created_at": current_user.created_at
+            "created_at": current_user.created_at.isoformat() if current_user.created_at else None
         }
     }), 200
+
+
+@user_bp.route("/api/user", methods=["PUT"])
+@token_required
+def update_user(current_user):
+    """
+    Atualiza username, email, senha e avatar do usuário autenticado.
+    Aceita multipart/form-data (FormData no frontend)
+    """
+    try:
+        # Nome, email e senha (form fields normais)
+        username = request.form.get("username", "").strip()
+        email = request.form.get("email", "").strip()
+        password = request.form.get("password", "").strip()
+
+        # Atualizar username
+        if username:
+            current_user.username = username
+
+        # Atualizar email (e verificar duplicado)
+        if email and email != current_user.email:
+            existing = User.query.filter_by(email=email).first()
+            if existing:
+                return jsonify({"erro": "Este email já está em uso."}), 409
+            current_user.email = email
+
+        # Atualizar senha se foi enviada
+        if password:
+            current_user.password = generate_password_hash(password)
+
+        # Avatar (arquivo)
+        avatar_file = request.files.get("avatar")
+
+        if avatar_file:
+            # Lê bytes do arquivo
+            avatar_bytes = avatar_file.read()
+            # Codifica em base64 para salvar no banco
+            avatar_b64 = base64.b64encode(avatar_bytes).decode("utf-8")
+            current_user.avatar = avatar_b64
+
+        # Atualiza timestamp
+        current_user.updated_at = datetime.utcnow()
+
+        db.session.commit()
+
+        return jsonify({
+            "mensagem": "Perfil atualizado com sucesso!",
+            "user": {
+                "id": current_user.id,
+                "username": current_user.username,
+                "email": current_user.email,
+                "avatar": current_user.avatar,
+                "created_at": current_user.created_at
+            }
+        }), 200
+
+    except Exception as e:
+        print("Erro ao atualizar perfil:", e)
+        return jsonify({"erro": "Erro interno ao atualizar perfil."}), 500

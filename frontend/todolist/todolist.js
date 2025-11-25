@@ -68,10 +68,17 @@ function sortTasksByPriority(taskListElement) {
   // Depois de ordenar visualmente, atualiza posições no backend
   saveTaskPositions(taskListElement);
 }
+function getToken() {
+  return localStorage.getItem("access_token") || "";
+}
 
-// ---------- Helpers para comunicação com backend ----------
 async function apiGet(url) {
-  const res = await fetch(url);
+  const res = await fetch(url, {
+    method: "GET",
+    headers: {
+      "Authorization": "Bearer " + getToken()
+    },
+  });
   if (!res.ok) throw new Error(`GET ${url} falhou: ${res.status}`);
   return res.json();
 }
@@ -79,7 +86,10 @@ async function apiGet(url) {
 async function apiPost(url, body) {
   const res = await fetch(url, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer " + getToken()
+    },
     body: JSON.stringify(body)
   });
   if (!res.ok) {
@@ -92,7 +102,10 @@ async function apiPost(url, body) {
 async function apiPut(url, body) {
   const res = await fetch(url, {
     method: "PUT",
-    headers: { "Content-Type": "application/json" },
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer " + getToken()
+    },
     body: JSON.stringify(body)
   });
   if (!res.ok) {
@@ -103,14 +116,18 @@ async function apiPut(url, body) {
 }
 
 async function apiDelete(url) {
-  const res = await fetch(url, { method: "DELETE" });
+  const res = await fetch(url, {
+    method: "DELETE",
+    headers: {
+      "Authorization": "Bearer " + getToken()
+    }
+  });
   if (!res.ok) {
     const txt = await res.text();
     throw new Error(`DELETE ${url} falhou: ${res.status} ${txt}`);
   }
   return res.json();
 }
-
 // ---------- Carregar tudo no DOM ----------
 document.addEventListener("DOMContentLoaded", carregarListas);
 
@@ -118,7 +135,7 @@ addListBtn.addEventListener("click", async () => {
   const name = prompt("Nome da nova lista:");
   if (name) {
     try {
-      const data = await apiPost("/api/listas", { titulo: name });
+      const data = await apiPost("/api/listas", { titulo: name }, localStorage.getItem('access_token'));
       // data.id retornado pelo backend
       await createList(name, data.id, "#ffffff");
       // não precisa chamar carregarTarefas porque lista nova está vazia
@@ -131,7 +148,7 @@ addListBtn.addEventListener("click", async () => {
 
 async function carregarListas() {
   try {
-    const listas = await apiGet("/api/listas");
+    const listas = await apiGet("/api/listas", localStorage.getItem('access_token'));
     board.innerHTML = ""; // limpa board
     for (const lista of listas) {
       await createList(lista.titulo, lista.id, lista.cor, lista.posicao);
@@ -252,6 +269,7 @@ async function createList(title, id = null, color = null, pos = null) {
 async function carregarTarefas(lista_id) {
   try {
     const tarefas = await apiGet(`/api/listas/${lista_id}/tarefas`);
+
     const list = document.querySelector(`.list[data-id="${lista_id}"]`);
     if (!list) return;
     const taskList = list.querySelector(".task-list");
@@ -461,12 +479,19 @@ async function saveTaskPositions(taskList) {
   const listaEl = taskList.closest(".list");
   const listaId = listaEl ? listaEl.dataset.id : null;
 
-  // envia um PUT para cada tarefa com posicao e lista_id
   for (let i = 0; i < tasks.length; i++) {
     const t = tasks[i];
     const id = t.dataset.id;
-    if (!id) continue; // tarefa sem id (não persistida) - deveria ser rara
-    const body = { posicao: i, prioridade: parseInt(t.querySelector(".task-priority").value) || 999, lista_id: listaId };
+    if (!id) continue;
+
+    const prioridade = parseInt(t.querySelector(".task-priority").value) || 999;
+
+    const body = {
+      posicao: i,
+      prioridade: prioridade,
+      lista_id: listaId
+    };
+
     try {
       await apiPut(`/api/tarefas/${id}`, body);
     } catch (err) {
@@ -475,14 +500,16 @@ async function saveTaskPositions(taskList) {
   }
 }
 
+
 // Percorre todas as listas e salva posições de tarefas (útil quando uma tarefa muda de lista)
 async function saveAllTaskPositions() {
   const lists = [...document.querySelectorAll(".list")];
   for (const l of lists) {
-    const tl = l.querySelector(".task-list");
-    await saveTaskPositions(tl);
+    const taskList = l.querySelector(".task-list");
+    await saveTaskPositions(taskList);
   }
 }
+
 
 // ---------- Drag & Drop (listas) ----------
 function enableListDrag(list) {
@@ -517,9 +544,11 @@ board.addEventListener("dragover", (e) => {
 // Salva posições das listas no backend (PUT /api/listas/:id { posicao })
 async function saveListPositions() {
   const lists = [...document.querySelectorAll(".list")];
+
   for (let i = 0; i < lists.length; i++) {
-    const l = lists[i];
-    const id = l.dataset.id;
+    const list = lists[i];
+    const id = list.dataset.id;
+
     try {
       await apiPut(`/api/listas/${id}`, { posicao: i });
     } catch (err) {
@@ -527,6 +556,7 @@ async function saveListPositions() {
     }
   }
 }
+
 
 // ---------- Funções utilitárias adicionais ----------
 

@@ -91,35 +91,61 @@ function completeTask() {
     // pela primeira vez no dia.
     // checkAndIncreaseStreak(); 
     
-}
+}function fetchUserProfile(token) {
+    const tk = token || localStorage.getItem("access_token"); // Usa parâmetro ou localStorage
 
-
-async function fetchUserProfile(authToken) {
-    try {
-        const token = localStorage.getItem('access_token');
-
-        const response = await fetch('/api/perfil', {
-            method: 'GET',
-            headers: {
-                'Authorization': `Bearer ${authToken}`
-            }
-        });
-
-        const resultado = await response.json();
-        return resultado.perfil;
-
-    } catch (error) {
-        console.error('Erro na comunicação com a API:', error);
+    if (!tk) {
+        console.warn("Nenhum token fornecido ou encontrado no localStorage.");
+        return Promise.resolve(null); // Retorna uma promise resolvida com null
     }
+
+    return fetch("/api/perfil", {
+        method: "GET",
+        headers: {
+            "Authorization": `Bearer ${tk}`,
+            "Accept": "application/json"
+        }
+    })
+        .then(response => {
+            console.log("STATUS:", response.status);
+
+            if (!response.ok) {
+                console.warn(`Erro HTTP (${response.status}) ao buscar perfil.`);
+                return null;
+            }
+
+            // Tenta parsear JSON
+            return response.json().catch(() => {
+                console.error("Resposta da API não é JSON válido.");
+                return null;
+            });
+        })
+        .then(resultado => {
+            if (!resultado) return null;
+
+            console.log("RESULTADO DA API /api/perfil:", resultado);
+
+            if (resultado.perfil) {
+                return resultado.perfil;
+            } else {
+                console.warn("API respondeu sem campo 'perfil'.");
+                return null;
+            }
+        })
+        .catch(err => {
+            console.error("Erro ao buscar perfil:", err);
+            return null;
+        });
 }
 
 // -----------------------------------------------------
 // INICIALIZAÇÃO
 // -----------------------------------------------------
-
-// Espera o documento carregar antes de manipular o DOM
-document.addEventListener('DOMContentLoaded', async function () {
+document.addEventListener('DOMContentLoaded', function () {
+    console.log("DOMContentLoaded disparou");
     const token = localStorage.getItem('access_token');
+    console.log("Token:", token);
+
     const email = document.getElementById('email');
     const username = document.getElementById('username');
     const avatar = document.getElementById('user-avatar');
@@ -128,28 +154,24 @@ document.addEventListener('DOMContentLoaded', async function () {
     loadStats();
     checkAndIncreaseStreak();
 
-    if (token) {
-        try {
-            const user = await fetchUserProfile(token);
+    if (!token) return;
 
-            username.textContent = user.username;
-            email.textContent = user.email;
-
-            if (createdAt && user.created_at) {
-                const date = new Date(user.created_at);
-                createdAt.textContent = date.toLocaleDateString('pt-BR', {
-                    day: '2-digit',
-                    month: '2-digit',
-                    year: 'numeric'
-                });
-            }
-
-            if (user.avatar) {
-                avatar.src = `data:image/jpeg;base64,${user.avatar}`;
-            }
-        } catch (error) {
-            console.error('Erro ao carregar perfil:', error);
+    fetchUserProfile(token).then(user => {
+        if (!user) {
+            console.warn("Perfil não carregado (token inválido ou resposta inesperada)");
+            return;
         }
-    }
 
+        if (username) username.textContent = user.username ?? "Usuário";
+        if (email) email.textContent = user.email ?? "—";
+
+        if (createdAt && user.created_at) {
+            const date = new Date(user.created_at);
+            createdAt.textContent = date.toLocaleDateString('pt-BR');
+        }
+
+        if (avatar && user.avatar) {
+            avatar.src = `data:image/jpeg;base64,${user.avatar}`;
+        }
+    });
 });
