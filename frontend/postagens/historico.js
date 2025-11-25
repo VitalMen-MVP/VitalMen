@@ -22,11 +22,11 @@ function loadComments() {
                 const div = document.createElement("div");
                 div.classList.add("comment-card");
 
-              const avatarSrc = c.user.avatar
-    ? `data:image/jpeg;base64,${c.user.avatar}`
-    : '../../assets/img/profile-placeholder.png';
+                const avatarSrc = c.user.avatar
+                    ? `data:image/jpeg;base64,${c.user.avatar}`
+                    : '../../assets/img/profile-placeholder.png';
 
-div.innerHTML = `
+                div.innerHTML = `
     <div class="comment-user">
         <img src="${avatarSrc}" class="avatar">
         <strong>${c.user.username}</strong>
