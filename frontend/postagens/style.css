@@ -221,3 +221,68 @@ footer {
 .comments-container .text {
     font-size: 14px;
 }
+
+@media (max-width: 992px) {
+    article {
+        margin: 30px auto;
+        padding: 0 10px;
+    }
+    .comments-container {
+        padding: 15px;
+        max-width: 95vw;
+    }
+}
+
+
+@media (max-width: 768px) {
+    article {
+        margin: 20px auto;
+        padding: 0 5px;
+        max-width: 98vw;
+    }
+    section h2 {
+        font-size: 1.1rem;
+        padding-left: 6px;
+    }
+    section h3 {
+        font-size: 1rem;
+    }
+    .comments-container {
+        padding: 10px;
+        border-radius: 8px;
+        font-size: 0.98rem;
+    }
+    .comments-container input,
+    .comments-container textarea {
+        font-size: 14px;
+        padding: 8px;
+    }
+    .comments-container button {
+        font-size: 15px;
+        padding: 10px;
+    }
+    .avatar {
+        width: 38px;
+        height: 38px;
+    }
+}
+
+/* Telas muito pequenas (≤ 480px) */
+@media (max-width: 480px) {
+    article header h1 {
+        font-size: 1.3rem;
+    }
+    .comments-container {
+        padding: 5px;
+        border-radius: 5px;
+    }
+    .comments-container input,
+    .comments-container textarea {
+        font-size: 13px;
+        padding: 6px;
+    }
+    .comments-container button {
+        font-size: 14px;
+        padding: 8px;
+    }
+}
