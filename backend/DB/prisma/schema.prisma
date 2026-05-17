@@ -1,0 +1,132 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["multiSchema"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+  schemas  = ["public"]
+}
+
+// ================================================================
+// MODEL ORIGINAL — não alterado
+// ================================================================
+model User {
+  id        Int      @id @default(autoincrement())
+  name      String?
+  email     String   @unique
+  password  String
+  createdAt DateTime @default(now())
+
+  // Campos para recuperação de senha com código
+  resetCode     String?   
+  resetCodeExp  DateTime?
+  resetAttempts Int       @default(0)
+
+  // Relações inversas (só adicionadas aqui, não mudam a tabela)
+  heroPerfil HeroPerfil?
+  missoes    Missao[]
+  conquistas Conquista[]
+
+  @@schema("public")
+}
+
+// ================================================================
+// MODELS NOVOS — schema "app" (tabelas separadas)
+// ================================================================
+model HeroPerfil {
+  id             String   @id @default(cuid())
+  userId         Int      @unique
+  user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  foco           Int      @default(0)
+  disciplina     Int      @default(0)
+  intelecto      Int      @default(0)
+  forca          Int      @default(0)
+  consistencia   Int      @default(0)
+
+  nivelAtual     Int      @default(1)
+  xpAtual        Int      @default(0)
+  xpProximoNivel Int      @default(100)
+
+  itemAvatarId   String?
+  tituloId       String?
+
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  @@schema("public")
+}
+
+model Missao {
+  id                 String             @id @default(cuid())
+  userId             Int
+  user               User               @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  titulo             String
+  descricao          String?
+  prioridade         Prioridade         @default(MEDIA)
+  atributoRecompensa AtributoRecompensa @default(FOCO)
+
+  concluida          Boolean            @default(false)
+  concluidaEm        DateTime?
+
+  microPassos        MicroPasso[]
+  conquistas         Conquista[]
+
+  createdAt          DateTime           @default(now())
+  updatedAt          DateTime           @updatedAt
+
+    @@schema("public")
+}
+
+model MicroPasso {
+  id          String    @id @default(cuid())
+  missaoId    String
+  missao      Missao    @relation(fields: [missaoId], references: [id], onDelete: Cascade)
+
+  titulo      String
+  concluido   Boolean   @default(false)
+  concluidoEm DateTime?
+
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+   @@schema("public")
+}
+
+model Conquista {
+  id                 String             @id @default(cuid())
+  userId             Int
+  user               User               @relation(fields: [userId], references: [id], onDelete: Cascade)
+  missaoId           String?
+  missao             Missao?            @relation(fields: [missaoId], references: [id], onDelete: SetNull)
+
+  titulo             String
+  xpGanho            Int
+  atributoGanho      AtributoRecompensa
+  nivelAposConquista Int
+
+  createdAt          DateTime           @default(now())
+
+    @@schema("public")
+}
+
+enum Prioridade {
+  ALTA
+  MEDIA
+  BAIXA
+
+    @@schema("public")
+}
+
+enum AtributoRecompensa {
+  FOCO
+  DISCIPLINA
+  INTELECTO
+  FORCA
+  CONSISTENCIA
+
+   @@schema("public")
+}
