@@ -1,0 +1,331 @@
+/*:root {*/
+/* --primary-color: #004d9a;*/
+/* --primary-color-dark: #003366;*/
+/* --light-color: #ffffff;*/
+/* --dark-color: #000;*/
+/* --background-color: #1a1a1a;*/
+/* --card-background: #2a2a2a;*/
+/* --border-color: #444;*/
+/* --grey-text: #b0b0b0;*/
+
+
+.login-button {
+    background-color: #fff;
+    color: #000;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    transition: all 0.3s ease;
+}
+
+.login-button:hover {
+    background-color: #003366;
+    color: #fff;
+    box-shadow: 0 4px 15px rgba(0, 77, 154, 0.7), 0 0 20px rgba(0, 123, 255, 0.5);
+    text-decoration: none;
+    transform: translateY(-3px);
+}
+
+.navbar {
+    background-color: rgba(0, 28, 242, 0.9);
+    color: var(--light-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    height: 70px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 0 20px;
+    flex-shrink: 0;
+}
+
+.logo img {
+    height: 80px;
+    width: auto;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.logo:hover img {
+    transform: scale(1.05);
+    filter: brightness(1.1);
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+    flex-grow: 1;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100%;
+}
+
+.nav-links a {
+    color: var(--light-color);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.05em;
+    padding: 8px 12px;
+    border-radius: 5px;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: var(--light-color);
+    bottom: -5px;
+    left: 0;
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.3s ease-out;
+}
+
+.nav-links a:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+.nav-links a.activate,
+.nav-links a[aria-current="page"] {
+    color: var(--light-color);
+    border-radius: 6px;
+    padding: 8px 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.nav-links a.activate::after,
+.nav-links a[aria-current="page"]::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+.menu-toggle {
+    display: none;
+    background: transparent;
+    border: none;
+    color: var(--light-color);
+    font-size: 28px;
+    cursor: pointer;
+    padding: 8px;
+}
+
+/* === ESTILO DO BOTÃO DE TEMA (GLOBAL) === */
+.theme-toggle-button {
+    background: transparent;
+    border: none;
+    color: #fff;
+    /* Cor do ícone (lua/sol) */
+    font-size: 1.5rem;
+    /* Tamanho do ícone */
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: transform 0.2s ease, background-color 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 15px;
+    /* Espaço do botão ao lado dos links/botões */
+}
+
+.theme-toggle-button:hover {
+    transform: scale(1.05);
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Tablet */
+@media (max-width: 992px) {
+    .logo img {
+        height: 64px;
+    }
+
+    .navbar {
+        padding: 0 24px;
+        height: auto;
+        gap: 8px;
+    }
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+    .navbar {
+        justify-content: center;
+        padding: 0 12px;
+        position: relative;
+    }
+
+    /* Botão hamburger à esquerda */
+    .menu-toggle {
+        display: block;
+        position: absolute;
+        left: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    /* Logo centralizada */
+    .logo {
+        position: relative;
+        margin: 0 auto;
+        padding: 0;
+    }
+
+    .logo img {
+        height: 56px;
+    }
+
+    /* Login/Sair à direita */
+    .login-button {
+        position: absolute;
+        right: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        padding: 6px 12px;
+        /* deixa mais compacto */
+        font-size: 0.85rem;
+        border-radius: 4px;
+        width: auto;
+        /* impede de expandir */
+        max-width: none;
+        /* remove limite anterior */
+        margin: 0;
+        /* tira qualquer margin automática */
+        display: inline-block;
+        /* volta ao modo de botão */
+    }
+
+    /* Botão de Tema à esquerda do Login */
+    .theme-toggle-button {
+        position: absolute;
+        right: 80px;
+        /* 12px (Login) + ~60px (Login width) + 8px (gap) */
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 1.1rem;
+        /* Ícone menor no mobile */
+        padding: 6px;
+        margin-left: 0;
+    }
+
+    .login-button,
+    .theme-toggle-button {
+        position: static;
+        transform: none;
+        margin: 0 0 0 8px;
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    /* O elemento Bem-Vindo é adicionado via JS e quebra o layout. 
+       Isso o esconde no mobile, mantendo o layout limpo. */
+    .navbar a[href="/usuario"] {
+        display: none !important;
+    }
+
+    /* Menu dropdown escondido */
+    .nav-links {
+        position: absolute;
+        /* volta pra absolute pra não cobrir tudo */
+        top: 70px;
+        left: 0;
+        right: 0;
+        background: rgba(0, 29, 77, 0.95);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 28px;
+        /* mais espaço entre os links */
+        padding: 24px 0 32px;
+        backdrop-filter: blur(8px);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-15px);
+        transition: all 0.35s ease;
+        z-index: 3000;
+        pointer-events: none;
+        border: none;
+        /* remove a linha preta */
+        border-top: none;
+        height: auto;
+        max-height: 65vh;
+        /* reduz o tamanho do fundo azul */
+        overflow-y: auto;
+        /* se tiver muitos links, rola */
+        border-radius: 0 0 12px 12px;
+        /* bordas inferiores suaves */
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Mostra menu quando navbar tiver classe .open */
+    .navbar.open .nav-links {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+        pointer-events: auto;
+    }
+
+    /* Aparência dos links */
+    .nav-links a {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #fff;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        width: 100%;
+        text-align: center;
+        padding: 12px 0;
+        border-radius: 8px;
+        transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    .nav-links a:hover {
+        background: rgba(255, 255, 255, 0.15);
+        transform: scale(1.05);
+    }
+}
+
+/* Telas muito pequenas */
+@media (max-width: 420px) {
+    .logo img {
+        height: 48px;
+    }
+
+    .menu-toggle {
+        font-size: 24px;
+        padding: 6px;
+        left: 8px;
+    }
+
+    .login-button {
+        right: 8px;
+        font-size: 0.85rem;
+        padding: 6px 12px;
+    }
+
+    /* Ajuste do botão de tema para telas muito pequenas */
+    .theme-toggle-button {
+        right: 76px;
+        /* Posiciona à esquerda do login-button (right: 8px) */
+    }
+}
